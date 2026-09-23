@@ -1,0 +1,41 @@
+---
+import { INTERESTS, SITE } from '@/config/site';
+
+/**
+ * Small decorative terminal for the hero. Static HTML — the only motion
+ * is the blinking caret on the last line.
+ */
+const lines: { cmd: string; out: string[] }[] = [
+  { cmd: 'whoami', out: [SITE.handle] },
+  { cmd: 'cat interests.txt', out: INTERESTS },
+];
+---
+
+<div class="card overflow-hidden font-mono text-[0.8rem] leading-relaxed shadow-2xl shadow-black/40 sm:text-[0.84rem]" role="img" aria-label={`Terminal: whoami returns ${SITE.handle}; interests are ${INTERESTS.join(', ')}; status: learning.`}>
+  <div class="flex items-center gap-2 border-b border-line bg-surface-2 px-4 py-2.5" aria-hidden="true">
+    <span class="h-2.5 w-2.5 rounded-full bg-line-strong"></span>
+    <span class="h-2.5 w-2.5 rounded-full bg-line-strong"></span>
+    <span class="h-2.5 w-2.5 rounded-full bg-line-strong"></span>
+    <span class="ml-2 text-[0.72rem] text-subtle">{SITE.handle}@ipnet: ~</span>
+  </div>
+  <div class="space-y-3 px-4 py-4 sm:px-5" aria-hidden="true">
+    {
+      lines.map((l) => (
+        <div>
+          <p>
+            <span class="text-accent">$</span> <span class="text-fg">{l.cmd}</span>
+          </p>
+          {l.out.map((o) => (
+            <p class="text-muted">{o}</p>
+          ))}
+        </div>
+      ))
+    }
+    <div>
+      <p><span class="text-accent">$</span> <span class="text-fg">status</span></p>
+      <p class="text-warn">
+        learning...<span class="ml-0.5 inline-block h-[1.05em] w-[0.55em] translate-y-[0.18em] animate-caret bg-muted/70"></span>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
+import { currentResult, type Medal as MedalT } from '@/lib/content';
+import { formatMonth, isoDate, ordinal, url } from '@/lib/utils';
+import Medal from './Medal.astro';
+import StatusBadge from './StatusBadge.astro';
+
+interface Props {
+  entry: CollectionEntry<'achievements'>;
+}
+const { entry } = Astro.props;
+const { title, year, date, headline, medal: ownMedal } = entry.data;
+
+// Results come from the linked CTF entry when there is one (single source of truth).
+const competition = entry.data.competition ? await getEntry(entry.data.competition) : undefined;
+const result = competition ? currentResult(competition) : undefined;
+
+const medal: MedalT = result?.medal ?? ownMedal;
+const rank = result?.stage?.rank;
+const line =
+  result?.stage?.rank !== undefined
+    ? `${ordinal(result.stage.rank)} place${competition!.data.stages.length > 1 ? ` — ${result.stage.name}` : ''}`
+    : headline;
+
+const { Content } = await render(entry);
+---
+
+<article class="card flex flex-col gap-5 p-5 sm:flex-row sm:p-6">
+  <Medal medal={medal} rank={rank} />
+  <div class="min-w-0 flex-1">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <h3 class="text-lg font-semibold text-fg">
+        {competition ? <a class="hover:text-accent" href={url(`/ctf/${competition.id}`)}>{title}</a> : title}
+      </h3>
+      {date ? <time class="font-mono text-xs text-subtle" datetime={isoDate(date)}>{formatMonth(date)}</time> : <span class="font-mono text-xs text-subtle">{year}</span>}
+    </div>
+    {line && <p class="mt-1 text-[0.95rem] font-medium text-fg">{line}</p>}
+    {
+      competition && (
+        <p class="mt-1 font-mono text-sm text-muted">
+          Team <span class="text-fg">{competition.data.team}</span>
+          {competition.data.handle && <> · Player <span class="text-fg">{competition.data.handle}</span></>}
+        </p>
+      )
+    }
+    {
+      result && result.pending.length > 0 && (
+        <div class="mt-3 flex flex-wrap items-center gap-2 text-sm text-muted">
+          {result.pending.map((p) => (
+            <>
+              <span>{p.name}</span>
+              <StatusBadge status={p.status} />
+            </>
+          ))}
+        </div>
+      )
+    }
+    <div class="mt-3 text-sm leading-relaxed text-muted [&_p+p]:mt-2">
+      <Content />
+    </div>
+  </div>
+</article>

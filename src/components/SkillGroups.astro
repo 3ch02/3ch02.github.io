@@ -1,0 +1,32 @@
+---
+import { SKILLS } from '@/config/site';
+import Icon, { type IconName } from './Icon.astro';
+
+const icons: Record<string, IconName> = {
+  Cybersecurity: 'shield',
+  Systems: 'terminal',
+  Networking: 'link',
+  'Tools & Technologies': 'gauge',
+};
+---
+
+<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+  {
+    SKILLS.map((g) => (
+      <div class="card p-5">
+        <div class="flex items-center gap-2.5">
+          <Icon name={icons[g.group] ?? 'tag'} size={16} class="text-accent" />
+          <h3 class="text-sm font-semibold text-fg">{g.group}</h3>
+        </div>
+        <ul class="mt-4 space-y-1.5">
+          {g.items.map((s) => (
+            <li class="flex items-center gap-2 text-sm text-muted">
+              <span class="h-1 w-1 rounded-full bg-line-strong" aria-hidden="true" />
+              {s}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>

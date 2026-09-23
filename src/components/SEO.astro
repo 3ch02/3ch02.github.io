@@ -1,0 +1,57 @@
+---
+import { SITE, SOCIALS } from '@/config/site';
+import { url } from '@/lib/utils';
+
+export interface SEOProps {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  publishedTime?: Date;
+  tags?: string[];
+  noindex?: boolean;
+}
+
+const { title, description = SITE.description, image = SITE.ogImage, type = 'website', publishedTime, tags = [], noindex = false } =
+  Astro.props as SEOProps;
+
+const fullTitle = title ? `${title} · ${SITE.handle}` : `${SITE.title} | ${SITE.tagline}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(url(image), Astro.site);
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.name,
+  alternateName: SITE.handle,
+  url: new URL(url('/'), Astro.site).href,
+  jobTitle: SITE.role,
+  affiliation: { '@type': 'CollegeOrUniversity', name: SITE.school },
+  sameAs: SOCIALS.filter((s) => s.href.startsWith('http')).map((s) => s.href),
+};
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="author" content={SITE.name} />
+{noindex && <meta name="robots" content="noindex" />}
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE.title} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+{publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+{tags.map((t) => <meta property="article:tag" content={t} />)}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(personLd)} />

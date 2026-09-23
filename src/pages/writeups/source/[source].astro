@@ -1,0 +1,27 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import WriteupExplorer from '@/components/WriteupExplorer.astro';
+import { getSources, getWriteups, sourceFamily } from '@/lib/content';
+
+export async function getStaticPaths() {
+  const all = await getWriteups();
+  return getSources(all).map((source) => ({ params: { source: source.slug }, props: { source } }));
+}
+
+const { source } = Astro.props;
+const all = await getWriteups();
+const entries = all.filter((w) => sourceFamily(w.data.ctf) === source.name);
+const label = source.kind === 'competition' ? 'competition' : 'training platform';
+---
+
+<Layout title={`${source.name} writeups`} description={`CTF write-ups from ${source.name} (${label}) by 3ch0.`}>
+  <PageHeader
+    eyebrow={`writeups/source/${source.slug}`}
+    title={source.name}
+    description={`${entries.length} write-up${entries.length > 1 ? 's' : ''} from ${source.name}, ${label}.`}
+  />
+  <section class="container-page">
+    <WriteupExplorer entries={entries} all={all} activeSource={source.name} />
+  </section>
+</Layout>

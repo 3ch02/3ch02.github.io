@@ -1,0 +1,44 @@
+---
+import { render } from 'astro:content';
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import CompetitionCard from '@/components/CompetitionCard.astro';
+import WriteupCard from '@/components/WriteupCard.astro';
+import { currentResult, getCompetitions, getWriteups, writeupsFor } from '@/lib/content';
+import { ordinal } from '@/lib/utils';
+
+export async function getStaticPaths() {
+  const competitions = await getCompetitions();
+  return competitions.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { name, team } = entry.data;
+const related = writeupsFor(entry, await getWriteups());
+const { stage, pending } = currentResult(entry);
+const { Content } = await render(entry);
+
+const description = stage?.rank
+  ? `${ordinal(stage.rank)} place${entry.data.stages.length > 1 ? ` (${stage.name.toLowerCase()})` : ''} with team ${team}.${pending.length ? ` ${pending.map((p) => `${p.name}: ${p.status}`).join(', ')}.` : ''}`
+  : `Team ${team}.`;
+---
+
+<ArticleLayout title={name} description={description} back={{ href: '/ctf', label: 'cd ../ctf' }}>
+  <span slot="meta-top" class="eyebrow">CTF</span>
+
+  <div slot="meta" class="mt-8 max-w-xl">
+    <CompetitionCard entry={entry} writeupCount={related.length} detailed link={false} />
+  </div>
+
+  <Content />
+
+  <section slot="after" class="mt-14">
+    <h2 class="mb-5 text-xl font-semibold text-fg">Write-ups</h2>
+    {
+      related.length > 0 ? (
+        <div class="grid gap-5 sm:grid-cols-2">{related.map((w) => <WriteupCard entry={w} />)}</div>
+      ) : (
+        <p class="text-sm text-muted">No write-ups published for this competition yet.</p>
+      )
+    }
+  </section>
+</ArticleLayout>

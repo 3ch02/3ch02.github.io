@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { url } from '@/lib/utils';
+import StatusBadge from './StatusBadge.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+  highlight?: boolean;
+}
+const { entry, highlight = false } = Astro.props;
+const { title, summary, status, stack, tags, draft } = entry.data;
+---
+
+<article
+  class:list={[
+    'card-link group relative flex h-full flex-col p-6',
+    highlight && 'md:p-8',
+  ]}
+>
+  <div class="flex items-center justify-between gap-3">
+    <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-surface-2 text-accent">
+      <Icon name="folder" size={17} />
+    </span>
+    <div class="flex items-center gap-2">
+      {draft && <span class="rounded bg-warn/15 px-1.5 font-mono text-[0.7rem] text-warn">DRAFT</span>}
+      <StatusBadge status={status} />
+    </div>
+  </div>
+  <h3 class:list={['mt-5 font-semibold tracking-tight text-fg', highlight ? 'text-xl sm:text-2xl' : 'text-lg']}>
+    <a href={url(`/projects/${entry.id}`)} class="after:absolute after:inset-0 after:content-['']">{title}</a>
+  </h3>
+  <p class:list={['mt-2 leading-relaxed text-muted', highlight ? 'text-[0.95rem] sm:text-base' : 'text-sm']}>{summary}</p>
+  <div class="mt-auto pt-5">
+    <div class="flex flex-wrap gap-1.5">
+      {(stack.length ? stack : tags).slice(0, highlight ? 8 : 5).map((s) => <span class="chip">{s}</span>)}
+    </div>
+    <span class="mt-5 inline-flex items-center gap-1.5 text-sm text-muted group-hover:text-fg">
+      Read more <Icon name="arrow" size={15} class="transition-transform group-hover:translate-x-0.5" />
+    </span>
+  </div>
+</article>

@@ -1,0 +1,42 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import WriteupCard from '@/components/WriteupCard.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import { countTags, getProjects, getWriteups } from '@/lib/content';
+
+export async function getStaticPaths() {
+  const [writeups, projects] = await Promise.all([getWriteups(), getProjects()]);
+  return countTags([...writeups, ...projects]).map(([tag]) => ({
+    params: { tag },
+    props: {
+      tag,
+      writeups: writeups.filter((w) => w.data.tags.includes(tag)),
+      projects: projects.filter((p) => p.data.tags.includes(tag)),
+    },
+  }));
+}
+
+const { tag, writeups, projects } = Astro.props;
+const total = writeups.length + projects.length;
+---
+
+<Layout title={`#${tag}`} description={`Write-ups and projects tagged #${tag}.`}>
+  <PageHeader eyebrow={`tags/${tag}`} title={`#${tag}`} description={`${total} item${total > 1 ? 's' : ''} tagged #${tag}.`} />
+  {
+    writeups.length > 0 && (
+      <section class="container-page">
+        <p class="eyebrow mb-4">Writeups</p>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{writeups.map((w) => <WriteupCard entry={w} />)}</div>
+      </section>
+    )
+  }
+  {
+    projects.length > 0 && (
+      <section class="container-page mt-14">
+        <p class="eyebrow mb-4">Projects</p>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{projects.map((p) => <ProjectCard entry={p} />)}</div>
+      </section>
+    )
+  }
+</Layout>

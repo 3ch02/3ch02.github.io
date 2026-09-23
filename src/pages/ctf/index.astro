@@ -1,0 +1,76 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import CompetitionCard from '@/components/CompetitionCard.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import WriteupCard from '@/components/WriteupCard.astro';
+import EmptyState from '@/components/EmptyState.astro';
+import { currentResult, getCompetitions, getWriteups, writeupsFor } from '@/lib/content';
+import { url } from '@/lib/utils';
+
+const [competitions, writeups] = await Promise.all([getCompetitions(), getWriteups()]);
+
+const podiums = competitions.filter((c) => (currentResult(c).stage?.rank ?? 99) <= 3).length;
+// Write-ups actually tied to a competition (vs. training-platform write-ups shown on /writeups/)
+const byCompetition = new Map(competitions.map((c) => [c.id, writeupsFor(c, writeups)]));
+const linkedWriteups = [...byCompetition.values()].flat();
+const categories = new Set(linkedWriteups.map((w) => w.data.category));
+const stats = [
+  { value: competitions.length, label: 'competitions' },
+  { value: podiums, label: 'top-3 results' },
+  { value: linkedWriteups.length, label: 'competition write-ups' },
+  { value: categories.size, label: 'categories covered' },
+];
+---
+
+<Layout title="CTF" description="Capture The Flag competitions played by 3ch0: teams, rankings, categories and associated write-ups.">
+  <PageHeader
+    eyebrow="ctf"
+    title="Capture The Flag"
+    description="CTFs are where most of my practical learning happens: time pressure, unfamiliar systems, and a team to coordinate. Results are listed exactly as they stand — stages still to come are marked as such."
+  >
+    <dl class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-4">
+      {
+        stats.map((s) => (
+          <div class="bg-surface px-5 py-4">
+            <dt class="font-mono text-[0.7rem] text-subtle uppercase">{s.label}</dt>
+            <dd class="mt-1 font-mono text-2xl font-semibold text-fg">{s.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </PageHeader>
+
+  <section class="container-page">
+    <div class="grid gap-5 md:grid-cols-2">
+      {competitions.map((c) => <div class="reveal"><CompetitionCard entry={c} writeupCount={writeupsFor(c, writeups).length} detailed /></div>)}
+    </div>
+  </section>
+
+  <section class="container-page mt-20">
+    <SectionHeading eyebrow="Writeups" title="Write-ups by competition" href="/writeups" linkLabel="All write-ups" />
+    {
+      linkedWriteups.length === 0 ? (
+        <EmptyState title="No competition write-ups published yet" icon="file">
+          Write-ups from training platforms (picoCTF, Root-Me…) are on the Writeups page — this section only covers the
+          competitions above.
+        </EmptyState>
+      ) : (
+        <div class="space-y-12">
+          {competitions
+            .filter((c) => (byCompetition.get(c.id)?.length ?? 0) > 0)
+            .map((c) => (
+              <div>
+                <h3 class="mb-4 font-mono text-sm text-muted">
+                  <a href={url(`/ctf/${c.id}`)} class="hover:text-fg"><span class="text-accent">#</span> {c.data.name}</a>
+                </h3>
+                <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {byCompetition.get(c.id)!.map((w) => <WriteupCard entry={w} compact />)}
+                </div>
+              </div>
+            ))}
+        </div>
+      )
+    }
+  </section>
+</Layout>

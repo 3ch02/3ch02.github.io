@@ -1,0 +1,26 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import AchievementCard from '@/components/AchievementCard.astro';
+import EmptyState from '@/components/EmptyState.astro';
+import { getAchievements } from '@/lib/content';
+
+const achievements = await getAchievements();
+---
+
+<Layout title="Achievements" description="Competition results and milestones of KERIM Loukouman (3ch0).">
+  <PageHeader
+    eyebrow="achievements"
+    title="Achievements"
+    description="Results as they stand today. When a competition has several stages, the stage is always stated — a qualification result is not a final result."
+  />
+  <section class="container-page">
+    {
+      achievements.length ? (
+        <div class="grid max-w-3xl gap-5">{achievements.map((a) => <div class="reveal"><AchievementCard entry={a} /></div>)}</div>
+      ) : (
+        <EmptyState title="Nothing here yet" icon="trophy" />
+      )
+    }
+  </section>
+</Layout>

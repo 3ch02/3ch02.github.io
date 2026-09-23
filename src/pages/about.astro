@@ -1,0 +1,83 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import SkillGroups from '@/components/SkillGroups.astro';
+import Icon from '@/components/Icon.astro';
+import { INTERESTS, SITE } from '@/config/site';
+import { getCompetitions } from '@/lib/content';
+import { url } from '@/lib/utils';
+
+const competitions = await getCompetitions();
+const handles = [...new Set([SITE.handle, ...competitions.flatMap((c) => c.data.handle ?? [])])];
+
+const facts = [
+  { icon: 'user', label: 'Name', value: SITE.name },
+  { icon: 'terminal', label: 'Handle', value: handles.join(' · ') },
+  { icon: 'graduation', label: 'Education', value: `Cybersecurity student — ${SITE.school}` },
+  { icon: 'flag', label: 'CTF teams', value: [...new Set(competitions.map((c) => c.data.team))].join(' · ') },
+] as const;
+---
+
+<Layout title="About" description={`About ${SITE.name} (${SITE.handle}) — cybersecurity student at ${SITE.school}.`}>
+  <PageHeader eyebrow="about" title="About me" />
+
+  <section class="container-page grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+    <div class="prose prose-invert prose-3ch0 max-w-none">
+      <p class="!mt-0 text-lg text-fg">
+        I'm <strong>{SITE.name}</strong>, known online as <code>{SITE.handle}</code>.
+        I'm a cybersecurity student at <strong>{SITE.school}</strong>.
+      </p>
+      <p>
+        I see systems and networks as the foundation of security: you can't defend a network you don't understand, or investigate
+        a machine you couldn't administer. That's why a large part of my learning goes into Linux,
+        Windows Server and Active Directory, routing and switching, VPNs and firewalls — alongside the security side itself.
+      </p>
+      <p>
+        I learn by doing. I build labs, play CTFs with my teams, analyse what worked and what didn't, and write it down. The
+        write-ups on this site are part of that process: explaining a solution clearly is the best way I've found to check that I
+        actually understood it.
+      </p>
+      <p>
+        I'm still early in my path, and this site is meant to show it honestly — the projects I'm building, the competitions I take
+        part in, and the topics I'm working through.
+      </p>
+
+      <h2>What I'm interested in</h2>
+      <ul>
+        {INTERESTS.map((i) => <li>{i}</li>)}
+        <li>Web Security &amp; Cryptography</li>
+        <li>Network Security</li>
+      </ul>
+    </div>
+
+    <aside class="space-y-5">
+      <dl class="card divide-y divide-line">
+        {
+          facts.map((f) => (
+            <div class="flex gap-3.5 px-5 py-4">
+              <Icon name={f.icon} size={17} class="mt-0.5 shrink-0 text-accent" />
+              <div class="min-w-0">
+                <dt class="font-mono text-[0.7rem] text-subtle uppercase">{f.label}</dt>
+                <dd class="mt-0.5 text-sm break-words text-fg">{f.value}</dd>
+              </div>
+            </div>
+          ))
+        }
+      </dl>
+      <div class="flex flex-wrap gap-3">
+        <a class="btn-ghost" href={url('/ctf')}><Icon name="flag" size={16} /> CTF results</a>
+        <a class="btn-ghost" href={url('/contact')}><Icon name="mail" size={16} /> Contact</a>
+      </div>
+    </aside>
+  </section>
+
+  <section id="skills" class="container-page mt-20 scroll-mt-24">
+    <p class="eyebrow">Skills</p>
+    <h2 class="section-title mt-2">Skills & tools</h2>
+    <p class="mt-3 mb-8 max-w-2xl text-muted">
+      Areas I study and practise through coursework, labs and CTFs. Depth varies from one to another — the write-ups and projects are
+      the best way to see where I actually stand.
+    </p>
+    <SkillGroups />
+  </section>
+</Layout>

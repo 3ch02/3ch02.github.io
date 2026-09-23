@@ -1,0 +1,19 @@
+---
+/**
+ * The "3ch0" wordmark. The trailing arcs are an echo / signal motif —
+ * the only decorative element that is part of the brand.
+ */
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<span class:list={['inline-flex items-center gap-1.5 font-mono font-semibold tracking-tight', className]}>
+  <span class="text-fg">3ch<span class="text-accent">0</span></span>
+  <svg viewBox="0 0 14 16" class="h-[0.9em] w-auto text-accent" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+    <path d="M2 5.5a3.5 3.5 0 0 1 0 5" opacity="0.9" />
+    <path d="M5.5 3a7 7 0 0 1 0 10" opacity="0.55" />
+    <path d="M9 1a10 10 0 0 1 0 14" opacity="0.25" />
+  </svg>
+</span>

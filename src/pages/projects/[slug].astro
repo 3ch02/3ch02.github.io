@@ -1,0 +1,57 @@
+---
+import { render } from 'astro:content';
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import StatusBadge from '@/components/StatusBadge.astro';
+import Tag from '@/components/Tag.astro';
+import Icon from '@/components/Icon.astro';
+import { getProjects } from '@/lib/content';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { title, summary, status, stack, tags, repo, demo, draft } = entry.data;
+const { Content, headings } = await render(entry);
+---
+
+<ArticleLayout title={title} description={summary} headings={headings} back={{ href: '/projects', label: 'cd ../projects' }} tags={tags}>
+  <div slot="meta-top" class="flex flex-wrap items-center gap-2">
+    <span class="eyebrow">Project</span>
+    <StatusBadge status={status} />
+    {draft && <span class="rounded bg-warn/15 px-1.5 font-mono text-[0.7rem] text-warn">DRAFT</span>}
+  </div>
+
+  <div slot="meta" class="mt-6 space-y-4">
+    {
+      stack.length > 0 && (
+        <div class="flex flex-wrap gap-1.5">
+          {stack.map((s) => <span class="chip">{s}</span>)}
+        </div>
+      )
+    }
+    {
+      (repo || demo) && (
+        <div class="flex flex-wrap gap-3">
+          {repo && (
+            <a href={repo} target="_blank" rel="noopener" class="btn-ghost">
+              <Icon name="github" size={16} /> Source code
+            </a>
+          )}
+          {demo && (
+            <a href={demo} target="_blank" rel="noopener" class="btn-ghost">
+              <Icon name="external" size={16} /> Live demo
+            </a>
+          )}
+        </div>
+      )
+    }
+  </div>
+
+  <Content />
+
+  <div slot="after" class="mt-12 flex flex-wrap gap-1.5 border-t border-line pt-6">
+    {tags.map((t) => <Tag tag={t} />)}
+  </div>
+</ArticleLayout>

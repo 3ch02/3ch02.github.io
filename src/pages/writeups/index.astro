@@ -1,0 +1,53 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import WriteupExplorer from '@/components/WriteupExplorer.astro';
+import WriteupCard from '@/components/WriteupCard.astro';
+import Tag from '@/components/Tag.astro';
+import Icon from '@/components/Icon.astro';
+import { countTags, getWriteups } from '@/lib/content';
+import { url } from '@/lib/utils';
+
+const writeups = await getWriteups();
+const featured = writeups.filter((w) => w.data.featured).slice(0, 3);
+const tags = countTags(writeups).slice(0, 20);
+---
+
+<Layout title="CTF Writeups" description="CTF write-ups by 3ch0: forensics, cryptography, web, reverse engineering, steganography, OSINT and Boot2Root.">
+  <PageHeader
+    eyebrow="writeups"
+    title="CTF Writeups"
+    description="Step-by-step solutions to challenges I solved: the reasoning, the dead ends worth mentioning, the commands and scripts, and what I took away from each one."
+  >
+    <a href={url('/rss.xml')} class="mt-5 inline-flex items-center gap-1.5 font-mono text-xs text-muted hover:text-accent">
+      <Icon name="rss" size={14} /> RSS feed
+    </a>
+  </PageHeader>
+
+  {
+    featured.length > 0 && (
+      <section class="container-page mb-14">
+        <p class="eyebrow mb-4">Featured</p>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((w) => <WriteupCard entry={w} />)}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="container-page">
+    <WriteupExplorer entries={writeups} all={writeups} />
+  </section>
+
+  {
+    tags.length > 0 && (
+      <section class="container-page mt-16">
+        <div class="mb-4 flex items-center justify-between">
+          <p class="eyebrow">Tags</p>
+          <a href={url('/tags')} class="text-sm text-muted hover:text-fg">All tags</a>
+        </div>
+        <div class="flex flex-wrap gap-2">{tags.map(([t, n]) => <Tag tag={t} count={n} />)}</div>
+      </section>
+    )
+  }
+</Layout>

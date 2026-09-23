@@ -1,0 +1,19 @@
+---
+import { url } from '@/lib/utils';
+
+interface Props {
+  tag: string;
+  count?: number;
+  link?: boolean;
+}
+const { tag, count, link = true } = Astro.props;
+const Element = link ? 'a' : 'span';
+---
+
+<Element
+  href={link ? url(`/tags/${tag}`) : undefined}
+  class:list={['chip', link && 'hover:border-line-strong hover:text-fg transition-colors']}
+>
+  <span class="text-accent-dim">#</span>{tag}
+  {count !== undefined && <span class="ml-1.5 text-subtle">{count}</span>}
+</Element>

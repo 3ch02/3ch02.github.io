@@ -1,0 +1,14 @@
+---
+import Icon, { type IconName } from './Icon.astro';
+interface Props {
+  title: string;
+  icon?: IconName;
+}
+const { title, icon = 'file' } = Astro.props;
+---
+
+<div class="card flex flex-col items-center gap-3 border-dashed px-6 py-12 text-center">
+  <Icon name={icon} size={22} class="text-subtle" />
+  <p class="font-medium text-fg">{title}</p>
+  <div class="max-w-md text-sm text-muted"><slot /></div>
+</div>

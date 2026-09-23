@@ -1,0 +1,24 @@
+---
+import type { Medal } from '@/lib/content';
+
+interface Props {
+  medal: Medal;
+  rank?: number;
+  size?: 'sm' | 'md';
+}
+const { medal, rank, size = 'md' } = Astro.props;
+const color = {
+  gold: 'text-gold border-gold/40 bg-gold/10',
+  silver: 'text-silver border-silver/40 bg-silver/10',
+  bronze: 'text-bronze border-bronze/40 bg-bronze/10',
+  none: 'text-muted border-line-strong bg-surface-2',
+}[medal];
+const dims = size === 'sm' ? 'h-9 w-9 text-xs' : 'h-12 w-12 text-sm';
+---
+
+<span
+  class:list={['inline-flex shrink-0 items-center justify-center rounded-full border font-mono font-semibold', color, dims]}
+  aria-hidden="true"
+>
+  {rank ? `#${rank}` : '—'}
+</span>

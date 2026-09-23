@@ -1,0 +1,15 @@
+---
+interface Props {
+  difficulty: 'Easy' | 'Medium' | 'Hard' | 'Insane';
+}
+const { difficulty } = Astro.props;
+const level = { Easy: 1, Medium: 2, Hard: 3, Insane: 4 }[difficulty];
+const color = { Easy: 'bg-accent', Medium: 'bg-warn', Hard: 'bg-bronze', Insane: 'bg-[#e0707a]' }[difficulty];
+---
+
+<span class="inline-flex items-center gap-1.5 font-mono text-[0.72rem] text-muted" title={`Difficulty: ${difficulty}`}>
+  <span class="flex gap-0.5" aria-hidden="true">
+    {[1, 2, 3, 4].map((i) => <span class:list={['h-2.5 w-1 rounded-sm', i <= level ? color : 'bg-line-strong']} />)}
+  </span>
+  {difficulty}
+</span>

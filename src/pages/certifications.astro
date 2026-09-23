@@ -1,0 +1,65 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import CertificationCard from '@/components/CertificationCard.astro';
+import EmptyState from '@/components/EmptyState.astro';
+import { getCertifications } from '@/lib/content';
+import Icon from '@/components/Icon.astro';
+import { CREDLY_URL } from '@/config/site';
+
+const all = await getCertifications();
+// A certification only counts as such when it has actually been obtained.
+const obtained = all.filter((c) => c.data.kind === 'certification' && c.data.status === 'obtained');
+const inProgress = all.filter((c) => c.data.kind === 'certification' && c.data.status !== 'obtained');
+const trainings = all.filter((c) => c.data.kind === 'training');
+---
+
+<Layout title="Certifications" description="Certifications obtained and trainings followed by KERIM Loukouman (3ch0).">
+  <PageHeader
+    eyebrow="certifications"
+    title="Certifications & Training"
+    description="Certifications obtained are listed separately from courses and trainings followed. A training is not a certification."
+  >
+    <a href={CREDLY_URL} target="_blank" rel="me noopener" class="btn-ghost mt-6">
+      <Icon name="award" size={16} /> Verified badges on Credly <Icon name="external" size={14} />
+    </a>
+  </PageHeader>
+
+  <section class="container-page">
+    <h2 class="section-title">Certifications obtained</h2>
+    <div class="mt-6">
+      {
+        obtained.length ? (
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{obtained.map((c) => <CertificationCard entry={c} />)}</div>
+        ) : (
+          <EmptyState title="No certification obtained yet" icon="award">
+            Certifications will be listed here once passed, with a link to verify the credential.
+          </EmptyState>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    inProgress.length > 0 && (
+      <section class="container-page mt-16">
+        <h2 class="section-title">Currently preparing</h2>
+        <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{inProgress.map((c) => <CertificationCard entry={c} />)}</div>
+      </section>
+    )
+  }
+
+  <section class="container-page mt-16">
+    <h2 class="section-title">Training & learning</h2>
+    <p class="mt-2 max-w-2xl text-sm text-muted">Courses, programs and learning paths followed — not certifications.</p>
+    <div class="mt-6">
+      {
+        trainings.length ? (
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{trainings.map((c) => <CertificationCard entry={c} />)}</div>
+        ) : (
+          <EmptyState title="Nothing listed yet" icon="book">Trainings and learning paths will be added here.</EmptyState>
+        )
+      }
+    </div>
+  </section>
+</Layout>

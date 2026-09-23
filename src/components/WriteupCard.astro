@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, isoDate, url } from '@/lib/utils';
+import DifficultyBadge from './DifficultyBadge.astro';
+
+interface Props {
+  entry: CollectionEntry<'writeups'>;
+  compact?: boolean;
+}
+const { entry, compact = false } = Astro.props;
+const { title, category, difficulty, ctf, date, tags, summary, draft } = entry.data;
+const searchText = [title, category, ctf, summary ?? '', ...tags].join(' ').toLowerCase();
+---
+
+<article
+  class="card-link group relative flex h-full flex-col p-5"
+  data-writeup
+  data-category={category}
+  data-search={searchText}
+>
+  <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-[0.72rem] text-subtle">
+    <span class="text-accent">{category}</span>
+    <span aria-hidden="true">·</span>
+    <time datetime={isoDate(date)}>{formatDate(date)}</time>
+    {draft && <span class="rounded bg-warn/15 px-1.5 text-warn">DRAFT</span>}
+  </div>
+  <h3 class="mt-2.5 text-base leading-snug font-semibold text-fg sm:text-[1.05rem]">
+    <a href={url(`/writeups/${entry.id}`)} class="after:absolute after:inset-0 after:content-['']">{title}</a>
+  </h3>
+  {!compact && summary && <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-muted">{summary}</p>}
+  <div class="mt-auto flex flex-wrap items-center justify-between gap-3 pt-4">
+    <span class="truncate text-xs text-muted">{ctf}</span>
+    {difficulty && <DifficultyBadge difficulty={difficulty} />}
+  </div>
+  {
+    !compact && tags.length > 0 && (
+      <div class="relative z-10 mt-3 flex flex-wrap gap-1.5 border-t border-line pt-3">
+        {tags.slice(0, 4).map((t) => (
+          <a href={url(`/tags/${t}`)} class="font-mono text-[0.7rem] text-subtle hover:text-accent">
+            #{t}
+          </a>
+        ))}
+      </div>
+    )
+  }
+</article>

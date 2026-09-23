@@ -1,0 +1,154 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { WRITEUP_CATEGORIES } from '@/content.config';
+import { categorySlug, getSources } from '@/lib/content';
+import { url } from '@/lib/utils';
+import WriteupCard from './WriteupCard.astro';
+import EmptyState from './EmptyState.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  /** Entries displayed in the grid */
+  entries: CollectionEntry<'writeups'>[];
+  /** All entries — used for category counts */
+  all: CollectionEntry<'writeups'>[];
+  /** Active category */
+  active?: string;
+  /** Active source family (e.g. "picoCTF") */
+  activeSource?: string;
+}
+const { entries, all, active, activeSource } = Astro.props;
+const sources = getSources(all);
+const chip = (on: boolean, empty = false) => [
+  'inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm whitespace-nowrap transition-colors',
+  on ? 'border-accent/40 bg-accent/10 text-fg' : empty ? 'border-line/60 text-subtle hover:text-muted' : 'border-line text-muted hover:border-line-strong hover:text-fg',
+];
+const count = (c: string) => all.filter((w) => w.data.category === c).length;
+---
+
+<div data-explorer>
+  <div class="flex flex-col gap-4">
+    <label class="relative block">
+      <span class="sr-only">Search write-ups</span>
+      <Icon name="search" size={17} class="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-subtle" />
+      <input
+        type="search"
+        placeholder="Search by title, tag, CTF…"
+        autocomplete="off"
+        spellcheck="false"
+        class="w-full rounded-lg border border-line bg-surface py-3 pr-4 pl-10 font-mono text-sm text-fg placeholder:text-subtle focus:border-accent-dim focus:outline-none"
+        data-search-input
+      />
+    </label>
+
+    <nav aria-label="Categories" class="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+      <ul class="flex gap-2 pb-1 sm:flex-wrap">
+        <li>
+          <a
+            href={url('/writeups')}
+            aria-current={!active && !activeSource ? 'page' : undefined}
+            class:list={[
+              'inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm whitespace-nowrap transition-colors',
+              !active && !activeSource ? 'border-accent/40 bg-accent/10 text-fg' : 'border-line text-muted hover:border-line-strong hover:text-fg',
+            ]}
+          >
+            All <span class="font-mono text-xs text-subtle">{all.length}</span>
+          </a>
+        </li>
+        {
+          WRITEUP_CATEGORIES.map((c) => {
+            const n = count(c);
+            const isActive = active === c;
+            return (
+              <li>
+                <a
+                  href={url(`/writeups/category/${categorySlug(c)}`)}
+                  aria-current={isActive ? 'page' : undefined}
+                  class:list={[
+                    'inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm whitespace-nowrap transition-colors',
+                    isActive
+                      ? 'border-accent/40 bg-accent/10 text-fg'
+                      : n > 0
+                        ? 'border-line text-muted hover:border-line-strong hover:text-fg'
+                        : 'border-line/60 text-subtle hover:text-muted',
+                  ]}
+                >
+                  {c} <span class="font-mono text-xs text-subtle">{n}</span>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    {
+      sources.length > 0 && (
+        <nav aria-label="Sources" class="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+          {(['competition', 'platform'] as const).map((kind) => {
+            const list = sources.filter((x) => x.kind === kind);
+            return list.length > 0 && (
+              <div class="mb-2 flex items-center gap-2 pb-1 sm:flex-wrap">
+                <span class="w-24 shrink-0 font-mono text-[0.7rem] text-subtle uppercase">{kind === 'competition' ? 'Competitions' : 'Platforms'}</span>
+                {list.map((x) => (
+                  <a href={url(`/writeups/source/${x.slug}`)} aria-current={activeSource === x.name ? 'page' : undefined} class:list={chip(activeSource === x.name)}>
+                    {x.name} <span class="font-mono text-xs text-subtle">{x.count}</span>
+                  </a>
+                ))}
+              </div>
+            );
+          })}
+        </nav>
+      )
+    }
+  </div>
+
+  <p class="mt-6 mb-4 font-mono text-xs text-subtle" aria-live="polite" data-result-count>
+    {entries.length} write-up{entries.length === 1 ? '' : 's'}
+  </p>
+
+  {
+    entries.length > 0 ? (
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-grid>
+        {entries.map((w) => <WriteupCard entry={w} />)}
+      </div>
+    ) : (
+      <EmptyState title={active ? `No ${active} write-ups yet` : 'No write-ups published yet'} icon="file">
+        New write-ups are added after each competition.
+      </EmptyState>
+    )
+  }
+
+  <div class="hidden" data-no-results>
+    <EmptyState title="No matching write-up" icon="search">Try another keyword, or browse by category or tag.</EmptyState>
+  </div>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-explorer]');
+  const input = root?.querySelector<HTMLInputElement>('[data-search-input]');
+  const cards = root ? [...root.querySelectorAll<HTMLElement>('[data-writeup]')] : [];
+  const counter = root?.querySelector<HTMLElement>('[data-result-count]');
+  const empty = root?.querySelector<HTMLElement>('[data-no-results]');
+
+  if (input && cards.length) {
+    const apply = () => {
+      const terms = input.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      let shown = 0;
+      for (const card of cards) {
+        const hay = card.dataset.search ?? '';
+        const match = terms.every((t) => hay.includes(t.replace(/^#/, '')));
+        card.hidden = !match;
+        if (match) shown++;
+      }
+      if (counter) counter.textContent = `${shown} write-up${shown === 1 ? '' : 's'}${terms.length ? ` matching "${input.value.trim()}"` : ''}`;
+      empty?.classList.toggle('hidden', shown > 0);
+      const params = new URLSearchParams(location.search);
+      input.value ? params.set('q', input.value) : params.delete('q');
+      history.replaceState(null, '', `${location.pathname}${params.size ? `?${params}` : ''}`);
+    };
+    input.value = new URLSearchParams(location.search).get('q') ?? '';
+    input.addEventListener('input', apply);
+    if (input.value) apply();
+  }
+</script>

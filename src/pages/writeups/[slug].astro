@@ -1,0 +1,116 @@
+---
+import { render } from 'astro:content';
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import DifficultyBadge from '@/components/DifficultyBadge.astro';
+import Tag from '@/components/Tag.astro';
+import WriteupCard from '@/components/WriteupCard.astro';
+import Icon from '@/components/Icon.astro';
+import { categorySlug, getCompetitions, getWriteups, sourceFamily } from '@/lib/content';
+import { formatDate, isoDate, readingTime, slugify, url } from '@/lib/utils';
+
+export async function getStaticPaths() {
+  const writeups = await getWriteups();
+  return writeups.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, newer: writeups[i - 1], older: writeups[i + 1] },
+  }));
+}
+
+const { entry, newer, older } = Astro.props;
+const { title, category, difficulty, ctf, date, tags, summary, points, draft, lang } = entry.data;
+const { Content, headings } = await render(entry);
+
+// Link the CTF name to its competition page when it exists
+const competitions = await getCompetitions();
+const competition = competitions.find((c) => c.id === entry.data.competition?.id || c.data.name === ctf);
+
+// Related: same category or shared tags
+const related = (await getWriteups())
+  .filter((w) => w.id !== entry.id)
+  .map((w) => ({ w, score: (w.data.category === category ? 2 : 0) + w.data.tags.filter((t) => tags.includes(t)).length }))
+  .filter((x) => x.score > 0)
+  .sort((a, b) => b.score - a.score)
+  .slice(0, 3)
+  .map((x) => x.w);
+
+const meta = [
+  { label: 'Category', value: category, href: `/writeups/category/${categorySlug(category)}` },
+  { label: 'Source', value: ctf, href: competition ? `/ctf/${competition.id}` : `/writeups/source/${slugify(sourceFamily(ctf))}` },
+  { label: 'Date', value: formatDate(date), datetime: isoDate(date) },
+  { label: 'Reading', value: `${readingTime(entry.body)} min` },
+  ...(points ? [{ label: 'Points', value: String(points) }] : []),
+];
+---
+
+<ArticleLayout
+  title={title}
+  description={summary}
+  headings={headings}
+  back={{ href: '/writeups', label: 'cd ../writeups' }}
+  publishedTime={date}
+  tags={tags}
+  lang={lang}
+>
+  <div slot="meta-top" class="flex flex-wrap items-center gap-3">
+    <span class="eyebrow">Writeup</span>
+    {difficulty && <DifficultyBadge difficulty={difficulty} />}
+    {draft && <span class="rounded bg-warn/15 px-1.5 font-mono text-[0.7rem] text-warn">DRAFT — not published</span>}
+  </div>
+
+  <div slot="meta" class="mt-8">
+    <dl class="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-4">
+      {
+        meta.slice(0, 4).map((m) => (
+          <div class="bg-surface px-4 py-3">
+            <dt class="font-mono text-[0.68rem] text-subtle uppercase">{m.label}</dt>
+            <dd class="mt-1 text-sm break-words text-fg">
+              {m.href ? (
+                <a class="hover:text-accent" href={url(m.href)}>{m.value}</a>
+              ) : m.datetime ? (
+                <time datetime={m.datetime}>{m.value}</time>
+              ) : (
+                m.value
+              )}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+    {tags.length > 0 && <div class="mt-4 flex flex-wrap gap-1.5">{tags.map((t) => <Tag tag={t} />)}</div>}
+  </div>
+
+  <Content />
+
+  <div slot="after" class="mt-14 space-y-12">
+    {
+      (newer || older) && (
+        <nav class="grid gap-4 sm:grid-cols-2" aria-label="More write-ups">
+          {older ? (
+            <a href={url(`/writeups/${older.id}`)} class="card-link group p-4">
+              <span class="inline-flex items-center gap-1 font-mono text-xs text-subtle">
+                <Icon name="arrow-left" size={13} /> Previous
+              </span>
+              <span class="mt-1 block text-sm font-medium text-fg">{older.data.title}</span>
+            </a>
+          ) : <span />}
+          {newer && (
+            <a href={url(`/writeups/${newer.id}`)} class="card-link group p-4 text-right">
+              <span class="inline-flex items-center gap-1 font-mono text-xs text-subtle">
+                Next <Icon name="arrow" size={13} />
+              </span>
+              <span class="mt-1 block text-sm font-medium text-fg">{newer.data.title}</span>
+            </a>
+          )}
+        </nav>
+      )
+    }
+    {
+      related.length > 0 && (
+        <section>
+          <h2 class="mb-5 text-lg font-semibold text-fg">Related write-ups</h2>
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{related.map((w) => <WriteupCard entry={w} compact />)}</div>
+        </section>
+      )
+    }
+  </div>
+</ArticleLayout>

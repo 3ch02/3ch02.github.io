@@ -1,0 +1,30 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import EmptyState from '@/components/EmptyState.astro';
+import { getProjects } from '@/lib/content';
+
+const projects = await getProjects();
+const featured = projects.filter((p) => p.data.featured);
+const others = projects.filter((p) => !p.data.featured);
+---
+
+<Layout title="Projects" description="Security and infrastructure projects by 3ch0 — what was built, how, and what was learned.">
+  <PageHeader
+    eyebrow="projects"
+    title="Projects"
+    description="Things I build to understand how security works in practice — platforms, labs and tools. Each page explains the problem, the approach and the current status."
+  />
+  <section class="container-page space-y-5">
+    {projects.length === 0 && <EmptyState title="No projects published yet" icon="folder" />}
+    {featured.map((p) => <div class="reveal"><ProjectCard entry={p} highlight /></div>)}
+    {
+      others.length > 0 && (
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {others.map((p) => <div class="reveal"><ProjectCard entry={p} /></div>)}
+        </div>
+      )
+    }
+  </section>
+</Layout>

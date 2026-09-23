@@ -1,0 +1,22 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import Tag from '@/components/Tag.astro';
+import EmptyState from '@/components/EmptyState.astro';
+import { countTags, getProjects, getWriteups } from '@/lib/content';
+
+const tags = countTags([...(await getWriteups()), ...(await getProjects())]);
+---
+
+<Layout title="Tags" description="Browse write-ups and projects by tag.">
+  <PageHeader eyebrow="tags" title="Tags" description="Every topic covered in write-ups and projects." />
+  <section class="container-page">
+    {
+      tags.length ? (
+        <div class="flex flex-wrap gap-2">{tags.map(([t, n]) => <Tag tag={t} count={n} />)}</div>
+      ) : (
+        <EmptyState title="No tags yet" icon="tag" />
+      )
+    }
+  </section>
+</Layout>
