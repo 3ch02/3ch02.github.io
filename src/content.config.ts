@@ -87,41 +87,47 @@ const stage = z.object({
 
 const ctf = defineCollection({
   loader: glob({ pattern, base: './src/content/ctf' }),
-  schema: z.object({
-    name: z.string(),
-    year: z.number().int(),
-    /** Optional exact date — leave it out rather than guessing */
-    date: z.coerce.date().optional(),
-    /** Handle used during this competition (omit if unsure) */
-    handle: z.string().optional(),
-    team: z.string(),
-    role: z.string().optional(),
-    format: z.string().optional(),
-    organizer: z.string().optional(),
-    url: z.url().optional(),
-    categories: z.array(z.string()).default([]),
-    /** Ordered stages. The last completed stage is the "current" result. */
-    stages: z.array(stage).min(1),
-    draft: z.boolean().default(false),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      year: z.number().int(),
+      /** Optional exact date — leave it out rather than guessing */
+      date: z.coerce.date().optional(),
+      /** Handle used during this competition (omit if unsure) */
+      handle: z.string().optional(),
+      team: z.string(),
+      role: z.string().optional(),
+      format: z.string().optional(),
+      organizer: z.string().optional(),
+      url: z.url().optional(),
+      categories: z.array(z.string()).default([]),
+      /** Ordered stages. The last completed stage is the "current" result. */
+      stages: z.array(stage).min(1),
+      /** Cover photo shown on the Achievements card, before clicking through. Optional. */
+      cover: image().optional(),
+      draft: z.boolean().default(false),
+    }),
 });
 
 const achievements = defineCollection({
   loader: glob({ pattern, base: './src/content/achievements' }),
-  schema: z.object({
-    title: z.string(),
-    year: z.number().int(),
-    date: z.coerce.date().optional(),
-    /**
-     * If set, placement / team / stage status are read from the CTF entry,
-     * so results only need to be updated in one place.
-     */
-    competition: reference('ctf').optional(),
-    /** Used when there is no linked competition */
-    headline: z.string().optional(),
-    medal: z.enum(['gold', 'silver', 'bronze', 'none']).default('none'),
-    draft: z.boolean().default(false),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      year: z.number().int(),
+      date: z.coerce.date().optional(),
+      /**
+       * If set, placement / team / stage status are read from the CTF entry,
+       * so results only need to be updated in one place.
+       */
+      competition: reference('ctf').optional(),
+      /** Used when there is no linked competition */
+      headline: z.string().optional(),
+      medal: z.enum(['gold', 'silver', 'bronze', 'none']).default('none'),
+      /** Cover photo for this achievement. Falls back to the linked competition's `cover` if unset. */
+      cover: image().optional(),
+      draft: z.boolean().default(false),
+    }),
 });
 
 const certifications = defineCollection({

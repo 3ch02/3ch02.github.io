@@ -18,6 +18,7 @@ stages:
     status: completed
     rank: 2
     score: 2675
+cover: ./images/ipnet-cyberbattle-2026-team.jpg
 ---
 
 A 24-hour CTF. I represented team **n0_m3rcy**, which finished in **2nd place** with **2675 points**, 90 points behind the winning team.

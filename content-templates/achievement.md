@@ -7,6 +7,8 @@ competition: competition-file-name
 # Not a competition? Remove `competition` and use these instead:
 # headline: "What was achieved"
 # medal: none              # gold | silver | bronze | none
+# cover: ./images/my-photo.jpg   # optional: shown on the card before clicking through.
+                                  # If omitted, falls back to the linked competition's own `cover`.
 ---
 
 One or two sentences of context.

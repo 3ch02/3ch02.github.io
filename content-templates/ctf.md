@@ -20,6 +20,9 @@ stages:
     status: completed      # completed | ongoing | upcoming
     rank: 3
     # outOf: 40            # optional: number of teams
+# cover: ./images/my-photo.jpg   # optional: shown on the Achievements card before clicking through.
+                                  # Put the image next to this file (e.g. src/content/ctf/images/),
+                                  # any format (jpg/png/webp…) — Astro optimises it automatically.
 ---
 
 A few lines about the competition: format, what you worked on, what you learned.

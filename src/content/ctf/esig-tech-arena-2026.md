@@ -12,6 +12,7 @@ stages:
   # After the final: set `status: completed` and add `rank: <n>`.
   - name: "Final"
     status: upcoming
+cover: ./images/esig-tech-arena-2026-finalists.jpg
 ---
 
 Team **Smile 0_0** finished **1st in the qualification stage** of ESIG Tech Arena 2026 with **5797 points**, ahead of the four other teams qualified for the final. I played under the handle **r0r0**.
