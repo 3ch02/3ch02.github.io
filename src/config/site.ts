@@ -42,7 +42,7 @@ const links: Record<string, SocialLink | null> = {
   },
   linkedin: {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/loukouman-kerim-38565338b/',
+    href: 'https://www.linkedin.com/in/loukouman-kerim/',
     icon: 'linkedin',
     display: 'Loukouman KERIM',
   },
@@ -106,7 +106,7 @@ export const SKILLS: { group: string; items: string[] }[] = [
   },
   {
     group: 'Networking',
-    items: ['TCP/IP', 'VLAN', 'VPN', 'SD-WAN', 'Network Security'],
+    items: ['TCP/IP', 'VLAN','Network Security', 'etc.'],
   },
   {
     group: 'Tools & Technologies',
