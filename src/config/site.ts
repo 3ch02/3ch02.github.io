@@ -24,7 +24,7 @@ export type SocialLink = {
   label: string;
   href: string;
   /** Icon key, see src/components/Icon.astro */
-  icon: 'github' | 'linkedin' | 'mail' | 'x' | 'award' | 'htb' | 'thm' | 'rootme' | 'ctftime' | 'link';
+  icon: 'github' | 'linkedin' | 'mail' | 'whatsapp' | 'x' | 'award' | 'htb' | 'thm' | 'rootme' | 'ctftime' | 'link';
   /** Short text shown on the Contact page, e.g. the username */
   display?: string;
 };
@@ -51,6 +51,14 @@ const links: Record<string, SocialLink | null> = {
     href: 'https://www.credly.com/users/loukouman-kerim',
     icon: 'award',
     display: 'Verified badges',
+  },
+  // wa.me click-to-chat link — no raw phone number printed on the page.
+  // TODO(3ch0): confirm the country code (assuming Togo, +228) if this isn't right.
+  whatsapp: {
+    label: 'WhatsApp',
+    href: 'https://wa.me/22893193945',
+    icon: 'whatsapp',
+    display: 'Chat on WhatsApp',
   },
   // Public contact address, e.g. 'mailto:you@example.com' (null = hidden)
   email: null,
