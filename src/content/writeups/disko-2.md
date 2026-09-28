@@ -1,5 +1,5 @@
 ---
-# Imported from Obsidian: CTF/picoCTF — Disko 2.md
+# Imported from Obsidian: CTF/picoCTF/picoCTF — Disko 2.md
 title: Disko 2
 category: Forensics
 ctf: picoCTF

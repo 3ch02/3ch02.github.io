@@ -132,7 +132,7 @@ id
 
 soit deux commandes distinctes séparées par un saut de ligne. `id` confirme une exécution en tant que **`uid=0(root)`**, cohérent avec le binaire `setuid` (`/usr/bin/exec-suid`).
 
-![Screenshot](./images/obsidian/cmdi-6-command-injection-bypass-via-encodage-url/pasted-image-20260909145904.png)''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+![Screenshot](./images/obsidian/cmdi-6-command-injection-bypass-via-encodage-url/pasted-image-20260909145904.png)
 
 ### 4.2 Lecture du flag
 

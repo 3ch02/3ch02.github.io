@@ -1,10 +1,9 @@
 ---
-# Imported from Obsidian: CTF/Writeup -- No FA.md
-# Draft: unknown source
+# Imported from Obsidian: CTF/picoCTF/Writeup -- No FA.md
 title: Leaked Data & 2FA Bypass
 category: Web
 difficulty: Medium
-ctf: Unknown
+ctf: picoCTF
 date: 2026-09-15
 summary: En accédant à l'interface web, nous faisons face à une page de connexion standard.
 tags:
@@ -14,7 +13,6 @@ tags:
 - picoctf
 - web
 lang: fr
-draft: true
 imported: true
 ---
 

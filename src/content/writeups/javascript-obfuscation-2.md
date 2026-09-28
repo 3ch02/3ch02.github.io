@@ -1,5 +1,5 @@
 ---
-# Imported from Obsidian: CTF/Writeup -- Javascript Obfuscation 2.md
+# Imported from Obsidian: RootME/Writeup -- Javascript Obfuscation 2.md
 # Draft: Root-Me rules forbid publishing solutions
 title: Javascript - Obfuscation 2
 category: Cryptography

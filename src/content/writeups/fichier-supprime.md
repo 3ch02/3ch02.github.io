@@ -1,9 +1,9 @@
 ---
-# Imported from Obsidian: Writeup --- Fichier supprimé.md
-# Draft: unknown source
+# Imported from Obsidian: RootME/Writeup --- Fichier supprimé.md
+# Draft: Root-Me rules forbid publishing solutions
 title: Fichier supprimé
 category: Forensics
-ctf: Unknown
+ctf: Root-Me
 date: 2026-09-22
 summary: Description Tu peux regarder ce que tu veux, mais cette clé est vide... Votre cousin a trouvé une clé USB à la bibliothèque ce matin. Il n'est pas très doué avec les ordinateurs…
 tags:
@@ -11,6 +11,7 @@ tags:
 - fat16
 - forensics
 - metadata
+- root-me
 lang: fr
 draft: true
 imported: true
@@ -113,7 +114,7 @@ javier_turcot
 
 ---
 
-## ''''''''''''''''''''''''''📚 Ce qu'il faut retenir
+## 📚 Ce qu'il faut retenir
 
 - Un fichier **supprimé** sur FAT n'est pas effacé : seule l'entrée de répertoire est marquée comme supprimée, les données restent récupérables tant qu'elles ne sont pas écrasées.
 - `fls` liste les fichiers (y compris supprimés, marqués `*`), `icat` extrait le contenu d'un fichier à partir de son numéro d'inode.

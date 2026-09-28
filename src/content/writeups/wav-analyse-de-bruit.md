@@ -1,5 +1,5 @@
 ---
-# Imported from Obsidian: Writeup --- WAV - Analyse de bruit.md
+# Imported from Obsidian: RootME/Writeup --- WAV - Analyse de bruit.md
 # Draft: Root-Me rules forbid publishing solutions
 title: WAV - Analyse de bruit
 category: Steganography

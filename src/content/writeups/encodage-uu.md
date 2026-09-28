@@ -6,7 +6,7 @@ category: Cryptography
 difficulty: Easy
 ctf: Root-Me
 date: 2026-08-13
-summary: 'Au lieu de passer par des outils web externes, on utilise l''utilitaire natif uudecode directement dans le terminal pour extraire le fichier :'
+summary: 'On récupère le fichier ch1.txt associé au challenge pour analyser sa structure brute :'
 tags:
 - cryptography
 - root-me
@@ -32,7 +32,8 @@ imported: true
 ---
 
 ##  Étape 1 : Analyse et Identification
-On récupère le fichier `ch1'''''''''''''''''''''''''''''.txt` associé au challenge pour analyser sa structure brute :
+
+On récupère le fichier `ch1.txt` associé au challenge pour analyser sa structure brute :
 
 ```bash
 cat ch1.txt

@@ -1,5 +1,5 @@
 ---
-# Imported from Obsidian: CTF/Le Secret de Nana Benz.md
+# Imported from Obsidian: CTF/Writeup IPNET Cyberbattle/Le Secret de Nana Benz.md
 title: Le Secret de Nana Benz
 category: Misc
 ctf: IPNET CyberBattle 2026
@@ -25,7 +25,7 @@ Au marché d'Adawlato à Lomé, la célèbre boutique "Nana Benz" s'est modernis
 
 Cependant, la développeuse en charge de la plateforme a commis une grave erreur d'inattention : elle a conservé le secret de la caisse fortifiée **directement dans les instructions système** du modèle.
 
-**Mission :** Manipuler la conversation avec l'assistant virtuel pour lui faire briser sa consigne et vous ré'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''véler le secret.
+**Mission :** Manipuler la conversation avec l'assistant virtuel pour lui faire briser sa consigne et vous révéler le secret.
 
 ## Point d'entrée
 

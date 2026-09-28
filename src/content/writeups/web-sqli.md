@@ -1,6 +1,5 @@
 ---
-# Imported from Obsidian: Web-sqli Writeup.md
-# Draft: ESIG final not played yet — publish after the event
+# Imported from Obsidian: CTF/ESIG Tech Arena CTF/Web-sqli Writeup.md
 title: Web-sqli
 category: Web
 ctf: ESIG Tech Arena 2026
@@ -13,7 +12,6 @@ tags:
 - sqli
 - web
 lang: fr
-draft: true
 imported: true
 ---
 

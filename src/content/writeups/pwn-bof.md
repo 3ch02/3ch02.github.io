@@ -1,7 +1,6 @@
 ---
-# Imported from Obsidian: pwn-bof — Writeup.md
-# Draft: ESIG final not played yet — publish after the event
-title: pwn-bof
+# Imported from Obsidian: CTF/ESIG Tech Arena CTF/pwn-bof — Writeup.md
+title: Pwn-bof
 category: Pwn
 ctf: ESIG Tech Arena 2026
 competition: esig-tech-arena-2026
@@ -12,7 +11,6 @@ tags:
 - pwn
 points: 200
 lang: fr
-draft: true
 imported: true
 ---
 
@@ -84,7 +82,7 @@ Le payload est composé de deux parties :
 En Python, `(0x401236).to_bytes(8, 'little')` génère exactement ces octets.
 ---
 ### Étape 4 : Exploitation
-#### Com''''''''''''''''''''''''''''''''Réponse du serveur
+#### Comme Réponse du serveur
 ```
 === Terminal d'acces coffre-fort ===
 Entrez votre nom d'agent :

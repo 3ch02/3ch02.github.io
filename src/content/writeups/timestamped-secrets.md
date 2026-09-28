@@ -1,9 +1,9 @@
 ---
-# Imported from Obsidian: CTF/Writeup -- Timestamped Secrets.md
+# Imported from Obsidian: CTF/picoCTF/Writeup -- Timestamped Secrets.md
 title: Timestamped Secrets
 category: Cryptography
 difficulty: Medium
-ctf: picoCTF 2026
+ctf: picoCTF
 date: 2026-08-18
 summary: Someone encrypted a message using AES in ECB mode but they weren't very careful with their key. Turns out it's derived from something as simple as the current time! Can you…
 tags:
@@ -13,8 +13,8 @@ tags:
 - cryptography
 - ecb
 - picoctf
-- picoctf-2026
 - timestamp
+- weak-key
 lang: fr
 imported: true
 ---

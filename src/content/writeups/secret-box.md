@@ -1,5 +1,5 @@
 ---
-# Imported from Obsidian: Secret Box.md
+# Imported from Obsidian: CTF/picoCTF/Secret Box.md
 title: Secret Box
 category: Web
 ctf: picoCTF

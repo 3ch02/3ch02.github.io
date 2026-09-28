@@ -5,4 +5,4 @@ year: 2026
 competition: esig-tech-arena-2026
 ---
 
-Qualification stage completed.
+1st in qualification, then 1st in the 24h final — full sweep.

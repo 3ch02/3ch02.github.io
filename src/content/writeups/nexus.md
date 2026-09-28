@@ -1,5 +1,5 @@
 ---
-# Imported from Obsidian: Writeup -- Nexus.md
+# Imported from Obsidian: HTB/Writeup -- Nexus.md
 # Draft: HTB: publish only retired machines
 title: Nexus
 category: Boot2Root
@@ -509,4 +509,4 @@ ssh -i /tmp/.k root@nexus.htb
 
 ![Screenshot](./images/obsidian/nexus/pasted-image-20260906012346.png)
 
-![Screenshot](./images/obsidian/nexus/pasted-image-20260906020738.png)'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+![Screenshot](./images/obsidian/nexus/pasted-image-20260906020738.png)

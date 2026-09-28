@@ -74,6 +74,8 @@ SOURCES = [
     ("CTF/Writeup IPNET Cyberbattle/noname.md", "IPNET CyberBattle (archive)"),
     ("CTF/Writeup IPNET Cyberbattle/", "IPNET CyberBattle 2026"),
     ("CTF/Le Secret de Nana Benz.md", "IPNET CyberBattle 2026"),
+    ("CTF/ESIG Tech Arena CTF/", "ESIG Tech Arena 2026"),
+    ("csplusplus CTF/", "csplusplus"),
     ("CTF/Writeup -- Javascript Obfuscation 2.md", "Root-Me"),
     ("CTF/Writeup -- Timestamped Secrets.md", "picoCTF 2026"),
     ("CTF/Writeup -- Vaccine.md", "Hack The Box"),
@@ -111,7 +113,7 @@ COMPETITIONS = {
 
 # Draft = visible with `npm run dev` only. Reasons are printed in the report.
 DRAFT_RULES = [
-    (lambda m: m["ctf"] == "ESIG Tech Arena 2026", "ESIG final not played yet — publish after the event"),
+    # ESIG Tech Arena final took place 2026-09-25/26 (1st place) — write-ups publish normally now.
     (lambda m: m["ctf"] == "Root-Me", "Root-Me rules forbid publishing solutions"),
     (lambda m: m["ctf"] == "Hack The Box" and m["key"] not in HTB_RETIRED, "HTB: publish only retired machines"),
     (lambda m: m["ctf"] == "Unknown", "unknown source"),
@@ -181,6 +183,8 @@ OVERRIDES: dict[str, dict] = {
     "CTF/hackviser/Next.js CVE-2025-29927(.md": {"draft": "incomplete: bypass shown but no flag ever captured"},
     "pwn.college/web security/🚩 CMDi 6 (Newline Filter Bypass) — pwn.college.md": {"draft": "duplicate of cmdi-6-command-injection-bypass-via-encodage-url (same challenge, same flag)"},
     "CTF/Writeup CTF Hackropole/Crypto/🚩 Crayon Cochon (Chiffre des francs-maçons - Pigpen).md": {"draft": "flag looks unverified: raw pigpen ciphertext submitted, not decoded"},
+    "csplusplus CTF/Writeup --- Whisper.md": {"draft": "incomplete: stegolsb extraction step is empty, no flag"},
+    "csplusplus CTF/Writeup ---- Bacon's Cipher.md": {"category": "Cryptography"},
     # metadata fix: this note is filed under Cyberini but is a Kali Team CTF challenge
     "Cyberini/🚩 Writeup -- Robots (Web - 100 PTS).md": {"ctf": "Kali Team CTF 26"},
     # metadata fix: filed under picoCTF by folder, but the flag format (boroCTF{...}) and the

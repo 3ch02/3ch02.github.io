@@ -1,16 +1,15 @@
 ---
-# Imported from Obsidian: CTF/Writeup ---No Sql Injection.md
-# Draft: unknown source
+# Imported from Obsidian: CTF/picoCTF/Writeup ---No Sql Injection.md
 title: No Sql Injection
 category: Web
 difficulty: Medium
-ctf: Unknown
+ctf: picoCTF
 date: 2026-09-15
 summary: 'L''analyse de la route /login révèle une implémentation défaillante pour la gestion des types de données :'
 tags:
+- picoctf
 - web
 lang: fr
-draft: true
 imported: true
 ---
 

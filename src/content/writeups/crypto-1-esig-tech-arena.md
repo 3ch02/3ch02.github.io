@@ -1,7 +1,6 @@
 ---
-# Imported from Obsidian: Crypto 1 (ESIG Tech Arena).md
-# Draft: ESIG final not played yet — publish after the event
-title: Crypto 1
+# Imported from Obsidian: CTF/ESIG Tech Arena CTF/Crypto 1 (ESIG Tech Arena).md
+title: Crypto 1 (ESIG Tech Arena)
 category: Cryptography
 difficulty: Easy
 ctf: ESIG Tech Arena 2026
@@ -14,7 +13,6 @@ tags:
 - esig-tech-arena-2026
 - xor-knwon-plaintext
 lang: fr
-draft: true
 imported: true
 ---
 
