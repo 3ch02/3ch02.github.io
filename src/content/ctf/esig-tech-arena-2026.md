@@ -1,6 +1,7 @@
 ---
 name: "ESIG Tech Arena 2026"
 year: 2026
+date: 2026-09-26   # final concluded — keeps this competition sorted as the most recent
 handle: "r0r0"
 team: "Smile 0_0"
 format: "24h CTF"
