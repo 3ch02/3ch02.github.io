@@ -1,8 +1,8 @@
 ---
 title: "Sankofa Cyber"
-summary: "A platform for security awareness and human risk management: realistic social-engineering simulations (phishing, smishing, quishing, vishing), hands-on labs, and a per-user Human Risk Score to measure and reduce exposure."
+summary: "A platform for security awareness and human risk management: realistic multi-channel social-engineering simulations, hands-on labs, and a per-user Human Risk Score to measure and reduce exposure."
 status: in-progress
-date: 2026-06-01   # approximate start (repository history) — used for sorting only, not displayed
+date: 2026-08-08   # repository start — used for sorting only, not displayed
 featured: true
 order: 1
 tags:
@@ -18,6 +18,7 @@ stack:
   - PostgreSQL
   - Auth.js
   - Gemini API
+demo: https://cyber-sankofa.vercel.app/
 ---
 
 ## The problem
@@ -30,7 +31,7 @@ Most awareness programs answer this with theoretical quizzes or one generic phis
 
 Sankofa Cyber is built around a continuous loop:
 
-1. **Train** — short, practical modules and labs.
+1. **Train** — short, practical modules and hands-on labs.
 2. **Test** — realistic, multi-channel social-engineering simulations.
 3. **Measure** — translate observed behaviour into a **Human Risk Score (HRS)**.
 4. **Fix** — assign targeted remediation based on what actually went wrong.
@@ -41,14 +42,27 @@ Sankofa Cyber is built around a continuous loop:
 | --- | --- |
 | Phishing / spear-phishing | Contextual emails imitating colleagues, partners or internal services |
 | Smishing | SMS lures targeting the personal / professional overlap (BYOD) |
-| Quishing | Malicious QR codes that bypass classic mail filters |
-| Vishing | Voice messages using a *generic* executive-style synthetic voice — never a cloned real person |
-| Social engineering | Fake calendar invites, malicious-looking attachments, pretexting scenarios |
+| Quishing | QR-code posters generated per campaign, tracked on scan |
+| Vishing | AI-generated voice calls using a *generic* executive-style synthetic voice — never a cloned real person |
+| Social engineering | Fake landing pages, pretexting scenarios |
 
 ## Two spaces
 
-- **Sankofa Academy** — a learning space for students and individuals: awareness paths, and labs where you analyse email headers, inspect suspicious URLs or spot anomalies on a fake login page.
-- **Sankofa Enterprise** — a console for security teams: employee segmentation by department, a multi-channel campaign orchestrator, and a dashboard of the organisation's human risk posture.
+- **Sankofa Academy** — a learning space for students and individuals: modules, quizzes, badges, a leaderboard, and hands-on labs (auto-graded) where you analyse email headers, inspect suspicious URLs or spot anomalies on a fake login page.
+- **Sankofa Enterprise** — a console for security teams: employee and department management, a multi-channel campaign builder, deliverability tracking, and a dashboard of the organisation's human risk posture.
+
+## What's actually built
+
+This isn't a mockup — the [live demo](https://cyber-sankofa.vercel.app/) runs a real Next.js app with authentication (email verification, 2FA, password reset), a Postgres database, and an admin panel behind it. Concretely, today:
+
+- **Academy**: modules and lessons, auto-graded labs, quizzes, certifications, a leaderboard and badges.
+- **Enterprise console**: campaign builder across email / SMS / QR / voice, department & employee management, deliverability and report dashboards.
+- **Tracking**: an open-tracking pixel, redirect links, landing-page submission events, and a voice call pipeline (gather → status → debrief) — all logged as events, never storing what a user actually typed.
+- **Sankofa Shield**: a `/shield/check` API plus an analyze → debrief flow, and an early Gmail add-on for one-click phish reporting.
+- **Human Risk Score**: a weighted calculator (with its own unit tests) turning simulation and lab behaviour into the 0–100 score below, plus a small **Human Risk API** (`/api/v1/risk`) other tools could query.
+- **AI**: Gemini-backed campaign advice for admins and post-lab debriefs; synthetic voice generation for the vishing channel.
+
+What's *not* there yet: this is still a student project mid-build, not a hardened production system — expect rough edges, incomplete admin flows, and features still being tuned rather than a polished, audited platform.
 
 ## Measuring human risk
 
@@ -59,7 +73,7 @@ Each user gets a score from 0 to 100 built from four weighted dimensions:
 | Vigilance | 0.25 | Reporting rate, time to report, accuracy of reports |
 | Resistance | 0.35 | Behaviour during simulations: no click, hover then click, click, credentials submitted |
 | Competence | 0.25 | Results in hands-on labs |
-| Hygiene | 0.15 | Optional external signals (e.g. breached passwords), with consent |
+| Hygiene | 0.15 | Optional external signals (e.g. breached passwords via HIBP), with consent |
 
 A contextual coefficient (department exposure, seniority) adjusts the score, but it is **capped at 1.5** so that context alone can never push someone into the "critical" band — behaviour has to.
 
@@ -69,12 +83,8 @@ A platform that simulates attacks on people has to be careful with their data:
 
 - Fake login pages record **that** something was submitted, **never what** was typed.
 - Only anonymised, generic prompts are sent to the external AI model; names, infrastructure details and scores stay in the application database.
-- Role-based access control and strict tenant isolation between organisations.
+- Role-based access control and tenant isolation between organisations.
 
 ## Stack
 
-Next.js 15 (App Router, Server Actions) and TypeScript, Tailwind CSS, Prisma with SQLite in development and PostgreSQL targeted for production, Auth.js for sessions and roles, and the Gemini API for scenario generation and learner feedback.
-
-## Status & roadmap
-
-The project is **in active development**. The roadmap goes from the core email phishing engine and HRS calculation, to additional channels (quishing, smishing, voice), a report-phishing add-in, an AI debrief assistant, and later a browser agent and a Human Risk API that other security tools could query.
+Next.js 15 (App Router, Server Actions) and TypeScript, Tailwind CSS, Prisma over PostgreSQL, Auth.js for sessions and roles, and the Gemini API for scenario generation, campaign advice and debriefs.
