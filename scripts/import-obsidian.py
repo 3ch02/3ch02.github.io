@@ -75,6 +75,7 @@ SOURCES = [
     ("CTF/Writeup IPNET Cyberbattle/", "IPNET CyberBattle 2026"),
     ("CTF/Le Secret de Nana Benz.md", "IPNET CyberBattle 2026"),
     ("CTF/ESIG Tech Arena CTF/", "ESIG Tech Arena 2026"),
+    ("CTF/BRCTF/", "brCTF 2026"),
     ("csplusplus CTF/", "csplusplus"),
     ("CTF/Writeup -- Javascript Obfuscation 2.md", "Root-Me"),
     ("CTF/Writeup -- Timestamped Secrets.md", "picoCTF 2026"),
@@ -109,6 +110,7 @@ COMPETITIONS = {
     "Kali Team CTF 26": "kali-team-ctf-2026",
     "ESIG Tech Arena 2026": "esig-tech-arena-2026",
     "boroCTF 2026": "boroctf-2026",
+    "brCTF 2026": "brctf-2026",
 }
 
 # Draft = visible with `npm run dev` only. Reasons are printed in the report.
@@ -191,6 +193,13 @@ OVERRIDES: dict[str, dict] = {
     # note itself ("Plateforme : boroCTF") say otherwise.
     "CTF/picoCTF/Writeup - Flight.md": {"ctf": "boroCTF 2026"},
     "CTF/picoCTF/Writeup - So Many Layers.md": {"ctf": "boroCTF 2026"},
+
+    # brCTF 2026 (team L0LZ, 23rd/63) — reviewed 2026-10-05
+    "CTF/BRCTF/Azonto.md": {"category": "Web"},
+    "CTF/BRCTF/goro.md": {"category": "Boot2Root"},
+    "CTF/BRCTF/judas.md": {"category": "Boot2Root"},
+    "CTF/BRCTF/Something-Dey-Inside.md": {"title": "Something Dey Inside"},
+    "CTF/BRCTF/The-Strange-Conversation.md": {"title": "The Strange Conversation", "category": "Forensics"},
 }
 
 # Body clean-ups keyed by vault path: (regex, replacement) applied after conversion.
