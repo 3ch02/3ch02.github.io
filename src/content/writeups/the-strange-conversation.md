@@ -1,6 +1,6 @@
 ---
 title: The Strange Conversation
-category: Forensics
+category: Network
 difficulty: Medium
 ctf: brCTF 2026
 competition: brctf-2026
@@ -11,7 +11,7 @@ tags:
 - brctf-2026
 - dns
 - exfiltration
-- forensics
+- network
 - pcap
 - base32
 lang: fr
@@ -19,7 +19,7 @@ lang: fr
 
 ## Informations
 
-- **Catégorie :** Forensics (Network)
+- **Catégorie :** Network
 - **Difficulté :** Medium
 - **Points :** 100
 - **Flag :** `brctf{dns_tunn3ls_wh1sp3r_s3cr3ts}`

@@ -1,7 +1,7 @@
 ---
 # Imported from Obsidian: CTF/BRCTF/Ashaiman_II.md
 title: Ashaiman II
-category: Reverse Engineering
+category: Mobile
 difficulty: Easy
 ctf: brCTF 2026
 competition: brctf-2026
@@ -9,7 +9,7 @@ date: 2026-10-01
 summary: 'Énoncé : The crew learned from their first release. This version hardens what the original left exposed — the easy road is closed. You''ll need to go deeper than last time to reach…'
 tags:
 - brctf-2026
-- reverse-engineering
+- mobile
 points: 70
 lang: fr
 imported: true

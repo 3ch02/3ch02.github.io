@@ -1,7 +1,7 @@
 ---
 # Imported from Obsidian: CTF/BRCTF/Ashaiman.md
 title: Ashaiman
-category: Cryptography
+category: Mobile
 difficulty: Easy
 ctf: brCTF 2026
 competition: brctf-2026
@@ -9,7 +9,7 @@ date: 2026-10-01
 summary: 'Énoncé : The first app off the studio''s assembly line. It runs, it looks ordinary, but something is tucked away inside the package. Your first job: learn to take an Android app…'
 tags:
 - brctf-2026
-- cryptography
+- mobile
 points: 50
 lang: fr
 imported: true

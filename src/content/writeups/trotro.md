@@ -1,14 +1,14 @@
 ---
 # Imported from Obsidian: CTF/BRCTF/Trotro.md
 title: Trotro
-category: Web
+category: Boot2Root
 ctf: brCTF 2026
 competition: brctf-2026
 date: 2026-10-05
 summary: 'Box « Timed » : l''IP tourne (10.0.10.0, .17, .48…). Adapter $IP à l''IP affichée.'
 tags:
+- boot2root
 - brctf-2026
-- web
 points: 300
 lang: fr
 imported: true

@@ -104,11 +104,13 @@ SOURCES = [
     ("Writeup ---  Smol.md", "TryHackMe"),
 ]
 
-# Competitions that have a page in src/content/ctf/
+# Competitions that have a page in src/content/ctf/. Not every one of these has an
+# Achievements entry — see src/content/achievements/: only results worth calling out
+# get one. A competition with no Achievements entry just doesn't show up there.
 COMPETITIONS = {
     "IPNET CyberBattle 2026": "ipnet-cyberbattle-2026",
-    "Kali Team CTF 26": "kali-team-ctf-2026",
     "ESIG Tech Arena 2026": "esig-tech-arena-2026",
+    "Kali Team CTF 26": "kali-team-ctf-2026",
     "boroCTF 2026": "boroctf-2026",
     "brCTF 2026": "brctf-2026",
 }
@@ -194,12 +196,27 @@ OVERRIDES: dict[str, dict] = {
     "CTF/picoCTF/Writeup - Flight.md": {"ctf": "boroCTF 2026"},
     "CTF/picoCTF/Writeup - So Many Layers.md": {"ctf": "boroCTF 2026"},
 
-    # brCTF 2026 (team L0LZ, 23rd/63) — reviewed 2026-10-05
-    "CTF/BRCTF/Azonto.md": {"category": "Web"},
+    # brCTF 2026 (team L0LZ, 23rd/63, training) — reviewed 2026-10-05.
+    # Per 3ch0: brCTF only ever used these four categories — Boot2Root (full box
+    # compromises), Mobile (APK/native-lib reverse engineering), Forensics
+    # (disk/memory/DB artifacts) and Network (pcap/Wireshark traffic analysis).
+    "CTF/BRCTF/Azonto.md": {"category": "Boot2Root"},
     "CTF/BRCTF/goro.md": {"category": "Boot2Root"},
     "CTF/BRCTF/judas.md": {"category": "Boot2Root"},
-    "CTF/BRCTF/Something-Dey-Inside.md": {"title": "Something Dey Inside"},
-    "CTF/BRCTF/The-Strange-Conversation.md": {"title": "The Strange Conversation", "category": "Forensics"},
+    "CTF/BRCTF/Trotro.md": {"category": "Boot2Root"},
+    "CTF/BRCTF/Wahala.md": {"category": "Boot2Root"},
+    "CTF/BRCTF/Ashaiman.md": {"category": "Mobile"},
+    "CTF/BRCTF/Ashaiman_II.md": {"category": "Mobile"},
+    "CTF/BRCTF/HideAndSeek.md": {"category": "Mobile"},
+    "CTF/BRCTF/HideAndSeek_II.md": {"category": "Mobile"},
+    "CTF/BRCTF/The-Kiosk-Wahala.md": {"category": "Mobile"},
+    "CTF/BRCTF/The-Missing-Phone.md": {"category": "Mobile"},
+    "CTF/BRCTF/Loki.md": {"category": "Network"},
+    "CTF/BRCTF/The-Strange-Conversation.md": {"title": "The Strange Conversation", "category": "Network"},
+    "CTF/BRCTF/Something-Dey-Inside.md": {"title": "Something Dey Inside", "category": "Forensics"},
+    # No "Compétition : brCTF" header and a cspp{...} flag (csplusplus's own format,
+    # not brCTF's BRCTF{...}/ETSCTF_.../brctf{...}) — filed under BRCTF/ by mistake.
+    "CTF/BRCTF/Two-Time_Pad.md": {"ctf": "csplusplus"},
 }
 
 # Body clean-ups keyed by vault path: (regex, replacement) applied after conversion.
@@ -207,7 +224,7 @@ BODY_FIXES: dict[str, list[tuple[str, str]]] = {
     "CTF/hackviser/Scénario Data Heist.md": [(r"\n+HACKKKK THE WORD\s*$", "\n")],
 }
 
-CATEGORIES = ["Forensics", "Cryptography", "Web", "Reverse Engineering", "Steganography", "OSINT", "Pwn", "Misc", "Boot2Root"]
+CATEGORIES = ["Forensics", "Cryptography", "Web", "Reverse Engineering", "Steganography", "OSINT", "Pwn", "Misc", "Boot2Root", "Mobile", "Network"]
 
 # --------------------------------------------------------------------------------------
 # Helpers

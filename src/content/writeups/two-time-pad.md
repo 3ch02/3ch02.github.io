@@ -3,13 +3,12 @@
 title: Two-Time Pad
 category: Cryptography
 difficulty: Hard
-ctf: brCTF 2026
-competition: brctf-2026
+ctf: csplusplus
 date: 2026-10-01
 summary: 'Énoncé : The cardinal sin of one-time pads: two different messages were XOR-encrypted with the same keystream. One of the plaintexts is the flag. (L''autre message est de l''anglais…'
 tags:
-- brctf-2026
 - cryptography
+- csplusplus
 points: 95
 lang: fr
 imported: true

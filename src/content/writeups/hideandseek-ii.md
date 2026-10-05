@@ -1,7 +1,7 @@
 ---
 # Imported from Obsidian: CTF/BRCTF/HideAndSeek_II.md
 title: HideAndSeek II
-category: Reverse Engineering
+category: Mobile
 difficulty: Easy
 ctf: brCTF 2026
 competition: brctf-2026
@@ -9,7 +9,7 @@ date: 2026-10-01
 summary: 'Énoncé : Round two of the game, and the hiding spot is trickier. What worked before won''t cut it now. The developers watched people beat the first round and moved the goalposts…'
 tags:
 - brctf-2026
-- reverse-engineering
+- mobile
 points: 70
 lang: fr
 imported: true

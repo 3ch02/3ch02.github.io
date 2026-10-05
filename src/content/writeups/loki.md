@@ -1,7 +1,7 @@
 ---
 # Imported from Obsidian: CTF/BRCTF/Loki.md
 title: Loki
-category: Forensics
+category: Network
 difficulty: Easy
 ctf: brCTF 2026
 competition: brctf-2026
@@ -9,7 +9,7 @@ date: 2026-10-01
 summary: 'Énoncé : Named for the trickster god, this capture holds a short but deceptive burst of traffic — grabbed off the wire in the seconds before the analyst lost the connection…'
 tags:
 - brctf-2026
-- forensics
+- network
 points: 50
 lang: fr
 imported: true

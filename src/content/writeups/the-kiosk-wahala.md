@@ -1,7 +1,7 @@
 ---
 # Imported from Obsidian: CTF/BRCTF/The-Kiosk-Wahala.md
 title: The Kiosk Wahala
-category: Cryptography
+category: Mobile
 difficulty: Hard
 ctf: brCTF 2026
 competition: brctf-2026
@@ -9,7 +9,7 @@ date: 2026-10-02
 summary: 'Énoncé : Kofi opened his kiosk one morning and everything looked normal. But after one customer came and left, Kofi started shouting that somebody had entered his business without…'
 tags:
 - brctf-2026
-- cryptography
+- mobile
 points: 150
 lang: fr
 imported: true

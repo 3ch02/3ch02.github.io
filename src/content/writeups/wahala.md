@@ -1,14 +1,14 @@
 ---
 # Imported from Obsidian: CTF/BRCTF/Wahala.md
 title: Wahala
-category: Web
+category: Boot2Root
 ctf: brCTF 2026
 competition: brctf-2026
 date: 2026-10-04
 summary: 'Note : box « Timed » — l''IP tourne régulièrement (10.0.10.18, .17…). Adapter $IP à l''IP affichée sur la plateforme.'
 tags:
+- boot2root
 - brctf-2026
-- web
 points: 270
 lang: fr
 imported: true

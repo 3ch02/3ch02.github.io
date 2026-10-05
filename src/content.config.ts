@@ -21,6 +21,8 @@ export const WRITEUP_CATEGORIES = [
   'Pwn',
   'Misc',
   'Boot2Root',
+  'Mobile',
+  'Network',
 ] as const;
 
 export const DIFFICULTIES = ['Easy', 'Medium', 'Hard', 'Insane'] as const;

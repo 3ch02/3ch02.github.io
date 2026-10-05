@@ -1,7 +1,7 @@
 ---
 # Imported from Obsidian: CTF/BRCTF/The-Missing-Phone.md
 title: The Missing Phone
-category: Reverse Engineering
+category: Mobile
 difficulty: Hard
 ctf: brCTF 2026
 competition: brctf-2026
@@ -9,7 +9,7 @@ date: 2026-10-02
 summary: 'Énoncé : Chale, one phone has been causing serious yawa in the neighbourhood. The owner swears everything is normal, but somehow there''s something about that phone that doesn''t…'
 tags:
 - brctf-2026
-- reverse-engineering
+- mobile
 points: 150
 lang: fr
 imported: true

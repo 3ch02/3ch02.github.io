@@ -1,7 +1,7 @@
 ---
 # Imported from Obsidian: CTF/BRCTF/HideAndSeek.md
 title: HideAndSeek
-category: Reverse Engineering
+category: Mobile
 difficulty: Easy
 ctf: brCTF 2026
 competition: brctf-2026
@@ -9,7 +9,7 @@ date: 2026-10-01
 summary: 'Énoncé : Exactly what it sounds like — the developers hid something and dared anyone to seek it. The app plays innocent, but the name is a challenge. Somewhere in here, something…'
 tags:
 - brctf-2026
-- reverse-engineering
+- mobile
 points: 50
 lang: fr
 imported: true
