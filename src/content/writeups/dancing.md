@@ -1,5 +1,5 @@
 ---
-# Imported from Obsidian: HTB/Starting Point/Dancing.md
+# Imported from Obsidian: HTB/Dancing.md
 title: Dancing
 category: Boot2Root
 ctf: Hack The Box
@@ -8,6 +8,8 @@ summary: Dancing is a very easy Windows machine which introduces the Server Mess
 tags:
 - boot2root
 - hack-the-box
+- starting-point
+- tier-0
 - windows
 lang: fr
 imported: true

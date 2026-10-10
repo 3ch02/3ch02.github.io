@@ -1,6 +1,6 @@
 ---
 # Imported from Obsidian: HTB/HTB Writeup- Abducted (Medium).md
-# Draft: HTB: publish only retired machines
+# Draft: HTB: confirm retired before publishing
 title: Abducted
 category: Boot2Root
 difficulty: Medium

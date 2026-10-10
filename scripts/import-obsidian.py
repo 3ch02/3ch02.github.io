@@ -119,14 +119,27 @@ COMPETITIONS = {
 DRAFT_RULES = [
     # ESIG Tech Arena final took place 2026-09-25/26 (1st place) — write-ups publish normally now.
     (lambda m: m["ctf"] == "Root-Me", "Root-Me rules forbid publishing solutions"),
-    (lambda m: m["ctf"] == "Hack The Box" and m["key"] not in HTB_RETIRED, "HTB: publish only retired machines"),
+    (
+        lambda m: m["ctf"] == "Hack The Box" and m["key"] not in HTB_RETIRED and m["key"] not in HTB_STARTING_POINT,
+        "HTB: publish only retired machines or Starting Point",
+    ),
     (lambda m: m["ctf"] == "Unknown", "unknown source"),
 ]
 
-# Hack The Box content that is free/retired (Starting Point) — write-ups allowed
+# Regular (ranked) Hack The Box machines confirmed retired — write-ups allowed.
 HTB_RETIRED = {
-    "HTB/Starting Point/Dancing.md", "HTB/Starting Point/Fawn.md", "HTB/Starting Point/Redeemer.md",
-    "HTB/Writeup --- Responder.md", "Three.md", "CTF/Writeup -- Vaccine.md",
+    "HTB/Writeup --- Responder.md", "CTF/Writeup -- Vaccine.md",
+}
+
+# HTB Starting Point machines — HTB's own rules allow write-ups for these regardless
+# of retired status. Keyed by actual vault path (verified 2026-10-10: the vault has
+# no "HTB/Starting Point/" subfolder, these all live flat under "HTB/").
+HTB_STARTING_POINT = {
+    "HTB/Dancing.md", "HTB/Fawn.md", "HTB/Redeemer.md",  # Tier 0
+    "HTB/Preignition.md", "HTB/Mongod.md", "HTB/Synced.md", "HTB/Three.md", "HTB/Ignition.md",  # Tier 1 (mostly)
+    "HTB/Tactics.md", "HTB/Pennyworth.md", "HTB/Funnel.md", "HTB/Bike.md",  # Tier 1
+    "HTB/Unified.md", "HTB/Archetype.md", "HTB/Oopsie.md", "HTB/Included.md", "HTB/Markup.md",  # Tier 2
+    "HTB/Base.md",
 }
 
 # Manual corrections, keyed by path relative to the vault
@@ -217,11 +230,49 @@ OVERRIDES: dict[str, dict] = {
     # No "Compétition : brCTF" header and a cspp{...} flag (csplusplus's own format,
     # not brCTF's BRCTF{...}/ETSCTF_.../brctf{...}) — filed under BRCTF/ by mistake.
     "CTF/BRCTF/Two-Time_Pad.md": {"ctf": "csplusplus"},
+
+    # HTB Starting Point — all tiers finished, reviewed 2026-10-10. Tier tags are
+    # taken from each note's own "Starting Point (Tier N)" header, not assumed.
+    # Category forced to Boot2Root for all of them: every one is a full machine
+    # compromise (flag read at the end), matching how every other HTB write-up on
+    # this site is categorized regardless of the initial vector (web/SMB/MSSQL/...).
+    "HTB/Dancing.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-0"]},
+    "HTB/Fawn.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-0"]},
+    "HTB/Redeemer.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-0"]},
+    "HTB/Synced.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-0"]},
+    "HTB/Preignition.md": {"category": "Boot2Root", "tags": ["starting-point"]},
+    "HTB/Mongod.md": {"category": "Boot2Root", "tags": ["starting-point"]},
+    "HTB/Three.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-1"]},
+    "HTB/Tactics.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-1"]},
+    "HTB/Pennyworth.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-1"]},
+    "HTB/Funnel.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-1"]},
+    "HTB/Bike.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-1"]},
+    "HTB/Ignition.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-2"]},
+    "HTB/Unified.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-2"]},
+    "HTB/Archetype.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-2"]},
+    "HTB/Oopsie.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-2"]},
+    "HTB/Included.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-2"]},
+    "HTB/Markup.md": {"category": "Boot2Root", "tags": ["starting-point", "tier-2"]},
+    "HTB/Base.md": {"title": "Base", "category": "Boot2Root", "tags": ["starting-point"]},
+
+    # Non-Starting-Point HTB content — same "publish only retired" rule as Nexus;
+    # stays draft until 3ch0 confirms the machine/challenge is actually retired.
+    "HTB/HTB Writeup- Abducted (Medium).md": {"title": "Abducted", "draft": "HTB: confirm retired before publishing"},
+    "HTB/Writeup Flag Command.md": {
+        "title": "Dimensional Escape Quest",
+        "draft": "HTB: confirm retired before publishing",
+    },
+    # Incomplete notes — mid-investigation, no root flag (Kobold) / no flag at all (CCTV).
+    "HTB/Kobold.md": {"title": "Kobold", "draft": "incomplete: stops before privesc, no root flag"},
+    "HTB/CCTV.md": {"title": "CCTV", "draft": "incomplete: stops after dumping SQL data, no flag"},
 }
 
 # Body clean-ups keyed by vault path: (regex, replacement) applied after conversion.
 BODY_FIXES: dict[str, list[tuple[str, str]]] = {
     "CTF/hackviser/Scénario Data Heist.md": [(r"\n+HACKKKK THE WORD\s*$", "\n")],
+    # Typing-artifact quotes glued to the end of an image line (not a standalone
+    # line, so the usual artifact-stripping regex in convert_body doesn't catch it).
+    "HTB/Oopsie.md": [(r"(!\[Screenshot\]\([^)]+\))'{5,}", r"\1")],
 }
 
 CATEGORIES = ["Forensics", "Cryptography", "Web", "Reverse Engineering", "Steganography", "OSINT", "Pwn", "Misc", "Boot2Root", "Mobile", "Network"]
@@ -615,6 +666,7 @@ def collect(vault: Path, copy: bool) -> list[dict]:
             fm_tags = re.split(r"[,\s]+", fm_tags)
         tags = {slugify(str(t).split("/")[-1]) for t in list(fm_tags) + list(inline_tags)}
         tags |= {slugify(category), slugify(n["ctf"].split(" (")[0])}
+        tags |= {slugify(t) for t in ov.get("tags", [])}
         tags -= {"", "ctf", "writeup", "write-up", "unknown", "resolu", "solved", "easy", "medium", "hard", "facile"}
         meta = dict(
             key=n["key"],

@@ -1,7 +1,7 @@
 ---
 # Imported from Obsidian: HTB/Writeup Flag Command.md
-# Draft: HTB: publish only retired machines
-title: Flag Command
+# Draft: HTB: confirm retired before publishing
+title: Dimensional Escape Quest
 category: Web
 difficulty: Easy
 ctf: Hack The Box
@@ -88,7 +88,7 @@ Connection: close
 }
 ```
 
-![Screenshot](./images/obsidian/flag-command/pasted-image-20260816211848.png)
+![Screenshot](./images/obsidian/dimensional-escape-quest/pasted-image-20260816211848.png)
 
 ## Analyse
 
@@ -112,7 +112,7 @@ Puisque les options affichées sur l'interface graphique ne mènent nulle part, 
     
 5. Envoyer la requête au serveur.
 
-![Screenshot](./images/obsidian/flag-command/pasted-image-20260816212518.png)
+![Screenshot](./images/obsidian/dimensional-escape-quest/pasted-image-20260816212518.png)
 
 ---
 

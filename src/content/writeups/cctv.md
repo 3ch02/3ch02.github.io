@@ -1,6 +1,6 @@
 ---
 # Imported from Obsidian: HTB/CCTV.md
-# Draft: HTB: publish only retired machines
+# Draft: incomplete: stops after dumping SQL data, no flag
 title: CCTV
 category: Boot2Root
 ctf: Hack The Box

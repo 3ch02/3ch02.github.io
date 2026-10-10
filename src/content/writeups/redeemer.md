@@ -1,5 +1,5 @@
 ---
-# Imported from Obsidian: HTB/Starting Point/Redeemer.md
+# Imported from Obsidian: HTB/Redeemer.md
 title: Redeemer
 category: Boot2Root
 ctf: Hack The Box
@@ -10,6 +10,8 @@ tags:
 - hack-the-box
 - redis
 - redis-cli
+- starting-point
+- tier-0
 lang: fr
 imported: true
 ---

@@ -1,6 +1,6 @@
 ---
 # Imported from Obsidian: HTB/Writeup -- Nexus.md
-# Draft: HTB: publish only retired machines
+# Draft: HTB: publish only retired machines or Starting Point
 title: Nexus
 category: Boot2Root
 difficulty: Easy

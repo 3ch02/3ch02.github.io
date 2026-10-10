@@ -1,6 +1,6 @@
 ---
 # Imported from Obsidian: HTB/Kobold.md
-# Draft: HTB: publish only retired machines
+# Draft: incomplete: stops before privesc, no root flag
 title: Kobold
 category: Boot2Root
 ctf: Hack The Box

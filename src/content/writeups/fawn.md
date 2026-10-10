@@ -1,5 +1,5 @@
 ---
-# Imported from Obsidian: HTB/Starting Point/Fawn.md
+# Imported from Obsidian: HTB/Fawn.md
 title: Fawn
 category: Boot2Root
 ctf: Hack The Box
@@ -8,6 +8,8 @@ summary: Fawn is a very easy Linux machine which explores the File Transfer Prot
 tags:
 - boot2root
 - hack-the-box
+- starting-point
+- tier-0
 lang: fr
 imported: true
 ---
