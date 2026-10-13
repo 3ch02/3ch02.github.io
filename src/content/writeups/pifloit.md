@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Hackerdna/Writeup - Pifloit.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Pifloit
 category: Boot2Root
 ctf: HackerDNA
@@ -12,6 +13,7 @@ tags:
 - privesc
 - rfi
 lang: fr
+draft: true
 imported: true
 ---
 

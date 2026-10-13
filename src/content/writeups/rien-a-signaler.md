@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup CTF Hackropole/Crypto/🚩 Rien à signaler.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Rien à signaler
 category: Cryptography
 ctf: Hackropole (FCSC)
@@ -11,6 +12,7 @@ tags:
 - hackropole
 - rsa
 lang: fr
+draft: true
 imported: true
 ---
 

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - Timeline 1.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Timeline 1
 category: Forensics
 ctf: picoCTF
@@ -13,6 +14,7 @@ tags:
 - picoctf
 - sleuthkit
 lang: fr
+draft: true
 imported: true
 ---
 

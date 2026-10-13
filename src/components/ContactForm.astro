@@ -1,0 +1,91 @@
+---
+import { CONTACT_FORM } from '@/config/site';
+import { useI18n } from '@/i18n';
+import Icon from './Icon.astro';
+
+/**
+ * Contact form posted to Formspree (see CONTACT_FORM in src/config/site.ts).
+ * Works without JavaScript (plain POST, Formspree shows its own confirmation page);
+ * with JavaScript the message is sent in the background and the result shown in place.
+ */
+const { locale, t } = useI18n(Astro.url);
+const field =
+  'mt-1.5 w-full rounded-lg border border-line bg-bg px-3.5 py-2.5 text-sm text-fg placeholder:text-subtle focus:border-accent-dim focus:outline-none';
+---
+
+{
+  CONTACT_FORM && (
+    <form
+      action={CONTACT_FORM}
+      method="POST"
+      class="card space-y-5 p-6"
+      data-contact-form
+      data-sending={t.contact.sending}
+      data-success={t.contact.success}
+      data-error={t.contact.error}
+    >
+      <p class="eyebrow">{t.contact.formTitle}</p>
+      <div class="grid gap-5 sm:grid-cols-2">
+        <label class="block text-sm text-muted">
+          {t.contact.name}
+          <input class={field} type="text" name="name" autocomplete="name" required maxlength="100" />
+        </label>
+        <label class="block text-sm text-muted">
+          {t.contact.email}
+          <input class={field} type="email" name="email" autocomplete="email" required maxlength="200" />
+        </label>
+      </div>
+      <label class="block text-sm text-muted">
+        {t.contact.subject}
+        <input class={field} type="text" name="subject" required maxlength="150" />
+      </label>
+      <label class="block text-sm text-muted">
+        {t.contact.message}
+        <textarea class={field} name="message" rows="6" required maxlength="5000" />
+      </label>
+      {/* Honeypot: hidden from people, filled in by bots — Formspree drops those submissions. */}
+      <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <input type="hidden" name="_language" value={locale} />
+      <div class="flex flex-wrap items-center gap-4">
+        <button type="submit" class="btn-primary" data-submit>
+          <Icon name="mail" size={16} /> <span data-submit-label>{t.contact.send}</span>
+        </button>
+        <p class="text-xs text-subtle">{t.contact.emailHint}</p>
+      </div>
+      <p class="hidden text-sm" role="status" aria-live="polite" data-result />
+    </form>
+  )
+}
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  const button = form?.querySelector<HTMLButtonElement>('[data-submit]');
+  const label = form?.querySelector<HTMLElement>('[data-submit-label]');
+  const result = form?.querySelector<HTMLElement>('[data-result]');
+
+  if (form && button && label && result) {
+    const idle = label.textContent;
+    const show = (ok: boolean) => {
+      result.textContent = (ok ? form.dataset.success : form.dataset.error) ?? '';
+      result.className = `text-sm ${ok ? 'text-accent' : 'text-[#e0707a]'}`;
+    };
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      button.disabled = true;
+      label.textContent = form.dataset.sending ?? idle;
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        show(response.ok);
+        if (response.ok) form.reset();
+      } catch {
+        show(false);
+      }
+      button.disabled = false;
+      label.textContent = idle;
+    });
+  }
+</script>

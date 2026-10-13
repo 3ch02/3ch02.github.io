@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/hackviser/EcowsCTF{}/📑 Writeup Challenge -Drums.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Drums
 category: Cryptography
 ctf: EcowsCTF (Hackviser)
@@ -12,6 +13,7 @@ tags:
 - ecowasctf
 - ecowsctf
 lang: fr
+draft: true
 imported: true
 ---
 

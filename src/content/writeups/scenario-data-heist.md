@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/hackviser/Scénario Data Heist.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Scénario Data Heist
 category: Web
 ctf: Hackviser
@@ -12,6 +13,7 @@ tags:
 - meterpreter
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

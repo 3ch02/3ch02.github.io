@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writep - Hashgate.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Hashgate
 category: Web
 ctf: picoCTF
@@ -9,6 +10,7 @@ tags:
 - picoctf
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

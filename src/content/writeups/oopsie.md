@@ -23,8 +23,8 @@ imported: true
 - **Difficulté :** Very Easy
 - **Auteur du write-up :** 3ch0
 - **Services :** `22/tcp` (OpenSSH 7.6p1), `80/tcp` (Apache httpd 2.4.29)
-- **Flag user :** `f2c74ee8db7983851ab2a96a44eb7981`
-- **Flag root :** `af13b0bee69f8a877c3faf667f7beacf`
+- **Flag user :** `f2c7…[masqué]`
+- **Flag root :** `af13…[masqué]`
 
 ---
 
@@ -171,7 +171,7 @@ ssh robert@10.129.95.191      # M3g4C0rpUs3r!
 robert@oopsie:~$ id
 uid=1000(robert) gid=1000(robert) groups=1000(robert),1001(bugtracker)
 robert@oopsie:~$ cat user.txt
-f2c74ee8db7983851ab2a96a44eb7981
+f2c7…[masqué]
 ```
 
 ![Screenshot](./images/obsidian/oopsie/pasted-image-20261008020112.png)
@@ -211,12 +211,12 @@ Provide Bug ID: ../root.txt
 ```
 
 ```text
-af13b0bee69f8a877c3faf667f7beacf
+af13…[masqué]
 ```
 
 ![Screenshot](./images/obsidian/oopsie/pasted-image-20261008020427.png)
 
-**Flag root :** `af13b0bee69f8a877c3faf667f7beacf`
+**Flag root :** `af13…[masqué]`
 
 ---
 

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup CTF — Reverse Engineering (Medium).md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Reverse Engineering
 category: Reverse Engineering
 ctf: picoCTF
@@ -9,6 +10,7 @@ tags:
 - picoctf
 - reverse-engineering
 lang: fr
+draft: true
 imported: true
 ---
 

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/picoCTF_2026/Echo Espace 2.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Echo Espace 2
 category: Pwn
 ctf: picoCTF 2026
@@ -10,6 +11,7 @@ tags:
 - picoctf-2026
 - pwn
 lang: fr
+draft: true
 imported: true
 ---
 

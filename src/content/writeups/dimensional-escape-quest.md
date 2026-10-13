@@ -27,7 +27,7 @@ The direct answer is that **your writeup is fully optimized in Markdown with cor
 - Plateforme : [Hack The Box](https://www.hackthebox.com/)
 - Difficulté : Very Easy
 - Catégorie : Web / Divers
-- Flag : `HTB{D3v3l0p3r_t00l5_4r3_b35t__t0015_wh4t_d0_y0u_Th1nk??}`
+- Flag : `HTB{…[masqué]`
 
 ---
 
@@ -121,5 +121,5 @@ Puisque les options affichées sur l'interface graphique ne mènent nulle part, 
 La soumission de la charge utile secrète valide l'étape finale et renvoie le flag dans la réponse du serveur :
 
 ```text
-HTB{D3v3l0p3r_t00l5_4r3_b35t__t0015_wh4t_d0_y0u_Th1nk??}
+HTB{…[masqué]
 ```

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - EVEN RSA CAN BE BROKEN.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: EVEN RSA CAN BE BROKEN
 category: Cryptography
 ctf: picoCTF
@@ -11,6 +12,7 @@ tags:
 - picoctf
 - rsa
 lang: fr
+draft: true
 imported: true
 ---
 

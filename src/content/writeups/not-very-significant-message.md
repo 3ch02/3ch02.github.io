@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/ForeverCTF/Writeup -- Not Very Significant Message.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Not Very Significant Message
 category: Steganography
 ctf: ForeverCTF
@@ -9,6 +10,7 @@ tags:
 - foreverctf
 - steganography
 lang: fr
+draft: true
 imported: true
 ---
 

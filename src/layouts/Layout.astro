@@ -5,16 +5,18 @@ import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
 import { url } from '@/lib/utils';
 import { SITE } from '@/config/site';
+import { useI18n } from '@/i18n';
 // Same files the @font-face rules use: preloading avoids a late font swap above the fold.
 import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import monoLatin from '@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url';
 
 type Props = SEOProps;
 const seo = Astro.props;
+const { locale, t } = useI18n(Astro.url);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,7 +27,7 @@ const seo = Astro.props;
     <link rel="icon" type="image/png" sizes="32x32" href={url('/favicon-32.png')} />
     <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
     <link rel="sitemap" href={url('/sitemap-index.xml')} />
-    <link rel="alternate" type="application/rss+xml" title={`${SITE.handle} — CTF Writeups`} href={url('/rss.xml')} />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE.handle} — ${t.site.rssTitle}`} href={url('/rss.xml')} />
     <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={monoLatin} as="font" type="font/woff2" crossorigin />
     <SEO {...seo} />
@@ -34,7 +36,7 @@ const seo = Astro.props;
     <a
       href="#main"
       class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-3 focus:py-2 focus:text-bg"
-      >Skip to content</a
+      >{t.nav.skip}</a
     >
     <Navbar />
     <main id="main" class="flex-1">

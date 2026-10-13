@@ -3,26 +3,26 @@ import { render } from 'astro:content';
 import ArticleLayout from '@/layouts/ArticleLayout.astro';
 import CompetitionCard from '@/components/CompetitionCard.astro';
 import WriteupCard from '@/components/WriteupCard.astro';
-import { currentResult, getCompetitions, getWriteups, writeupsFor } from '@/lib/content';
-import { ordinal } from '@/lib/utils';
+import { bodyOf, currentResult, getCompetitions, getWriteups, writeupsFor } from '@/lib/content';
+import { useI18n, withLocales } from '@/i18n';
 
 export async function getStaticPaths() {
-  const competitions = await getCompetitions();
-  return competitions.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+  return withLocales((await getCompetitions()).map((entry) => ({ params: { slug: entry.id } })));
 }
 
-const { entry } = Astro.props;
+const { locale, t } = useI18n(Astro.url);
+const entry = (await getCompetitions(locale)).find((c) => c.id === Astro.params.slug)!;
 const { name, team } = entry.data;
 const related = writeupsFor(entry, await getWriteups());
 const { stage, pending } = currentResult(entry);
-const { Content } = await render(entry);
+const { Content } = await render(await bodyOf(entry, locale));
 
 const description = stage?.rank
-  ? `${ordinal(stage.rank)} place${entry.data.stages.length > 1 ? ` (${stage.name.toLowerCase()})` : ''} with team ${team}.${pending.length ? ` ${pending.map((p) => `${p.name}: ${p.status}`).join(', ')}.` : ''}`
-  : `Team ${team}.`;
+  ? `${t.ctf.place(stage.rank)}${entry.data.stages.length > 1 ? ` (${stage.name.toLowerCase()})` : ''} ${t.ctf.withTeam(team)}.${pending.length ? ` ${pending.map((p) => `${p.name}: ${t.status[p.status].toLowerCase()}`).join(', ')}.` : ''}`
+  : t.ctf.teamOnly(team);
 ---
 
-<ArticleLayout title={name} description={description} back={{ href: '/ctf', label: 'cd ../ctf' }}>
+<ArticleLayout title={name} description={description} back={{ href: '/ctf', label: t.ctf.back }}>
   <span slot="meta-top" class="eyebrow">CTF</span>
 
   <div slot="meta" class="mt-8 max-w-xl">
@@ -32,12 +32,12 @@ const description = stage?.rank
   <Content />
 
   <section slot="after" class="mt-14">
-    <h2 class="mb-5 text-xl font-semibold text-fg">Write-ups</h2>
+    <h2 class="mb-5 text-xl font-semibold text-fg">{t.ctf.writeupsTitle}</h2>
     {
       related.length > 0 ? (
         <div class="grid gap-5 sm:grid-cols-2">{related.map((w) => <WriteupCard entry={w} />)}</div>
       ) : (
-        <p class="text-sm text-muted">No write-ups published for this competition yet.</p>
+        <p class="text-sm text-muted">{t.ctf.noWriteups}</p>
       )
     }
   </section>

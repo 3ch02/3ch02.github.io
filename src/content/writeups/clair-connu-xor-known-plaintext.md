@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup CTF Hackropole/Crypto/🚩 Claire connu (Known Plaintext)-  XOR.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Clair connu (XOR, known plaintext)
 category: Cryptography
 ctf: Hackropole (FCSC)
@@ -11,6 +12,7 @@ tags:
 - known-plaintext
 - xor
 lang: fr
+draft: true
 imported: true
 ---
 

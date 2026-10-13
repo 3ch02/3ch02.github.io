@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup CTF Hackropole/Web/🚩 Babel Web.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Babel Web
 category: Web
 ctf: Hackropole (FCSC)
@@ -9,6 +10,7 @@ tags:
 - hackropole
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

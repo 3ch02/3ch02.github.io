@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/ForeverCTF/Writeup CTF — Strings (100 pts).md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Strings
 category: Reverse Engineering
 ctf: ForeverCTF
@@ -9,6 +10,7 @@ tags:
 - foreverctf
 - reverse-engineering
 lang: fr
+draft: true
 imported: true
 ---
 

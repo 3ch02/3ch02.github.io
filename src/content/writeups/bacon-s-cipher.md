@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: csplusplus CTF/Writeup ---- Bacon's Cipher.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Bacon's Cipher
 category: Cryptography
 ctf: csplusplus
@@ -11,6 +12,7 @@ tags:
 - csplusplus
 - stegano
 lang: fr
+draft: true
 imported: true
 ---
 

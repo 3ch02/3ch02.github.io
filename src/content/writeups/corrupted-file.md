@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup Corrupted file.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Corrupted file
 category: Forensics
 ctf: picoCTF
@@ -13,6 +14,7 @@ tags:
 - picoctf
 - xxd
 lang: fr
+draft: true
 imported: true
 ---
 

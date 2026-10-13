@@ -10,13 +10,10 @@ export const SITE = {
   name: 'KERIM Loukouman',
   handle: '3ch0',
   title: 'KERIM Loukouman — 3ch0',
-  tagline: 'Cybersecurity Student | Systems & Networks | CTF',
-  description:
-    'Portfolio and technical journal of KERIM Loukouman (3ch0), cybersecurity student at IPNET Institute of Technology. CTF write-ups, projects and hands-on notes on systems, networks and security.',
-  role: 'Cybersecurity Student',
-  focus: ['Systems & Networks', 'CTF', 'Security'],
+  // Tagline, description, role and interests are translated: see src/i18n/ui.ts (`site`).
   school: 'IPNET Institute of Technology',
-  locale: 'en',
+  level: 'Licence 3',
+  location: 'Lomé, Togo',
   ogImage: '/og-default.png',
 } as const;
 
@@ -52,15 +49,7 @@ const links: Record<string, SocialLink | null> = {
     icon: 'award',
     display: 'Verified badges',
   },
-  // wa.me click-to-chat link — no raw phone number printed on the page.
-  // TODO(3ch0): confirm the country code (assuming Togo, +228) if this isn't right.
-  whatsapp: {
-    label: 'WhatsApp',
-    href: 'https://wa.me/22893193945',
-    icon: 'whatsapp',
-    display: 'Chat on WhatsApp',
-  },
-  // Public contact address, e.g. 'mailto:you@example.com' (null = hidden)
+  // No public email or phone number, on purpose: people write through the contact form (CONTACT_FORM below).
   email: null,
   // Optional platforms — fill in if you want them displayed.
   ctftime: null,
@@ -83,18 +72,24 @@ export const CV = {
   href: '/cv/KERIM_Loukouman_CV.pdf',
 };
 
+/**
+ * Contact form endpoint (Formspree). Messages are delivered to the mailbox linked to
+ * the form, so no email address is ever printed on the site. `null` hides the form.
+ */
+export const CONTACT_FORM: string | null = 'https://formspree.io/f/xaqpabqg';
+
+/** `key` is the label in src/i18n/ui.ts (`nav`). */
 export const NAV = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'CTF', href: '/ctf' },
-  { label: 'Writeups', href: '/writeups' },
-  { label: 'Achievements', href: '/achievements' },
-  { label: 'Certifications', href: '/certifications' },
-  { label: 'Contact', href: '/contact' },
+  { key: 'home', href: '/' },
+  { key: 'about', href: '/about' },
+  { key: 'projects', href: '/projects' },
+  { key: 'ctf', href: '/ctf' },
+  { key: 'writeups', href: '/writeups' },
+  { key: 'certifications', href: '/certifications' },
+  { key: 'contact', href: '/contact' },
 ] as const;
 
-/** Skills, grouped. Only list what you can actually talk about in an interview. */
+/** Skills, grouped. Only list what you can actually talk about in an interview. Group names are translated in src/i18n/ui.ts (`skills`). */
 export const SKILLS: { group: string; items: string[] }[] = [
   {
     group: 'Cybersecurity',
@@ -114,20 +109,12 @@ export const SKILLS: { group: string; items: string[] }[] = [
   },
   {
     group: 'Networking',
-    items: ['TCP/IP', 'VLAN','Network Security', 'etc.'],
+    items: ['TCP/IP', 'VLAN', 'Network Security'],
   },
   {
     group: 'Tools & Technologies',
     items: ['FortiGate', 'pfSense', 'Wazuh', 'Burp Suite', 'Wireshark', 'Ghidra'],
   },
-];
-
-export const INTERESTS = [
-  'Cybersecurity',
-  'Systems & Networks',
-  'Digital Forensics',
-  'CTF',
-  'Security Engineering',
 ];
 
 export const CREDLY_URL = 'https://www.credly.com/users/loukouman-kerim';

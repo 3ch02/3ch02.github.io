@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/🚩 Challenge --Plage de Vacances.md
+# Draft: platform rules on publishing solutions to be checked
 title: Plage de Vacances
 category: Steganography
 difficulty: Easy
@@ -15,6 +16,7 @@ tags:
 - steganography
 - zsteg
 lang: fr
+draft: true
 imported: true
 ---
 

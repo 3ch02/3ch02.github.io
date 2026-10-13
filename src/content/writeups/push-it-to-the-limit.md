@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup CTF Hackropole/Writeup - Push it to the limit.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Push it to the limit
 category: Web
 difficulty: Easy
@@ -10,6 +11,7 @@ tags:
 - hackropole
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

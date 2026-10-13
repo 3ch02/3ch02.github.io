@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Secret Box.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Secret Box
 category: Web
 ctf: picoCTF
@@ -11,6 +12,7 @@ tags:
 - sqli
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

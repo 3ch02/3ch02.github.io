@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/ForeverCTF/Writeup CTF — Magic (300 pts).md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Magic
 category: Forensics
 ctf: ForeverCTF
@@ -10,6 +11,7 @@ tags:
 - foreverctf
 - format-file
 lang: fr
+draft: true
 imported: true
 ---
 

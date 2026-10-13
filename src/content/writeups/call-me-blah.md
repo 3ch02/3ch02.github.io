@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup CTF Hackropole/Pwn/Write-up - call-me-blah (Pwn).md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: call-me-blah
 category: Pwn
 ctf: Hackropole (FCSC)
@@ -9,6 +10,7 @@ tags:
 - hackropole
 - pwn
 lang: fr
+draft: true
 imported: true
 ---
 

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: HTB/Three.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Three
 category: Boot2Root
 difficulty: Easy
@@ -12,6 +13,7 @@ tags:
 - starting-point
 - tier-1
 lang: fr
+draft: true
 imported: true
 ---
 
@@ -23,7 +25,7 @@ imported: true
 - **Difficulté :** Very Easy
 - **Auteur du write-up :** 3ch0
 - **Services :** `22/tcp` (SSH), `80/tcp` (Apache httpd 2.4.29)
-- **Flag :** `a980d99281a28d638ac68b9bf9453c2b`
+- **Flag :** `a980…[masqué]`
 
 ---
 
@@ -120,10 +122,10 @@ curl "http://thetoppers.htb/shell.php?cmd=cat+/var/www/flag.txt"
 ```
 
 ```text
-a980d99281a28d638ac68b9bf9453c2b
+a980…[masqué]
 ```
 
-**Flag :** `a980d99281a28d638ac68b9bf9453c2b`
+**Flag :** `a980…[masqué]`
 
 ---
 

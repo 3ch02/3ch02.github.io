@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/picoCTF_2026/Printes share 3.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Printes share 3
 category: Forensics
 ctf: picoCTF 2026
@@ -9,6 +10,7 @@ tags:
 - forensics
 - picoctf-2026
 lang: fr
+draft: true
 imported: true
 ---
 

@@ -23,7 +23,7 @@ imported: true
 - **Difficulté :** Very Easy
 - **Auteur du write-up :** 3ch0
 - **Services :** `22/tcp` (OpenSSH 8.2p1), `80/tcp` (Node.js / Express)
-- **Flag :** `6b258d726d287462d60c103d0142a81c`
+- **Flag :** `6b25…[masqué]`
 
 ---
 
@@ -137,12 +137,12 @@ curl -s -X POST http://10.129.97.64/ \
 ```
 
 ```text
-We will contact you at: ... 6b258d726d287462d60c103d0142a81c
+We will contact you at: ... 6b25…[masqué]
 ```
 
 ![Screenshot](./images/obsidian/bike/pasted-image-20261006000449.png)
 
-**Flag :** `6b258d726d287462d60c103d0142a81c`
+**Flag :** `6b25…[masqué]`
 
 ---
 

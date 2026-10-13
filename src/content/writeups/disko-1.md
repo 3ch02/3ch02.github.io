@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - DISKO 1.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: DISKO 1
 category: Forensics
 ctf: picoCTF
@@ -13,6 +14,7 @@ tags:
 - picoctf
 - strings
 lang: fr
+draft: true
 imported: true
 ---
 

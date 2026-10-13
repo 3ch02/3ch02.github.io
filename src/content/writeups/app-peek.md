@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/hackviser/EcowsCTF{}/App peek.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: App peek
 category: Reverse Engineering
 ctf: EcowsCTF (Hackviser)
@@ -11,6 +12,7 @@ tags:
 - mobile
 - reverse-engineering
 lang: fr
+draft: true
 imported: true
 ---
 

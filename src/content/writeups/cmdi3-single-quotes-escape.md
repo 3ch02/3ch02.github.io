@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: pwn.college/web security/🚩 CMDi3 (Single Quotes Escape) — pwn.college.md
+# Draft: platform rules on publishing solutions to be checked
 title: CMDi3 (Single Quotes Escape)
 category: Web
 ctf: pwn.college
@@ -9,6 +10,7 @@ tags:
 - pwn-college
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

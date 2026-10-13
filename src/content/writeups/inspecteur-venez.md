@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/🚩 Writeup -- Inspecteur, venez !.md
+# Draft: platform rules on publishing solutions to be checked
 title: Inspecteur, venez !
 category: Forensics
 ctf: Cyberini
@@ -9,6 +10,7 @@ tags:
 - cyberini
 - forensics
 lang: fr
+draft: true
 imported: true
 ---
 

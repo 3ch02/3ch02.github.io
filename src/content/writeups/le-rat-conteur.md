@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup CTF Hackropole/Crypto/🚩 Le Rat Conteur.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Le Rat Conteur
 category: Cryptography
 ctf: Hackropole (FCSC)
@@ -11,6 +12,7 @@ tags:
 - cryptography
 - hackropole
 lang: fr
+draft: true
 imported: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-import { url } from '@/lib/utils';
+import { useI18n } from '@/i18n';
 
 interface Props {
   tag: string;
@@ -7,11 +7,12 @@ interface Props {
   link?: boolean;
 }
 const { tag, count, link = true } = Astro.props;
+const { href } = useI18n(Astro.url);
 const Element = link ? 'a' : 'span';
 ---
 
 <Element
-  href={link ? url(`/tags/${tag}`) : undefined}
+  href={link ? href(`/tags/${tag}`) : undefined}
   class:list={['chip', link && 'hover:border-line-strong hover:text-fg transition-colors']}
 >
   <span class="text-accent-dim">#</span>{tag}

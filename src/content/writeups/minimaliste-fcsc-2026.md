@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup CTF Hackropole/Write-up  - Minimaliste (FCSC 2026).md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Minimaliste (FCSC 2026)
 category: Web
 difficulty: Easy
@@ -10,6 +11,7 @@ tags:
 - hackropole
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

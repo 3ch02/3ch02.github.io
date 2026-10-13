@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: pwn.college/web security/🚩 CMDi5 (Blind Command Injection) — pwn.college.md
+# Draft: platform rules on publishing solutions to be checked
 title: CMDi5 (Blind Command Injection)
 category: Web
 ctf: pwn.college
@@ -10,6 +11,7 @@ tags:
 - web
 points: 500
 lang: fr
+draft: true
 imported: true
 ---
 

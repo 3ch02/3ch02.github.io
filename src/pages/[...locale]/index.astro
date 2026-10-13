@@ -9,19 +9,18 @@ import EmptyState from '@/components/EmptyState.astro';
 import SkillGroups from '@/components/SkillGroups.astro';
 import Icon from '@/components/Icon.astro';
 import { getCompetitions, getProjects, getWriteups, writeupsFor } from '@/lib/content';
-import { url } from '@/lib/utils';
+import { useI18n, withLocales } from '@/i18n';
 
-const [competitions, projects, writeups] = await Promise.all([getCompetitions(), getProjects(), getWriteups()]);
+export const getStaticPaths = () => withLocales();
+
+const { locale, t, href } = useI18n(Astro.url);
+
+const [competitions, projects, writeups] = await Promise.all([getCompetitions(locale), getProjects(locale), getWriteups()]);
 const featuredProjects = projects.filter((p) => p.data.featured);
-const otherProjects = projects.filter((p) => !p.data.featured).slice(0, 2);
+const otherProjects = projects.filter((p) => !p.data.featured).slice(0, 3);
 const latestWriteups = writeups.slice(0, 6);
 
-const approach = [
-  { step: '01', title: 'Learn', text: 'Courses at IPNET, documentation, RFCs — understanding how systems and protocols really work.' },
-  { step: '02', title: 'Build', text: 'Labs and projects: networks, firewalls, servers, applications. Configuration is where the details show up.' },
-  { step: '03', title: 'Break', text: 'CTFs and exercises: web, forensics, crypto, Boot2Root. Finding where assumptions fail.' },
-  { step: '04', title: 'Document', text: 'Write-ups and notes. If I cannot explain it clearly, I have not understood it yet.' },
-];
+const approach = t.home.approach.map((a, i) => ({ step: `0${i + 1}`, ...a }));
 ---
 
 <Layout>
@@ -30,7 +29,7 @@ const approach = [
   <!-- CTF track record -->
   <section class="container-page py-12 sm:py-16">
     <div class="reveal">
-      <SectionHeading eyebrow="CTF" title="Competitions" href="/ctf" linkLabel="All competitions" />
+      <SectionHeading eyebrow={t.home.ctfEyebrow} title={t.home.ctfTitle} href="/ctf" linkLabel={t.home.ctfLink} />
     </div>
     <div class="grid gap-5 md:grid-cols-2">
       {
@@ -46,12 +45,12 @@ const approach = [
   <!-- Projects -->
   <section class="container-page py-12 sm:py-16">
     <div class="reveal">
-      <SectionHeading eyebrow="Projects" title="What I'm building" href="/projects" linkLabel="All projects" />
+      <SectionHeading eyebrow={t.home.projectsEyebrow} title={t.home.projectsTitle} href="/projects" linkLabel={t.home.projectsLink} />
     </div>
     <div class="grid gap-5 lg:grid-cols-3">
       {
         featuredProjects.map((p) => (
-          <div class:list={['reveal', otherProjects.length > 0 ? 'lg:col-span-2' : 'lg:col-span-3']}>
+          <div class="reveal lg:col-span-3">
             <ProjectCard entry={p} highlight />
           </div>
         ))
@@ -69,7 +68,7 @@ const approach = [
   <!-- Writeups -->
   <section class="container-page py-12 sm:py-16">
     <div class="reveal">
-      <SectionHeading eyebrow="Writeups" title="Latest CTF write-ups" href="/writeups" linkLabel="All write-ups" />
+      <SectionHeading eyebrow={t.home.writeupsEyebrow} title={t.home.writeupsTitle} href="/writeups" linkLabel={t.home.writeupsLink} />
     </div>
     {
       latestWriteups.length > 0 ? (
@@ -82,10 +81,7 @@ const approach = [
         </div>
       ) : (
         <div class="reveal">
-          <EmptyState title="Write-ups in progress" icon="file">
-            Solutions from recent competitions are being cleaned up and written. They will appear here — with the commands, scripts
-            and reasoning behind each flag.
-          </EmptyState>
+          <EmptyState title={t.home.writeupsEmptyTitle} icon="file">{t.home.writeupsEmpty}</EmptyState>
         </div>
       )
     }
@@ -94,7 +90,7 @@ const approach = [
   <!-- Approach + skills -->
   <section class="container-page py-12 sm:py-16">
     <div class="reveal">
-      <SectionHeading eyebrow="Approach" title="How I learn" />
+      <SectionHeading eyebrow={t.home.approachEyebrow} title={t.home.approachTitle} />
     </div>
     <ol class="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
       {
@@ -109,7 +105,7 @@ const approach = [
     </ol>
 
     <div class="reveal mt-16">
-      <SectionHeading eyebrow="Skills" title="Areas I work on" href="/about#skills" linkLabel="More about me" />
+      <SectionHeading eyebrow={t.home.skillsEyebrow} title={t.home.skillsTitle} href="/about#skills" linkLabel={t.home.skillsLink} />
       <SkillGroups />
     </div>
   </section>
@@ -120,11 +116,11 @@ const approach = [
       <div class="grid-backdrop pointer-events-none absolute inset-0 opacity-20" aria-hidden="true"></div>
       <div class="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div class="max-w-xl">
-          <p class="eyebrow">Contact</p>
-          <h2 class="section-title mt-2">Let's talk security, CTFs or infrastructure.</h2>
-          <p class="mt-3 text-muted">A question about a write-up, a project, or an opportunity — feel free to reach out.</p>
+          <p class="eyebrow">{t.home.ctaEyebrow}</p>
+          <h2 class="section-title mt-2">{t.home.ctaTitle}</h2>
+          <p class="mt-3 text-muted">{t.home.ctaText}</p>
         </div>
-        <a href={url('/contact')} class="btn-primary shrink-0">Get in touch <Icon name="arrow" size={16} /></a>
+        <a href={href('/contact')} class="btn-primary shrink-0">{t.home.ctaButton} <Icon name="arrow" size={16} /></a>
       </div>
     </div>
   </section>

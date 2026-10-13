@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/picoCTF_2026/Small Trouble.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Small Trouble
 category: Cryptography
 ctf: picoCTF 2026
@@ -9,6 +10,7 @@ tags:
 - picoctf-2026
 - rsa
 lang: fr
+draft: true
 imported: true
 ---
 

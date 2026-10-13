@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: HTB/Ignition.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Ignition
 category: Boot2Root
 difficulty: Easy
@@ -12,6 +13,7 @@ tags:
 - starting-point
 - tier-2
 lang: fr
+draft: true
 imported: true
 ---
 
@@ -23,7 +25,7 @@ imported: true
 - **Difficulté :** Very Easy
 - **Auteur du write-up :** 3ch0
 - **Service :** `80/tcp` (nginx 1.14.2 — **Magento 2**)
-- **Flag :** `797d6c988d9dc5865e010b9410f247e0`
+- **Flag :** `797d…[masqué]`
 
 ---
 
@@ -121,10 +123,10 @@ Mot de passe trouvé : `admin` / `qwerty123`.
 On se connecte sur `http://ignition.htb/admin/` avec `admin` / `qwerty123`. Le **dashboard Magento** s'ouvre, et le flag y est accessible.
 
 ```text
-797d6c988d9dc5865e010b9410f247e0
+797d…[masqué]
 ```
 
-**Flag :** `797d6c988d9dc5865e010b9410f247e0`
+**Flag :** `797d…[masqué]`
 
 ---
 

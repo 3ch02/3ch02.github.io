@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Hackerdna/Writeup - Beyond Echo.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Beyond Echo
 category: Cryptography
 ctf: HackerDNA
@@ -11,6 +12,7 @@ tags:
 - php
 - rce
 lang: fr
+draft: true
 imported: true
 ---
 

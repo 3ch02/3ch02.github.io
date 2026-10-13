@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/ForeverCTF/Writeup CTF — Baby SQLi (250 pts).md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Baby SQLi
 category: Web
 ctf: ForeverCTF
@@ -9,6 +10,7 @@ tags:
 - foreverctf
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

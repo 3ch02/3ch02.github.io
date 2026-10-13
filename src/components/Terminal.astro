@@ -1,5 +1,9 @@
 ---
-import { INTERESTS, SITE } from '@/config/site';
+import { SITE } from '@/config/site';
+import { useI18n } from '@/i18n';
+
+const { t } = useI18n(Astro.url);
+const INTERESTS = t.site.interests;
 
 /**
  * Small decorative terminal for the hero. Static HTML — the only motion
@@ -34,7 +38,7 @@ const lines: { cmd: string; out: string[] }[] = [
     <div>
       <p><span class="text-accent">$</span> <span class="text-fg">status</span></p>
       <p class="text-warn">
-        learning...<span class="ml-0.5 inline-block h-[1.05em] w-[0.55em] translate-y-[0.18em] animate-caret bg-muted/70"></span>
+        {t.hero.learning}<span class="ml-0.5 inline-block h-[1.05em] w-[0.55em] translate-y-[0.18em] animate-caret bg-muted/70"></span>
       </p>
     </div>
   </div>

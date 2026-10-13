@@ -23,7 +23,7 @@ imported: true
 - **Difficulté :** Very Easy
 - **Auteur du write-up :** 3ch0
 - **Services :** `21/tcp` (vsftpd 3.0.3, anonyme), `22/tcp` (OpenSSH 8.2p1)
-- **Flag :** `cf277664b1771217d7006acdea006db1`
+- **Flag :** `cf27…[masqué]`
 
 ---
 
@@ -163,12 +163,12 @@ SELECT * FROM flag;
 ```text
               value
 ----------------------------------
- cf277664b1771217d7006acdea006db1
+ cf27…[masqué]
 ```
 
 ![Screenshot](./images/obsidian/funnel/pasted-image-20261005201503.png)
 
-**Flag :** `cf277664b1771217d7006acdea006db1`
+**Flag :** `cf27…[masqué]`
 
 ---
 

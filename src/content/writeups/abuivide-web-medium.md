@@ -1,16 +1,16 @@
 ---
-# Imported from Obsidian: Abuividé – Web Medium (200 pts).md
-# Draft: unknown source
+# Imported from Obsidian: CTF/ESIG Tech Arena CTF/Abuividé – Web Medium (200 pts).md
 title: Abuividé – Web Medium
 category: Web
 difficulty: Medium
-ctf: Unknown
+ctf: ESIG Tech Arena 2026
+competition: esig-tech-arena-2026
 date: 2026-09-25
 summary: Un site de démonstration propose une simple page de connexion. On sait qu'un administrateur stocke un secret dans la base de données et qu'il ne faut surtout pas que ce secret…
 tags:
+- esig-tech-arena-2026
 - web
 lang: fr
-draft: true
 imported: true
 ---
 

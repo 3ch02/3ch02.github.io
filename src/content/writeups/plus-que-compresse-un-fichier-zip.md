@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/Writeup— "Plus que compressé".md
+# Draft: platform rules on publishing solutions to be checked
 title: Plus que compressé (un_fichier.zip)
 category: Forensics
 ctf: Cyberini
@@ -15,6 +16,7 @@ tags:
 - polyglot
 - stegano
 lang: fr
+draft: true
 imported: true
 ---
 

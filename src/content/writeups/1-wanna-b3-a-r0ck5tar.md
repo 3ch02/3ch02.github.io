@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/picoCTF_2019/1_wanna_b3_a_r0ck5tar.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: 1_wanna_b3_a_r0ck5tar
 category: Reverse Engineering
 ctf: picoCTF 2019
@@ -9,6 +10,7 @@ tags:
 - picoctf-2019
 - reverse-engineering
 lang: fr
+draft: true
 imported: true
 ---
 

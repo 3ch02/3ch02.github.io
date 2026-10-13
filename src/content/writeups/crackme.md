@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/🚩 Writeup  -- Crackme.md
+# Draft: platform rules on publishing solutions to be checked
 title: Crackme
 category: Reverse Engineering
 ctf: Cyberini
@@ -9,6 +10,7 @@ tags:
 - cyberini
 - reverse-engineering
 lang: fr
+draft: true
 imported: true
 ---
 

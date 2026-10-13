@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/ForeverCTF/🚩 Simple Checker.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Simple Checker
 category: Reverse Engineering
 ctf: ForeverCTF
@@ -10,6 +11,7 @@ tags:
 - reverse-engineering
 points: 200
 lang: fr
+draft: true
 imported: true
 ---
 

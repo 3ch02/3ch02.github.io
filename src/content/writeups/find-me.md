@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup IPNET Cyberbattle/🚩 Write-up - Find Me.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Find Me
 category: Steganography
 difficulty: Easy
@@ -10,6 +11,7 @@ tags:
 - ipnet-cyberbattle
 - steganography
 lang: fr
+draft: true
 imported: true
 ---
 

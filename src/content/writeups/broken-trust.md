@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/hackviser/EcowsCTF{}/Broken Trust.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Broken Trust
 category: Web
 ctf: EcowsCTF (Hackviser)
@@ -10,6 +11,7 @@ tags:
 - idor
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup CanYouSee.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: CanYouSee
 category: Forensics
 ctf: picoCTF
@@ -12,6 +13,7 @@ tags:
 - forensics
 - picoctf
 lang: fr
+draft: true
 imported: true
 ---
 

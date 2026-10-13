@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - Rogue Tower.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Rogue Tower
 category: Forensics
 ctf: picoCTF
@@ -15,6 +16,7 @@ tags:
 - python
 - wireshark
 lang: fr
+draft: true
 imported: true
 ---
 

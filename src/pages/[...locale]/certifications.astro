@@ -6,6 +6,11 @@ import EmptyState from '@/components/EmptyState.astro';
 import { getCertifications } from '@/lib/content';
 import Icon from '@/components/Icon.astro';
 import { CREDLY_URL } from '@/config/site';
+import { useI18n, withLocales } from '@/i18n';
+
+export const getStaticPaths = () => withLocales();
+
+const { t } = useI18n(Astro.url);
 
 const all = await getCertifications();
 // A certification only counts as such when it has actually been obtained.
@@ -14,27 +19,25 @@ const inProgress = all.filter((c) => c.data.kind === 'certification' && c.data.s
 const trainings = all.filter((c) => c.data.kind === 'training');
 ---
 
-<Layout title="Certifications" description="Certifications obtained and trainings followed by KERIM Loukouman (3ch0).">
+<Layout title={t.certifications.title} description={t.certifications.metaDescription}>
   <PageHeader
     eyebrow="certifications"
-    title="Certifications & Training"
-    description="Certifications obtained are listed separately from courses and trainings followed. A training is not a certification."
+    title={t.certifications.heading}
+    description={t.certifications.description}
   >
     <a href={CREDLY_URL} target="_blank" rel="me noopener" class="btn-ghost mt-6">
-      <Icon name="award" size={16} /> Verified badges on Credly <Icon name="external" size={14} />
+      <Icon name="award" size={16} /> {t.certifications.credly} <Icon name="external" size={14} />
     </a>
   </PageHeader>
 
   <section class="container-page">
-    <h2 class="section-title">Certifications obtained</h2>
+    <h2 class="section-title">{t.certifications.obtained}</h2>
     <div class="mt-6">
       {
         obtained.length ? (
           <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{obtained.map((c) => <CertificationCard entry={c} />)}</div>
         ) : (
-          <EmptyState title="No certification obtained yet" icon="award">
-            Certifications will be listed here once passed, with a link to verify the credential.
-          </EmptyState>
+          <EmptyState title={t.certifications.obtainedEmptyTitle} icon="award">{t.certifications.obtainedEmpty}</EmptyState>
         )
       }
     </div>
@@ -43,21 +46,21 @@ const trainings = all.filter((c) => c.data.kind === 'training');
   {
     inProgress.length > 0 && (
       <section class="container-page mt-16">
-        <h2 class="section-title">Currently preparing</h2>
+        <h2 class="section-title">{t.certifications.preparing}</h2>
         <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{inProgress.map((c) => <CertificationCard entry={c} />)}</div>
       </section>
     )
   }
 
   <section class="container-page mt-16">
-    <h2 class="section-title">Training & learning</h2>
-    <p class="mt-2 max-w-2xl text-sm text-muted">Courses, programs and learning paths followed — not certifications.</p>
+    <h2 class="section-title">{t.certifications.training}</h2>
+    <p class="mt-2 max-w-2xl text-sm text-muted">{t.certifications.trainingText}</p>
     <div class="mt-6">
       {
         trainings.length ? (
           <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{trainings.map((c) => <CertificationCard entry={c} />)}</div>
         ) : (
-          <EmptyState title="Nothing listed yet" icon="book">Trainings and learning paths will be added here.</EmptyState>
+          <EmptyState title={t.certifications.trainingEmptyTitle} icon="book">{t.certifications.trainingEmpty}</EmptyState>
         )
       }
     </div>

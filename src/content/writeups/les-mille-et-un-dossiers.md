@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/🚩 Writeup -- Les mille et un dossiers.md
+# Draft: platform rules on publishing solutions to be checked
 title: Les mille et un dossiers
 category: Misc
 ctf: Cyberini
@@ -9,6 +10,7 @@ tags:
 - cyberini
 - misc
 lang: fr
+draft: true
 imported: true
 ---
 

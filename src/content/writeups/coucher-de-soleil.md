@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/🌅 Writeup -- Coucher de soleil.md
+# Draft: platform rules on publishing solutions to be checked
 title: Coucher de soleil
 category: Steganography
 ctf: Cyberini
@@ -11,6 +12,7 @@ tags:
 - steganography
 - zsteg
 lang: fr
+draft: true
 imported: true
 ---
 

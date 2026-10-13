@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/hackviser/EcowsCTF{}/📑 Writeup Challenge -Private Invitation.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Private Invitation
 category: Cryptography
 ctf: EcowsCTF (Hackviser)
@@ -11,6 +12,7 @@ tags:
 - cyberchef
 - ecowsctf
 lang: fr
+draft: true
 imported: true
 ---
 

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/ForeverCTF/Writeup --  HTTP Objects.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: HTTP Objects
 category: Forensics
 ctf: ForeverCTF
@@ -9,6 +10,7 @@ tags:
 - forensics
 - foreverctf
 lang: fr
+draft: true
 imported: true
 ---
 

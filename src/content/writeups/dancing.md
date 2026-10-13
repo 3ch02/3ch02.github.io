@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: HTB/Dancing.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Dancing
 category: Boot2Root
 ctf: Hack The Box
@@ -12,6 +13,7 @@ tags:
 - tier-0
 - windows
 lang: fr
+draft: true
 imported: true
 ---
 
@@ -104,5 +106,5 @@ Lister le fichier flag.txt avec **get**
 
 ### Flag
 ```
-5f61c10dffbc77a704d76016a22f1664 
+5f61…[masqué] 
 ```

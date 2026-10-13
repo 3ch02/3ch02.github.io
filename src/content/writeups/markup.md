@@ -23,8 +23,8 @@ imported: true
 - **Difficulté :** Easy
 - **Auteur du write-up :** 3ch0
 - **Services :** `22` (OpenSSH for Windows), `80/443` (Apache 2.4.41 / PHP 7.2.28 — XAMPP)
-- **Flag user :** `032d2fc8952a8c24e39c8f0ee9918ef7`
-- **Flag root :** `f574a3e7650cebd8c39784299cb570f8`
+- **Flag user :** `032d…[masqué]`
+- **Flag root :** `f574…[masqué]`
 
 ---
 
@@ -158,7 +158,7 @@ type Desktop\user.txt
 ![Screenshot](./images/obsidian/markup/pasted-image-20261009015002.png)
 
 ```text
-032d2fc8952a8c24e39c8f0ee9918ef7
+032d…[masqué]
 ```
 
 ---
@@ -224,7 +224,7 @@ type C:\Users\Administrator\Desktop\root.txt
 ![Screenshot](./images/obsidian/markup/pasted-image-20261009022539.png)
 
 ```text
-f574a3e7650cebd8c39784299cb570f8
+f574…[masqué]
 ```
 
 ---

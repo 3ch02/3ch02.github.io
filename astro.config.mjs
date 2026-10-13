@@ -17,7 +17,9 @@ export default defineConfig({
   site,
   base,
   trailingSlash: 'ignore',
-  integrations: [mdx(), sitemap()],
+  // The Achievements page was merged into the CTF page.
+  redirects: { '/achievements': '/ctf', '/fr/achievements': '/fr/ctf' },
+  integrations: [mdx(), sitemap({ i18n: { defaultLocale: 'en', locales: { en: 'en', fr: 'fr' } } })],
   // Content-Security-Policy <meta> with hashes of every script and style Astro emits.
   security: {
     csp: true,

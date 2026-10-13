@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Hackerdna/Include me.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Include me
 category: Web
 ctf: HackerDNA
@@ -11,6 +12,7 @@ tags:
 - php
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

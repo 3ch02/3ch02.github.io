@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup CTF Hackropole/Write-up - Random Search (FCSC 2021).md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Random Search (FCSC 2021)
 category: Web
 difficulty: Easy
@@ -10,6 +11,7 @@ tags:
 - hackropole
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

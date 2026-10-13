@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup CTF Hackropole/Pwn/Bonus Points.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Bonus Points
 category: Pwn
 ctf: Hackropole (FCSC)
@@ -10,6 +11,7 @@ tags:
 - pwn
 - x64
 lang: fr
+draft: true
 imported: true
 ---
 

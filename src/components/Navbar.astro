@@ -1,26 +1,29 @@
 ---
 import { NAV } from '@/config/site';
-import { isActive, url } from '@/lib/utils';
+import { isActive } from '@/lib/utils';
+import { LOCALES, switchLocale, useI18n } from '@/i18n';
 import Logo from './Logo.astro';
 import Icon from './Icon.astro';
 
 const path = Astro.url.pathname;
+const { locale, t, href } = useI18n(Astro.url);
+const other = LOCALES.find((l) => l !== locale)!;
 ---
 
 <header class="sticky top-0 z-50 border-b border-line/70 bg-bg/80 backdrop-blur-md supports-[backdrop-filter]:bg-bg/65">
-  <nav class="container-page flex h-16 items-center justify-between gap-4" aria-label="Main">
-    <a href={url('/')} class="text-lg" aria-label="3ch0 — home">
+  <nav class="container-page flex h-16 items-center justify-between gap-4" aria-label={t.nav.main}>
+    <a href={href('/')} class="text-lg" aria-label={t.nav.homeLabel}>
       <Logo />
     </a>
 
     <ul class="hidden items-center gap-0.5 lg:flex">
       {
         NAV.map((item) => {
-          const active = isActive(path, item.href);
+          const active = isActive(path, href(item.href), item.href === '/');
           return (
             <li>
               <a
-                href={url(item.href)}
+                href={href(item.href)}
                 aria-current={active ? 'page' : undefined}
                 class:list={[
                   'rounded-md px-3 py-2 text-sm transition-colors',
@@ -28,7 +31,7 @@ const path = Astro.url.pathname;
                 ]}
               >
                 {active && <span class="mr-0.5 font-mono text-accent">/</span>}
-                {item.label}
+                {t.nav[item.key]}
               </a>
             </li>
           );
@@ -36,35 +39,48 @@ const path = Astro.url.pathname;
       }
     </ul>
 
+    <div class="flex items-center gap-1">
+      <a
+        href={switchLocale(Astro.url, other)}
+        hreflang={other}
+        lang={other}
+        title={t.nav.switchTo}
+        aria-label={t.nav.switchTo}
+        class="rounded-md border border-line px-2 py-1 font-mono text-xs text-muted uppercase transition-colors hover:border-line-strong hover:text-fg"
+      >
+        {other}
+      </a>
+
     <button
       type="button"
-      class="-mr-2 inline-flex h-10 w-10 items-center justify-center rounded-md text-muted hover:bg-surface-2 hover:text-fg lg:hidden"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-md text-muted hover:bg-surface-2 hover:text-fg lg:hidden"
       aria-controls="mobile-menu"
       aria-expanded="false"
       data-menu-toggle
     >
-      <span class="sr-only">Toggle menu</span>
+      <span class="sr-only">{t.nav.toggle}</span>
       <Icon name="menu" size={22} class="menu-open" />
       <Icon name="close" size={22} class="menu-close hidden" />
     </button>
+    </div>
   </nav>
 
   <div id="mobile-menu" class="hidden border-t border-line bg-bg lg:hidden" data-menu>
     <ul class="container-page grid gap-1 py-3">
       {
         NAV.map((item) => {
-          const active = isActive(path, item.href);
+          const active = isActive(path, href(item.href), item.href === '/');
           return (
             <li>
               <a
-                href={url(item.href)}
+                href={href(item.href)}
                 aria-current={active ? 'page' : undefined}
                 class:list={[
                   'flex items-center justify-between rounded-lg px-3 py-3 text-base',
                   active ? 'bg-surface-2 text-fg' : 'text-muted hover:bg-surface hover:text-fg',
                 ]}
               >
-                {item.label}
+                {t.nav[item.key]}
                 <span class="font-mono text-xs text-subtle">{item.href === '/' ? '~' : `~${item.href}`}</span>
               </a>
             </li>

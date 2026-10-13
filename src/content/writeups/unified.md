@@ -23,8 +23,8 @@ imported: true
 - **Difficulté :** Easy
 - **Auteur du write-up :** 3ch0
 - **Services :** `22` (SSH), `8080/8443/8843/8880` (UniFi Network — Apache Tomcat)
-- **Flag user :** `6ced1a6a89e666c0620cdb10262ba127`
-- **Flag root :** `e50bc93c75b634e4b272d2f771c33681`
+- **Flag user :** `6ced…[masqué]`
+- **Flag root :** `e50b…[masqué]`
 
 ---
 
@@ -83,7 +83,7 @@ cat /home/michael/user.txt
 ```
 
 ```text
-6ced1a6a89e666c0620cdb10262ba127
+6ced…[masqué]
 ```
 
 ---
@@ -170,12 +170,12 @@ ssh root@10.129.11.156      # NotACrackablePassword4U2022
 
 ```text
 root@unified:~# cat /root/root.txt
-e50bc93c75b634e4b272d2f771c33681
+e50b…[masqué]
 ```
 
 ![Screenshot](./images/obsidian/unified/pasted-image-20261008214123.png)
 
-**Flag root :** `e50bc93c75b634e4b272d2f771c33681`
+**Flag root :** `e50b…[masqué]`
 
 ---
 

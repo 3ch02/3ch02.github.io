@@ -24,8 +24,8 @@ imported: true
 > **Difficulté :** Very Easy
 > **Auteur :** 3ch0
 > **Services :** `22/tcp` (OpenSSH 7.6p1), `80/tcp` (Apache 2.4.29 Ubuntu)
-> **Flag user :** `f54846c258f3b4612f78a819573d158e`
-> **Flag root :** `51709519ea18ab37dd6fc58096bea949`
+> **Flag user :** `f548…[masqué]`
+> **Flag root :** `5170…[masqué]`
 
 ---
 
@@ -221,7 +221,7 @@ cat /home/john/user.txt
 ```
 
 ```text
-f54846c258f3b4612f78a819573d158e
+f548…[masqué]
 ```
 
 ![Screenshot](./images/obsidian/base/screenshot-from-2026-10-10-14-47-37.png)
@@ -260,7 +260,7 @@ cat /root/root.txt
 ```
 
 ```text
-51709519ea18ab37dd6fc58096bea949
+5170…[masqué]
 ```
 
 ![Screenshot](./images/obsidian/base/screenshot-from-2026-10-10-14-56-20.png)

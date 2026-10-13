@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup CTF Hackropole/Crypto/🚩 Carotte Radis Tomate.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Carotte Radis Tomate
 category: Cryptography
 ctf: Hackropole (FCSC)
@@ -11,6 +12,7 @@ tags:
 - cryptography
 - hackropole
 lang: fr
+draft: true
 imported: true
 ---
 

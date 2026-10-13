@@ -4,23 +4,24 @@ import ArticleLayout from '@/layouts/ArticleLayout.astro';
 import StatusBadge from '@/components/StatusBadge.astro';
 import Tag from '@/components/Tag.astro';
 import Icon from '@/components/Icon.astro';
-import { getProjects } from '@/lib/content';
+import { bodyOf, getProjects } from '@/lib/content';
+import { useI18n, withLocales } from '@/i18n';
 
 export async function getStaticPaths() {
-  const projects = await getProjects();
-  return projects.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+  return withLocales((await getProjects()).map((entry) => ({ params: { slug: entry.id } })));
 }
 
-const { entry } = Astro.props;
+const { locale, t } = useI18n(Astro.url);
+const entry = (await getProjects(locale)).find((p) => p.id === Astro.params.slug)!;
 const { title, summary, status, stack, tags, repo, demo, draft } = entry.data;
-const { Content, headings } = await render(entry);
+const { Content, headings } = await render(await bodyOf(entry, locale));
 ---
 
-<ArticleLayout title={title} description={summary} headings={headings} back={{ href: '/projects', label: 'cd ../projects' }} tags={tags}>
+<ArticleLayout title={title} description={summary} headings={headings} back={{ href: '/projects', label: t.projects.back }} tags={tags}>
   <div slot="meta-top" class="flex flex-wrap items-center gap-2">
-    <span class="eyebrow">Project</span>
+    <span class="eyebrow">{t.projects.eyebrow}</span>
     <StatusBadge status={status} />
-    {draft && <span class="rounded bg-warn/15 px-1.5 font-mono text-[0.7rem] text-warn">DRAFT</span>}
+    {draft && <span class="rounded bg-warn/15 px-1.5 font-mono text-[0.7rem] text-warn">{t.common.draft}</span>}
   </div>
 
   <div slot="meta" class="mt-6 space-y-4">
@@ -36,12 +37,12 @@ const { Content, headings } = await render(entry);
         <div class="flex flex-wrap gap-3">
           {repo && (
             <a href={repo} target="_blank" rel="noopener" class="btn-ghost">
-              <Icon name="github" size={16} /> Source code
+              <Icon name="github" size={16} /> {t.projects.source}
             </a>
           )}
           {demo && (
             <a href={demo} target="_blank" rel="noopener" class="btn-ghost">
-              <Icon name="external" size={16} /> Live demo
+              <Icon name="external" size={16} /> {t.projects.demo}
             </a>
           )}
         </div>
@@ -52,6 +53,6 @@ const { Content, headings } = await render(entry);
   <Content />
 
   <div slot="after" class="mt-12 flex flex-wrap gap-1.5 border-t border-line pt-6">
-    {tags.map((t) => <Tag tag={t} />)}
+    {tags.map((tag) => <Tag tag={tag} />)}
   </div>
 </ArticleLayout>

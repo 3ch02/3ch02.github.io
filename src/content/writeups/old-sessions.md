@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup -Old Sessions.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Old Sessions
 category: Web
 ctf: picoCTF
@@ -12,6 +13,7 @@ tags:
 - web
 - web-exploitation
 lang: fr
+draft: true
 imported: true
 ---
 

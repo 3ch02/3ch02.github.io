@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/🚩 Writeup -- Portail Interne.md
+# Draft: platform rules on publishing solutions to be checked
 title: Portail Interne
 category: Web
 ctf: Cyberini
@@ -9,6 +10,7 @@ tags:
 - cyberini
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

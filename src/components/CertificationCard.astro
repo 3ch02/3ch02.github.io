@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { formatMonth, isoDate } from '@/lib/utils';
+import { useI18n } from '@/i18n';
 import StatusBadge from './StatusBadge.astro';
 import Icon from './Icon.astro';
 
@@ -9,6 +10,7 @@ interface Props {
 }
 const { entry } = Astro.props;
 const { title, issuer, kind, status, date, expires, credentialUrl, credentialId, skills, draft } = entry.data;
+const { locale, t } = useI18n(Astro.url);
 const expired = expires !== undefined && expires.valueOf() < Date.now();
 ---
 
@@ -18,19 +20,19 @@ const expired = expires !== undefined && expires.valueOf() < Date.now();
       <Icon name={kind === 'certification' ? 'award' : 'book'} size={17} />
     </span>
     <div class="flex items-center gap-2">
-      {draft && <span class="rounded bg-warn/15 px-1.5 font-mono text-[0.7rem] text-warn">DRAFT</span>}
-      {expired ? <StatusBadge status="archived" label="Expired" /> : <StatusBadge status={status} />}
+      {draft && <span class="rounded bg-warn/15 px-1.5 font-mono text-[0.7rem] text-warn">{t.common.draft}</span>}
+      {expired ? <StatusBadge status="archived" label={t.status.expired} /> : <StatusBadge status={status} />}
     </div>
   </div>
   <h3 class="mt-4 font-semibold text-fg">{title}</h3>
   <p class="mt-1 text-sm text-muted">
     {issuer}
-    {date && <> · <time datetime={isoDate(date)}>{formatMonth(date)}</time></>}
+    {date && <> · <time datetime={isoDate(date)}>{formatMonth(date, locale)}</time></>}
   </p>
   {
     expires && (
       <p class="mt-1 text-xs text-subtle">
-        {expired ? 'Expired' : 'Valid until'} <time datetime={isoDate(expires)}>{formatMonth(expires)}</time>
+        {expired ? t.status.expired : t.certifications.validUntil} <time datetime={isoDate(expires)}>{formatMonth(expires, locale)}</time>
       </p>
     )
   }
@@ -39,7 +41,7 @@ const expired = expires !== undefined && expires.valueOf() < Date.now();
   {
     credentialUrl && (
       <a href={credentialUrl} target="_blank" rel="noopener" class="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm text-accent hover:underline">
-        Verify credential <Icon name="external" size={14} />
+        {t.certifications.verify} <Icon name="external" size={14} />
       </a>
     )
   }

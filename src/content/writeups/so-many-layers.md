@@ -1,16 +1,17 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - So Many Layers.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: So Many Layers
 category: Cryptography
 difficulty: Easy
 ctf: boroCTF 2026
-competition: boroctf-2026
 date: 2026-08-07
 summary: So Many Layers Makes me cry. 00110101 00111001 ... 01000100 L'énoncé présente une longue suite de blocs de 8 bits (binaire). Le titre et la description évoquent des couches…
 tags:
 - boroctf-2026
 - cryptography
 lang: fr
+draft: true
 imported: true
 ---
 

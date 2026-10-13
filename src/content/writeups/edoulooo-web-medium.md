@@ -1,16 +1,16 @@
 ---
-# Imported from Obsidian: Edoulooo – Web Medium (200 pts).md
-# Draft: unknown source
+# Imported from Obsidian: CTF/ESIG Tech Arena CTF/Edoulooo – Web Medium (200 pts).md
 title: Edoulooo – Web Medium
 category: Web
 difficulty: Medium
-ctf: Unknown
+ctf: ESIG Tech Arena 2026
+competition: esig-tech-arena-2026
 date: 2026-09-25
 summary: 'Page simple : - Solde affiché (départ 100) - Bouton Se créditer (+100) → POST /faucet - Bouton Acheter FLAG → POST /buy (prix 300)'
 tags:
+- esig-tech-arena-2026
 - web
 lang: fr
-draft: true
 imported: true
 ---
 

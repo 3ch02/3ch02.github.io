@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: HTB/Pennyworth.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Pennyworth
 category: Boot2Root
 difficulty: Easy
@@ -12,6 +13,7 @@ tags:
 - starting-point
 - tier-1
 lang: fr
+draft: true
 imported: true
 ---
 
@@ -23,7 +25,7 @@ imported: true
 - **Difficulté :** Very Easy
 - **Auteur du write-up :** 3ch0
 - **Service :** `8080/tcp` (Jetty 9.4.39.v20210325 → **Jenkins 2.289.1**)
-- **Flag :** `9cdfb439c7876e703e307864c9167a15`
+- **Flag :** `9cdf…[masqué]`
 
 ---
 
@@ -125,10 +127,10 @@ println "cat /root/flag.txt".execute().text
 ```
 
 ```text
-9cdfb439c7876e703e307864c9167a15
+9cdf…[masqué]
 ```
 
-**Flag :** `9cdfb439c7876e703e307864c9167a15`
+**Flag :** `9cdf…[masqué]`
 
 ---
 

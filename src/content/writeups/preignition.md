@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: HTB/Preignition.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Preignition
 category: Boot2Root
 difficulty: Easy
@@ -11,6 +12,7 @@ tags:
 - hack-the-box
 - starting-point
 lang: fr
+draft: true
 imported: true
 ---
 
@@ -25,7 +27,7 @@ imported: true
 
 | Flag     | Valeur                             |
 | -------- | ---------------------------------- |
-| **Flag** | `6483bee07c1c1d57f14e5b0717503c73` |
+| **Flag** | `6483…[masqué]` |
 
 ---
 
@@ -110,7 +112,7 @@ La réponse de taille **365** (différente de la page d'erreur) trahit un login 
 En se connectant avec `admin` / `admin`, la console affiche le flag :
 
 ```text
-Congratulations! Your flag is: 6483bee07c1c1d57f14e5b0717503c73
+Congratulations! Your flag is: 6483…[masqué]
 ```
 
 ![Screenshot](./images/obsidian/preignition/pasted-image-20260930002744.png)

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/hackviser/EcowsCTF{}/Runic3.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Runic3
 category: Cryptography
 ctf: EcowsCTF (Hackviser)
@@ -12,6 +13,7 @@ tags:
 - ecowsctf
 - esolang
 lang: fr
+draft: true
 imported: true
 ---
 

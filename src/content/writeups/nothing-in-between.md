@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/hackviser/EcowsCTF{}/Writeup -- Nothing In Between.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Nothing In Between
 category: Steganography
 ctf: EcowsCTF (Hackviser)
@@ -9,6 +10,7 @@ tags:
 - ecowsctf
 - steganography
 lang: fr
+draft: true
 imported: true
 ---
 

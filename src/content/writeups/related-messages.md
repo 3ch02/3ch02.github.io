@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/picoCTF_2026/Related Messages.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Related Messages
 category: Cryptography
 ctf: picoCTF 2026
@@ -11,6 +12,7 @@ tags:
 - picoctf-2026
 - rsa
 lang: fr
+draft: true
 imported: true
 ---
 

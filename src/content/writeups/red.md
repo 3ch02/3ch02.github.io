@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup RED.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: RED
 category: Steganography
 ctf: picoCTF
@@ -12,8 +13,8 @@ tags:
 - forensics
 - picoctf
 - steganography
-- zsteg
 lang: fr
+draft: true
 imported: true
 ---
 
@@ -64,7 +65,7 @@ picoCTF{r3d_1s_th3_ult1m4t3_cur3_f0r_54dn355_}
 
 - **Catégorie :** Steganography Forensics
     
-- **Outils :** file exiftool zsteg base64
+- **Outils :** file exiftool #3zsteg base64
     
 - **Flag :** `picoCTF{r3d_1s_th3_ult1m4t3_cur3_f0r_54dn355_}`
     

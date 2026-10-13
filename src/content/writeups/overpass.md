@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: THM/Write-up -  TryHackMe Overpass.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Overpass
 category: Boot2Root
 ctf: TryHackMe
@@ -9,6 +10,7 @@ tags:
 - boot2root
 - tryhackme
 lang: fr
+draft: true
 imported: true
 ---
 

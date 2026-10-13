@@ -3,50 +3,80 @@ import Layout from '@/layouts/Layout.astro';
 import PageHeader from '@/components/PageHeader.astro';
 import SkillGroups from '@/components/SkillGroups.astro';
 import Icon from '@/components/Icon.astro';
-import { INTERESTS, SITE } from '@/config/site';
+import { SITE } from '@/config/site';
 import { getCompetitions } from '@/lib/content';
-import { url } from '@/lib/utils';
+import { useI18n, withLocales } from '@/i18n';
 
-const competitions = await getCompetitions();
+export const getStaticPaths = () => withLocales();
+
+const { locale, t, href } = useI18n(Astro.url);
+const competitions = await getCompetitions(locale);
 const handles = [...new Set([SITE.handle, ...competitions.flatMap((c) => c.data.handle ?? [])])];
 
 const facts = [
-  { icon: 'user', label: 'Name', value: SITE.name },
-  { icon: 'terminal', label: 'Handle', value: handles.join(' · ') },
-  { icon: 'graduation', label: 'Education', value: `Cybersecurity student — ${SITE.school}` },
-  { icon: 'flag', label: 'CTF teams', value: [...new Set(competitions.map((c) => c.data.team))].join(' · ') },
+  { icon: 'user', label: t.about.facts.name, value: SITE.name },
+  { icon: 'terminal', label: t.about.facts.handle, value: handles.join(' · ') },
+  { icon: 'graduation', label: t.about.facts.education, value: t.about.education(SITE.level, SITE.school) },
+  { icon: 'map', label: t.about.facts.location, value: SITE.location },
+  { icon: 'flag', label: t.about.facts.teams, value: [...new Set(competitions.map((c) => c.data.team))].join(' · ') },
 ] as const;
 ---
 
-<Layout title="About" description={`About ${SITE.name} (${SITE.handle}) — cybersecurity student at ${SITE.school}.`}>
-  <PageHeader eyebrow="about" title="About me" />
+<Layout title={t.about.title} description={t.about.description(SITE.name, SITE.handle, SITE.school)}>
+  <PageHeader eyebrow="about" title={t.about.heading} />
 
   <section class="container-page grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
     <div class="prose prose-invert prose-3ch0 max-w-none">
-      <p class="!mt-0 text-lg text-fg">
-        I'm <strong>{SITE.name}</strong>, known online as <code>{SITE.handle}</code>.
-        I'm a cybersecurity student at <strong>{SITE.school}</strong>.
-      </p>
-      <p>
-        I see systems and networks as the foundation of security: you can't defend a network you don't understand, or investigate
-        a machine you couldn't administer. That's why a large part of my learning goes into Linux,
-        Windows Server and Active Directory, routing and switching, VPNs and firewalls — alongside the security side itself.
-      </p>
-      <p>
-        I learn by doing. I build labs, play CTFs with my teams, analyse what worked and what didn't, and write it down. The
-        write-ups on this site are part of that process: explaining a solution clearly is the best way I've found to check that I
-        actually understood it.
-      </p>
-      <p>
-        I'm still early in my path, and this site is meant to show it honestly — the projects I'm building, the competitions I take
-        part in, and the topics I'm working through.
-      </p>
+      {
+        locale === 'fr' ? (
+          <>
+            <p class="!mt-0 text-lg text-fg">
+              Je suis <strong>{SITE.name}</strong>, connu en ligne sous le pseudo <code>{SITE.handle}</code>. Je suis étudiant en
+              cybersécurité en troisième année (Licence 3) à l'<strong>{SITE.school}</strong>, à {SITE.location}.
+            </p>
+            <p>
+              Pour moi, les systèmes et les réseaux sont le socle de la sécurité : on ne défend pas un réseau qu'on ne comprend pas,
+              et on n'investigue pas une machine qu'on ne saurait pas administrer. C'est pourquoi une grande partie de mon
+              apprentissage porte sur Linux, Windows Server et Active Directory, le routage et la commutation, les VPN et les
+              pare-feu, en plus de la sécurité elle-même.
+            </p>
+            <p>
+              J'apprends en pratiquant. Je monte des labs, je joue des CTF avec mes équipes, j'analyse ce qui a marché ou non, et je
+              l'écris. Les write-ups de ce site font partie de cette démarche : expliquer clairement une solution est le meilleur
+              moyen que j'aie trouvé de vérifier que je l'ai vraiment comprise.
+            </p>
+            <p>
+              Je suis encore au début de mon parcours, et ce site est fait pour le montrer honnêtement : les projets que je
+              construis, les compétitions auxquelles je participe et les sujets que je travaille.
+            </p>
+          </>
+        ) : (
+          <>
+            <p class="!mt-0 text-lg text-fg">
+              I'm <strong>{SITE.name}</strong>, known online as <code>{SITE.handle}</code>. I'm a third-year (Licence 3)
+              cybersecurity student at <strong>{SITE.school}</strong>, based in {SITE.location}.
+            </p>
+            <p>
+              I see systems and networks as the foundation of security: you can't defend a network you don't understand, or
+              investigate a machine you couldn't administer. That's why a large part of my learning goes into Linux, Windows Server
+              and Active Directory, routing and switching, VPNs and firewalls — alongside the security side itself.
+            </p>
+            <p>
+              I learn by doing. I build labs, play CTFs with my teams, analyse what worked and what didn't, and write it down. The
+              write-ups on this site are part of that process: explaining a solution clearly is the best way I've found to check
+              that I actually understood it.
+            </p>
+            <p>
+              I'm still early in my path, and this site is meant to show it honestly — the projects I'm building, the competitions
+              I take part in, and the topics I'm working through.
+            </p>
+          </>
+        )
+      }
 
-      <h2>What I'm interested in</h2>
+      <h2>{t.about.interestsTitle}</h2>
       <ul>
-        {INTERESTS.map((i) => <li>{i}</li>)}
-        <li>Web Security &amp; Cryptography</li>
-        <li>Network Security</li>
+        {[...t.site.interests, ...t.about.extraInterests].map((i) => <li>{i}</li>)}
       </ul>
     </div>
 
@@ -65,19 +95,16 @@ const facts = [
         }
       </dl>
       <div class="flex flex-wrap gap-3">
-        <a class="btn-ghost" href={url('/ctf')}><Icon name="flag" size={16} /> CTF results</a>
-        <a class="btn-ghost" href={url('/contact')}><Icon name="mail" size={16} /> Contact</a>
+        <a class="btn-ghost" href={href('/ctf')}><Icon name="flag" size={16} /> {t.about.ctfResults}</a>
+        <a class="btn-ghost" href={href('/contact')}><Icon name="mail" size={16} /> {t.nav.contact}</a>
       </div>
     </aside>
   </section>
 
   <section id="skills" class="container-page mt-20 scroll-mt-24">
-    <p class="eyebrow">Skills</p>
-    <h2 class="section-title mt-2">Skills & tools</h2>
-    <p class="mt-3 mb-8 max-w-2xl text-muted">
-      Areas I study and practise through coursework, labs and CTFs. Depth varies from one to another — the write-ups and projects are
-      the best way to see where I actually stand.
-    </p>
+    <p class="eyebrow">{t.about.skillsEyebrow}</p>
+    <h2 class="section-title mt-2">{t.about.skillsTitle}</h2>
+    <p class="mt-3 mb-8 max-w-2xl text-muted">{t.about.skillsText}</p>
     <SkillGroups />
   </section>
 </Layout>

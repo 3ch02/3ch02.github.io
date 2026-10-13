@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/🚩 Writeup -- Un PDF qui bug.md
+# Draft: platform rules on publishing solutions to be checked
 title: Un PDF qui bug
 category: Misc
 ctf: Cyberini
@@ -9,6 +10,7 @@ tags:
 - cyberini
 - misc
 lang: fr
+draft: true
 imported: true
 ---
 

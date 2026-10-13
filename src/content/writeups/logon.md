@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - Logon.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Logon
 category: Web
 difficulty: Easy
@@ -11,6 +12,7 @@ tags:
 - web
 points: 100
 lang: fr
+draft: true
 imported: true
 ---
 

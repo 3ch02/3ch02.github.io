@@ -300,5 +300,5 @@ GET flag
 ### Flag     :
 
 ```
-03e1d2b376c37ab3f5319922053953eb
+03e1…[masqué]
 ```

@@ -108,7 +108,7 @@ curl -k -X POST https://mcp.kobold.htb/api/mcp/connect \
 ### Flag 1 :  (User)
 
 ```
-ca7066c68cc564863f4ed06cdcda6ac3
+ca70…[masqué]
 ```
 
 Stabilier le shell 

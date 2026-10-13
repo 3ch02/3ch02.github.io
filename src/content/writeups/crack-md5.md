@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/🚩 Writeup - Crack MD5.md
+# Draft: platform rules on publishing solutions to be checked
 title: Crack MD5
 category: Cryptography
 ctf: Cyberini
@@ -9,6 +10,7 @@ tags:
 - cryptography
 - cyberini
 lang: fr
+draft: true
 imported: true
 ---
 

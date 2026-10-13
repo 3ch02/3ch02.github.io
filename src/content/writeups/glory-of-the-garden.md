@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - Glory of the Garden.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Glory of the Garden
 category: Forensics
 ctf: picoCTF
@@ -13,6 +14,7 @@ tags:
 - static-analysis
 - strings
 lang: fr
+draft: true
 imported: true
 ---
 

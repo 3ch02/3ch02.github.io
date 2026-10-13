@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/Writeup — "Souvenir de vacances" (`bali.jpg`).md
+# Draft: platform rules on publishing solutions to be checked
 title: Souvenir de vacances
 category: Steganography
 difficulty: Easy
@@ -14,6 +15,7 @@ tags:
 - stego
 - stegseek
 lang: fr
+draft: true
 imported: true
 ---
 

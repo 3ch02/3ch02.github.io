@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { url } from '@/lib/utils';
+import { useI18n } from '@/i18n';
 import StatusBadge from './StatusBadge.astro';
 import Icon from './Icon.astro';
 
@@ -10,6 +10,7 @@ interface Props {
 }
 const { entry, highlight = false } = Astro.props;
 const { title, summary, status, stack, tags, draft } = entry.data;
+const { t, href } = useI18n(Astro.url);
 ---
 
 <article
@@ -23,12 +24,12 @@ const { title, summary, status, stack, tags, draft } = entry.data;
       <Icon name="folder" size={17} />
     </span>
     <div class="flex items-center gap-2">
-      {draft && <span class="rounded bg-warn/15 px-1.5 font-mono text-[0.7rem] text-warn">DRAFT</span>}
+      {draft && <span class="rounded bg-warn/15 px-1.5 font-mono text-[0.7rem] text-warn">{t.common.draft}</span>}
       <StatusBadge status={status} />
     </div>
   </div>
   <h3 class:list={['mt-5 font-semibold tracking-tight text-fg', highlight ? 'text-xl sm:text-2xl' : 'text-lg']}>
-    <a href={url(`/projects/${entry.id}`)} class="after:absolute after:inset-0 after:content-['']">{title}</a>
+    <a href={href(`/projects/${entry.id}`)} class="after:absolute after:inset-0 after:content-['']">{title}</a>
   </h3>
   <p class:list={['mt-2 leading-relaxed text-muted', highlight ? 'text-[0.95rem] sm:text-base' : 'text-sm']}>{summary}</p>
   <div class="mt-auto pt-5">
@@ -36,7 +37,7 @@ const { title, summary, status, stack, tags, draft } = entry.data;
       {(stack.length ? stack : tags).slice(0, highlight ? 8 : 5).map((s) => <span class="chip">{s}</span>)}
     </div>
     <span class="mt-5 inline-flex items-center gap-1.5 text-sm text-muted group-hover:text-fg">
-      Read more <Icon name="arrow" size={15} class="transition-transform group-hover:translate-x-0.5" />
+      {t.common.readMore} <Icon name="arrow" size={15} class="transition-transform group-hover:translate-x-0.5" />
     </span>
   </div>
 </article>

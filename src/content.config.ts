@@ -157,4 +157,24 @@ const certifications = defineCollection({
   }),
 });
 
-export const collections = { writeups, projects, ctf, achievements, certifications };
+/**
+ * French versions of projects, competitions and achievements:
+ *   src/content/translations/fr/<collection>/<same file name>.md
+ * Only the text is translated here (frontmatter fields below + the Markdown body).
+ * Facts — ranks, scores, dates, status, links — always come from the original entry,
+ * so they are never duplicated. A missing translation falls back to English.
+ */
+const translations = defineCollection({
+  loader: glob({ pattern, base: './src/content/translations' }),
+  schema: z.object({
+    title: z.string().optional(),
+    summary: z.string().optional(),
+    format: z.string().optional(),
+    role: z.string().optional(),
+    headline: z.string().optional(),
+    /** Same order as the original `stages` */
+    stages: z.array(z.object({ name: z.string().optional(), note: z.string().optional() })).optional(),
+  }),
+});
+
+export const collections = { writeups, projects, ctf, achievements, certifications, translations };

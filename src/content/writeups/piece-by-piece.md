@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - Piece by Piece.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Piece by Piece
 category: Forensics
 difficulty: Easy
@@ -10,6 +11,7 @@ tags:
 - forensics
 - picoctf
 lang: fr
+draft: true
 imported: true
 ---
 

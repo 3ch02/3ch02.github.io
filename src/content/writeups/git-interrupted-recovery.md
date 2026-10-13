@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/picoCTF_2026/Writeup -Forensic - Git Interrupted Recovery.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Git Interrupted Recovery
 category: Forensics
 ctf: picoCTF 2026
@@ -9,6 +10,7 @@ tags:
 - forensics
 - picoctf-2026
 lang: fr
+draft: true
 imported: true
 ---
 

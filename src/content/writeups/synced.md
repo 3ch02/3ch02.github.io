@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: HTB/Synced.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Synced
 category: Boot2Root
 difficulty: Easy
@@ -12,6 +13,7 @@ tags:
 - starting-point
 - tier-0
 lang: fr
+draft: true
 imported: true
 ---
 
@@ -23,7 +25,7 @@ imported: true
 - **Difficulté :** Very Easy
 - **Auteur du write-up :** 3ch0
 - **Service :** `873/tcp` (rsync, protocole 31)
-- **Flag :** `72eaf5344ebb84908ae543a719830519`
+- **Flag :** `72ea…[masqué]`
 
 ---
 
@@ -79,10 +81,10 @@ cat flag
 ```
 
 ```text
-72eaf5344ebb84908ae543a719830519
+72ea…[masqué]
 ```
 
-**Flag :** `72eaf5344ebb84908ae543a719830519`
+**Flag :** `72ea…[masqué]`
 
 ---
 

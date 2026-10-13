@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/hackviser/EcowsCTF{}/📑 Writeup Challenge -Rsababy.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Rsababy
 category: Cryptography
 ctf: EcowsCTF (Hackviser)
@@ -11,6 +12,7 @@ tags:
 - ecowsctf
 - rsa
 lang: fr
+draft: true
 imported: true
 ---
 

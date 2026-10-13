@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: HTB/Fawn.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Fawn
 category: Boot2Root
 ctf: Hack The Box
@@ -11,6 +12,7 @@ tags:
 - starting-point
 - tier-0
 lang: fr
+draft: true
 imported: true
 ---
 
@@ -60,5 +62,5 @@ ftp 10.129.45.78 21
 
 ### Flag
 ```
-035db21c881520061c53e0536e44f815
+035d…[masqué]
 ```

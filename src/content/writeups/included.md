@@ -23,8 +23,8 @@ imported: true
 - **Difficulté :** Very Easy
 - **Auteur du write-up :** 3ch0
 - **Services :** `80/tcp` (Apache httpd 2.4.29), `69/udp` (TFTP)
-- **Flag user :** `a56ef91d70cfbf2cdb8f454c006935a1`
-- **Flag root :** `c693d9c7499d9f572ee375d4c14c7bcf`
+- **Flag user :** `a56e…[masqué]`
+- **Flag root :** `c693…[masqué]`
 
 ---
 
@@ -142,7 +142,7 @@ cat /home/mike/user.txt
 ```
 
 ```text
-a56ef91d70cfbf2cdb8f454c006935a1
+a56e…[masqué]
 ```
 
 ---
@@ -191,12 +191,12 @@ Dans le conteneur, root réel et disque de l'hôte monté sous `/mnt/root` :
 ~ # id
 uid=0(root) gid=0(root)
 ~ # cat /mnt/root/root/root.txt
-c693d9c7499d9f572ee375d4c14c7bcf
+c693…[masqué]
 ```
 
 ![Screenshot](./images/obsidian/included/pasted-image-20261009000410.png)
 
-**Flag root :** `c693d9c7499d9f572ee375d4c14c7bcf`
+**Flag root :** `c693…[masqué]`
 
 ---
 

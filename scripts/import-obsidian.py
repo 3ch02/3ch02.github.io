@@ -19,6 +19,7 @@ files written by hand in src/content/writeups/ (without the `imported: true` mar
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import re
 import shutil
@@ -48,6 +49,8 @@ SKIP_DIRS = (
 SKIP_FILES = {
     "Ohana-security-review.md",  # security review of a real application: confidential, never publish
     "Reverse Courses.md",
+    "Lab 2 Switch Authorization.md",  # FortiSwitch lab notes, not write-ups
+    "Lab 3 Managed Switch.md",
     "Approfondissement -- Attaque par falsification de session (Session Forgery).md",
     "CTF/IDOR ID Brute force.md",  # script only, no write-up
     "ClearDesk.md",
@@ -111,7 +114,6 @@ COMPETITIONS = {
     "IPNET CyberBattle 2026": "ipnet-cyberbattle-2026",
     "ESIG Tech Arena 2026": "esig-tech-arena-2026",
     "Kali Team CTF 26": "kali-team-ctf-2026",
-    "boroCTF 2026": "boroctf-2026",
     "brCTF 2026": "brctf-2026",
 }
 
@@ -124,7 +126,65 @@ DRAFT_RULES = [
         "HTB: publish only retired machines or Starting Point",
     ),
     (lambda m: m["ctf"] == "Unknown", "unknown source"),
+    # Held back 2026-10-13 until 3ch0 has checked what each platform allows.
+    (lambda m: m["ctf"] in {"pwn.college", "Cyberini"}, "platform rules on publishing solutions to be checked"),
 ]
+
+# Flags are masked in the text and in the screenshots of write-ups from these sources.
+# Text: done here at import. Screenshots: boxes listed in scripts/flag-masks.json, found once
+# by OCR with scripts/mask-flags-ocr.py and re-applied on every import.
+MASK_FLAGS_FOR = {"Hack The Box"}
+MASKS_FILE = Path(__file__).with_name("flag-masks.json")
+HEX32 = re.compile(r"(?<![0-9a-f])[0-9a-f]{32}(?![0-9a-f])")
+
+
+def mask_flags(text: str) -> tuple[str, list[str]]:
+    """Hide flag values (32-hex or HTB{...}); returns the new text and the values found."""
+    flags = set(re.findall(r"HTB\{[^}\n]+\}", text))
+    for line in text.splitlines():
+        if re.search(r"flag|user\.txt|root\.txt", line, re.I) or HEX32.fullmatch(line.strip()):
+            flags.update(HEX32.findall(line))
+    for f in flags:
+        text = text.replace(f, f"{f[:4]}…[masqué]")
+    return text, sorted(flags)
+
+
+def apply_image_masks() -> None:
+    """Paint over the flag areas listed in flag-masks.json (paths relative to IMG_DIR)."""
+    if not MASKS_FILE.exists():
+        return
+    try:
+        from PIL import Image, ImageDraw
+    except ImportError:
+        print("WARNING: Pillow missing — flags in screenshots were NOT masked", file=sys.stderr)
+        return
+    for rel, boxes in json.loads(MASKS_FILE.read_text(encoding="utf-8")).items():
+        path = IMG_DIR / rel
+        if not path.exists():
+            continue
+        im = Image.open(path)
+        if im.mode not in ("RGB", "RGBA"):
+            im = im.convert("RGB")
+        draw = ImageDraw.Draw(im)
+        for box in boxes:
+            draw.rectangle(box, fill=(20, 24, 31))
+        im.save(path)
+
+
+# Curation (decided 2026-10-13): the site shows a selection, not the whole vault. A write-up is
+# published only if it comes from a competition, is rated Medium or harder, or is a long-form
+# note. Everything else stays a draft. To force one through, add {"draft": ""} to its OVERRIDES.
+SHOWCASE_MIN_WORDS = 600
+CURATION_REASON = "curation: not a competition write-up, below Medium, and under 600 words"
+
+
+def is_showcase(meta: dict, text: str) -> bool:
+    return (
+        meta["ctf"] in COMPETITIONS
+        or meta["difficulty"] in {"Medium", "Hard", "Insane"}
+        or len(text.split()) >= SHOWCASE_MIN_WORDS
+    )
+
 
 # Regular (ranked) Hack The Box machines confirmed retired — write-ups allowed.
 HTB_RETIRED = {
@@ -659,6 +719,9 @@ def collect(vault: Path, copy: bool) -> list[dict]:
         text, inline_tags = convert_body(n["body"], images, n["slug"], copy, log)
         for pat, repl in BODY_FIXES.get(n["key"], []):
             text = re.sub(pat, repl, text)
+        flags: list[str] = []
+        if n["ctf"] in MASK_FLAGS_FOR:
+            text, flags = mask_flags(text)
         fm, ov = n["fm"], n["ov"]
         category = ov.get("category") or infer_category(n["key"], fm, n["title"], n["body"])
         fm_tags = fm.get("tags") or []
@@ -680,11 +743,14 @@ def collect(vault: Path, copy: bool) -> list[dict]:
             tags=sorted(tags)[:8],
             summary=ov.get("summary") or extract_summary(fm, text),
             chars=len(text),
+            flags=flags,
             log=log,
         )
         reasons = [why for rule, why in DRAFT_RULES if rule(meta)]
         if meta["chars"] < MIN_CHARS:
             reasons.append("very short note")
+        if not reasons and not is_showcase(meta, text):
+            reasons.append(CURATION_REASON)
         if "draft" in ov:
             reasons = [ov["draft"]] if ov["draft"] else []
         meta["draft_reasons"] = reasons
@@ -743,6 +809,7 @@ def main() -> None:
     pub = sum(1 for m in results if not m["draft_reasons"])
     print(f"\n{len(results)} write-ups: {pub} published, {len(results) - pub} drafts", file=sys.stderr)
     if not args.report:
+        apply_image_masks()
         write(results)
 
 

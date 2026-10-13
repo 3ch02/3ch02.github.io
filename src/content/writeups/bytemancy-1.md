@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - Bytemancy 1.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Bytemancy 1
 category: Pwn
 difficulty: Easy
@@ -11,6 +12,7 @@ tags:
 - pwn
 points: 100
 lang: fr
+draft: true
 imported: true
 ---
 

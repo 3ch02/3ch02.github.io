@@ -144,7 +144,7 @@ total 4
 -rw-r----- 1 root jones 33 Sep  5 21:38 user.txt
 ```
 
-user flag : 18e90142a7dbb030d50cddf184df940e
+user flag : 18e9…[masqué]
 
 ### Escalade de priviledge 
 

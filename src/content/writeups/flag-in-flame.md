@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup Flag in Flame.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Flag in Flame
 category: Forensics
 ctf: picoCTF
@@ -14,6 +15,7 @@ tags:
 - picoctf
 - xxd
 lang: fr
+draft: true
 imported: true
 ---
 

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: HTB/Mongod.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Mongod
 category: Boot2Root
 difficulty: Easy
@@ -11,6 +12,7 @@ tags:
 - hack-the-box
 - starting-point
 lang: fr
+draft: true
 imported: true
 ---
 
@@ -25,7 +27,7 @@ imported: true
 
 | Flag | Valeur |
 |------|--------|
-| **Flag** | `1b6e6fb359e7c40241b6d431427ba6ea` |
+| **Flag** | `1b6e…[masqué]` |
 
 ---
 
@@ -140,10 +142,10 @@ db.flag.find()
 ```
 
 ```text
-{ "_id" : ObjectId("630e3dbcb82540ebbd1748c5"), "flag" : "1b6e6fb359e7c40241b6d431427ba6ea" }
+{ "_id" : ObjectId("630e3dbcb82540ebbd1748c5"), "flag" : "1b6e…[masqué]" }
 ```
 
-**Flag :** `1b6e6fb359e7c40241b6d431427ba6ea`
+**Flag :** `1b6e…[masqué]`
 
 ![Screenshot](./images/obsidian/mongod/pasted-image-20261001090404.png)
 

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/hackviser/EcowsCTF{}/Cookie Collector.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Cookie Collector
 category: Web
 ctf: EcowsCTF (Hackviser)
@@ -9,6 +10,7 @@ tags:
 - ecowsctf
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

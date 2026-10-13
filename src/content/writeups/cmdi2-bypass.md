@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: pwn.college/web security/🚩 CMDi2 (Bypass `;`) — pwn.college.md
+# Draft: platform rules on publishing solutions to be checked
 title: CMDi2 (Bypass ;)
 category: Web
 ctf: pwn.college
@@ -9,6 +10,7 @@ tags:
 - pwn-college
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

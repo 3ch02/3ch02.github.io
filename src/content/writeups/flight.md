@@ -1,16 +1,17 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - Flight.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Flight
 category: Cryptography
 difficulty: Easy
 ctf: boroCTF 2026
-competition: boroctf-2026
 date: 2026-06-14
 summary: Flight dark, darker, yet darker. ♌︎□︎❒︎□︎👍︎❄︎☞︎❀︎⬥︎✋︎■︎♑︎📂︎■︎🕯︎♉︎✏︎⧫︎❝︎ L'énoncé affiche une étrange série de symboles. La description contient également la phrase mystérieuse …
 tags:
 - boroctf-2026
 - cryptography
 lang: fr
+draft: true
 imported: true
 ---
 

@@ -12,12 +12,11 @@ export function url(path: string): string {
   return `${base}${clean}${suffix}`;
 }
 
-/** Compare the current pathname with a nav href, base-aware. */
-export function isActive(pathname: string, href: string): boolean {
-  const target = url(href).replace(/\/$/, '');
+/** Compare the current pathname with a nav link (already built with `href()`); `exact` for the home link. */
+export function isActive(pathname: string, target: string, exact = false): boolean {
+  const t = target.replace(/\/$/, '');
   const current = pathname.replace(/\/$/, '');
-  if (href === '/') return current === target;
-  return current === target || current.startsWith(`${target}/`);
+  return current === t || (!exact && current.startsWith(`${t}/`));
 }
 
 export function slugify(value: string): string {
@@ -29,27 +28,17 @@ export function slugify(value: string): string {
     .replace(/(^-|-$)/g, '');
 }
 
-const dateFmt = new Intl.DateTimeFormat('en-GB', {
-  day: '2-digit',
-  month: 'short',
-  year: 'numeric',
-  timeZone: 'UTC',
-});
-const monthFmt = new Intl.DateTimeFormat('en-GB', {
-  month: 'short',
-  year: 'numeric',
-  timeZone: 'UTC',
-});
+type Lang = 'en' | 'fr';
+const intl = { en: 'en-GB', fr: 'fr-FR' } as const;
+const fmt = (lang: Lang, day: boolean) =>
+  new Intl.DateTimeFormat(intl[lang], { ...(day && { day: '2-digit' }), month: 'short', year: 'numeric', timeZone: 'UTC' });
+const dateFmt = { en: fmt('en', true), fr: fmt('fr', true) };
+const monthFmt = { en: fmt('en', false), fr: fmt('fr', false) };
 
-export const formatDate = (d: Date) => dateFmt.format(d);
-export const formatMonth = (d: Date) => monthFmt.format(d);
+export const formatDate = (d: Date, lang: Lang = 'en') => dateFmt[lang].format(d);
+export const formatMonth = (d: Date, lang: Lang = 'en') => monthFmt[lang].format(d);
+export const formatNumber = (n: number, lang: Lang = 'en') => n.toLocaleString(intl[lang]);
 export const isoDate = (d: Date) => d.toISOString().slice(0, 10);
-
-export function ordinal(n: number): string {
-  const s = ['th', 'st', 'nd', 'rd'];
-  const v = n % 100;
-  return `${n}${s[(v - 20) % 10] ?? s[v] ?? s[0]}`;
-}
 
 /** Rough reading time from raw markdown. */
 export function readingTime(body: string | undefined): number {

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup IPNET Cyberbattle/🚩Writeup Chall Agbetikɔr.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Agbetikɔr
 category: Steganography
 ctf: IPNET CyberBattle (archive)
@@ -9,6 +10,7 @@ tags:
 - ipnet-cyberbattle
 - steganography
 lang: fr
+draft: true
 imported: true
 ---
 

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/ForeverCTF/Writeup CTF — XOR (200 pts).md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: XOR
 category: Cryptography
 ctf: ForeverCTF
@@ -9,6 +10,7 @@ tags:
 - cryptography
 - foreverctf
 lang: fr
+draft: true
 imported: true
 ---
 

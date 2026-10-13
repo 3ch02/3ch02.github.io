@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/🚩 Writeup  -- Le logo mystère.md
+# Draft: platform rules on publishing solutions to be checked
 title: Le logo mystère
 category: Steganography
 ctf: Cyberini
@@ -9,6 +10,7 @@ tags:
 - cyberini
 - steganography
 lang: fr
+draft: true
 imported: true
 ---
 

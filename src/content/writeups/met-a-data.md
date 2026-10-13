@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/ForeverCTF/Writeup CTF — Met A Data (100 pts).md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Met A Data
 category: Steganography
 ctf: ForeverCTF
@@ -10,6 +11,7 @@ tags:
 - foreverctf
 - steganography
 lang: fr
+draft: true
 imported: true
 ---
 

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/picoCTF_2026/Access_Control.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Access_Control
 category: Cryptography
 ctf: picoCTF 2026
@@ -10,6 +11,7 @@ tags:
 - cryptography
 - picoctf-2026
 lang: fr
+draft: true
 imported: true
 ---
 

@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: pwn.college/web security/Writeup Path Traversal (Level 2).md
+# Draft: platform rules on publishing solutions to be checked
 title: Path Traversal (Level 2)
 category: Web
 ctf: pwn.college
@@ -12,6 +13,7 @@ tags:
 - pwn-college
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

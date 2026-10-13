@@ -147,7 +147,7 @@ L'authentification réussit.
 ### 🎯 [FLAG USER]
 ```bash
 scott@abducted:~\$ cat user.txt
-4067f85e24fd42204c088b3f22475e61
+4067…[masqué]
 ```
 
 ![Screenshot](./images/obsidian/abducted/pasted-image-20260716162957.png)
@@ -248,7 +248,7 @@ marcus@abducted:~\$ bash -p
 bash-5.2# whoami
 root
 bash-5.2# cat /root/root.txt
-06d485b47f53c36034abc725472706eb
+06d4…[masqué]
 ```
 
 ![Screenshot](./images/obsidian/abducted/pasted-image-20260716162530.png)

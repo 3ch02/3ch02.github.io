@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/Writeup CTF Hackropole/Crypto/🚩 SMIC 2.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: SMIC 2
 category: Cryptography
 ctf: Hackropole (FCSC)
@@ -9,6 +10,7 @@ tags:
 - cryptography
 - hackropole
 lang: fr
+draft: true
 imported: true
 ---
 

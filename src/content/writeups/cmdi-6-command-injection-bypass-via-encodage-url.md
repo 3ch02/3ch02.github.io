@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: pwn.college/web security/🚩CMDi 6 — Command Injection Bypass via Encodage URL.md
+# Draft: platform rules on publishing solutions to be checked
 title: CMDi 6 — Command Injection Bypass via Encodage URL
 category: Web
 ctf: pwn.college
@@ -9,6 +10,7 @@ tags:
 - pwn-college
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

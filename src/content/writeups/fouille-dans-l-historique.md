@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/🚩 Fouille dans l'Historique — Cyberini.md
+# Draft: platform rules on publishing solutions to be checked
 title: Fouille dans l'Historique
 category: Forensics
 ctf: Cyberini
@@ -9,6 +10,7 @@ tags:
 - cyberini
 - forensics
 lang: fr
+draft: true
 imported: true
 ---
 

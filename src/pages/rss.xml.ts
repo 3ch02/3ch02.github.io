@@ -33,7 +33,7 @@ export const GET: APIRoute = async ({ site }) => {
     <link>${abs('/writeups')}</link>
     <atom:link href="${abs('/rss.xml')}" rel="self" type="application/rss+xml" />
     <description>CTF write-ups by ${esc(SITE.handle)}</description>
-    <language>en</language>
+    <language>fr</language>
 ${items.join('\n')}
   </channel>
 </rss>

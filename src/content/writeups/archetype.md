@@ -23,8 +23,8 @@ imported: true
 - **Difficulté :** Very Easy
 - **Auteur du write-up :** 3ch0
 - **Services :** `135/139/445` (SMB), `1433` (MSSQL 2017), `5985` (WinRM) — Windows Server 2019
-- **Flag user :** `3e7b102e78218e935bf3f4951fec21a3`
-- **Flag root :** `b91ccec3305e98240082d4474b848528`
+- **Flag user :** `3e7b…[masqué]`
+- **Flag root :** `b91c…[masqué]`
 
 ---
 
@@ -119,7 +119,7 @@ SQL> xp_cmdshell type C:\Users\sql_svc\Desktop\user.txt
 ```
 
 ```text
-3e7b102e78218e935bf3f4951fec21a3
+3e7b…[masqué]
 ```
 
 ---
@@ -185,12 +185,12 @@ impacket-wmiexec administrator@10.129.9.137
 
 ```batch
 C:\> type C:\Users\Administrator\Desktop\root.txt
-b91ccec3305e98240082d4474b848528
+b91c…[masqué]
 ```
 
 ![Screenshot](./images/obsidian/archetype/screenshot-from-2026-10-08-03-47-49.png)
 
-**Flag root :** `b91ccec3305e98240082d4474b848528`
+**Flag root :** `b91c…[masqué]`
 
 ---
 

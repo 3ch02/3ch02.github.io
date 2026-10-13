@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { formatDate, isoDate, url } from '@/lib/utils';
+import { formatDate, isoDate } from '@/lib/utils';
+import { useI18n } from '@/i18n';
 import DifficultyBadge from './DifficultyBadge.astro';
 
 interface Props {
@@ -8,7 +9,8 @@ interface Props {
   compact?: boolean;
 }
 const { entry, compact = false } = Astro.props;
-const { title, category, difficulty, ctf, date, tags, summary, draft } = entry.data;
+const { title, category, difficulty, ctf, date, tags, summary, draft, lang } = entry.data;
+const { locale, t, href } = useI18n(Astro.url);
 const searchText = [title, category, ctf, summary ?? '', ...tags].join(' ').toLowerCase();
 ---
 
@@ -21,11 +23,12 @@ const searchText = [title, category, ctf, summary ?? '', ...tags].join(' ').toLo
   <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-[0.72rem] text-subtle">
     <span class="text-accent">{category}</span>
     <span aria-hidden="true">·</span>
-    <time datetime={isoDate(date)}>{formatDate(date)}</time>
-    {draft && <span class="rounded bg-warn/15 px-1.5 text-warn">DRAFT</span>}
+    <time datetime={isoDate(date)}>{formatDate(date, locale)}</time>
+    {lang !== locale && <span class="rounded border border-line px-1 uppercase" title={t.writeups.inFrench}>{lang}</span>}
+    {draft && <span class="rounded bg-warn/15 px-1.5 text-warn">{t.common.draft}</span>}
   </div>
   <h3 class="mt-2.5 text-base leading-snug font-semibold text-fg sm:text-[1.05rem]">
-    <a href={url(`/writeups/${entry.id}`)} class="after:absolute after:inset-0 after:content-['']">{title}</a>
+    <a href={href(`/writeups/${entry.id}`)} class="after:absolute after:inset-0 after:content-['']">{title}</a>
   </h3>
   {!compact && summary && <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-muted">{summary}</p>}
   <div class="mt-auto flex flex-wrap items-center justify-between gap-3 pt-4">
@@ -35,9 +38,9 @@ const searchText = [title, category, ctf, summary ?? '', ...tags].join(' ').toLo
   {
     !compact && tags.length > 0 && (
       <div class="relative z-10 mt-3 flex flex-wrap gap-1.5 border-t border-line pt-3">
-        {tags.slice(0, 4).map((t) => (
-          <a href={url(`/tags/${t}`)} class="font-mono text-[0.7rem] text-subtle hover:text-accent">
-            #{t}
+        {tags.slice(0, 4).map((tag) => (
+          <a href={href(`/tags/${tag}`)} class="font-mono text-[0.7rem] text-subtle hover:text-accent">
+            #{tag}
           </a>
         ))}
       </div>

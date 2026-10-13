@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - Hidden in plainsight.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Hidden in plainsight
 category: Steganography
 ctf: picoCTF
@@ -13,6 +14,7 @@ tags:
 - steganography
 - steghide
 lang: fr
+draft: true
 imported: true
 ---
 

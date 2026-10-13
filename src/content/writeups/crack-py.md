@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/🚩 Writeup -- Crack py.md
+# Draft: platform rules on publishing solutions to be checked
 title: Crack py
 category: Reverse Engineering
 ctf: Cyberini
@@ -11,6 +12,7 @@ tags:
 - cyberini
 - reverse-engineering
 lang: fr
+draft: true
 imported: true
 ---
 

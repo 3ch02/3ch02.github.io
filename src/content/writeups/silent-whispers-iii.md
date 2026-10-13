@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/hackviser/EcowsCTF{}/Silent Whispers III.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Silent Whispers III
 category: Cryptography
 ctf: EcowsCTF (Hackviser)
@@ -10,6 +11,7 @@ tags:
 - ecowsctf
 - stegsnow
 lang: fr
+draft: true
 imported: true
 ---
 

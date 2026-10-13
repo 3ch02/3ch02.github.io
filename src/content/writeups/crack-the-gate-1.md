@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - Crack the Gate 1.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Crack the Gate 1
 category: Web
 ctf: picoCTF
@@ -14,6 +15,7 @@ tags:
 - web
 - web-exploitation
 lang: fr
+draft: true
 imported: true
 ---
 

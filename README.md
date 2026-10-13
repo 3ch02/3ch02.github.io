@@ -174,6 +174,19 @@ stages:
 
 La carte CTF, la page Achievements et la page de la compétition se mettent à jour automatiquement. Pensez aussi à adapter le texte sous le frontmatter (« The final has not taken place yet… »).
 
+## Langues (anglais / français)
+
+Le site existe en deux langues : l'anglais à la racine (`/about/`) et le français sous `/fr/` (`/fr/about/`). Chaque page de `src/pages/[...locale]/` est générée une fois par langue.
+
+- **Textes de l'interface** (menus, boutons, titres) : `src/i18n/ui.ts`. Les blocs `en` et `fr` ont la même forme ; TypeScript signale une clé oubliée.
+- **Textes longs** (hero, page About) : directement dans la page, un bloc par langue.
+- **Projets, compétitions, résultats** : le fichier d'origine est en anglais. La version française se met dans `src/content/translations/fr/<collection>/<même nom>.md`, avec seulement le texte (`title`, `summary`, `format`, `role`, noms d'étapes) et le corps. Les faits (rangs, scores, dates, statut, liens) restent dans le fichier d'origine. Sans traduction, la page française affiche l'anglais.
+- **Write-ups** : ils restent dans leur langue d'écriture (`lang: fr`) ; la version anglaise du site affiche un badge « FR » sur la carte.
+
+## Formulaire de contact
+
+La page Contact envoie les messages via Formspree (`CONTACT_FORM` dans `src/config/site.ts`) : ils arrivent dans la boîte liée au formulaire, sans qu'aucune adresse e-mail n'apparaisse sur le site. Mettre `null` masque le formulaire.
+
 ## Déploiement sur GitHub Pages
 
 Le workflow `.github/workflows/deploy.yml` se déclenche à chaque `git push` sur `main` :
@@ -222,6 +235,12 @@ SITE_URL=https://3ch02.github.io BASE_PATH=/3ch0-portfolio npm run build
 - Recherche : champ de recherche plein texte côté client (titre, catégorie, CTF, tags, résumé), filtres par catégorie (pages statiques), pages par tag. Le paramètre `?q=` est conservé dans l'URL.
 
 ## Importer les write-ups depuis Obsidian
+
+> **Flags Hack The Box.** À l'import, les flags des write-ups HTB sont masqués dans le texte (`3e7b…[masqué]`) et dans les captures (zones listées dans `scripts/flag-masks.json`, réappliquées à chaque import). Après avoir ajouté un write-up HTB avec de nouvelles captures, lancer `scripts/mask-flags-ocr.py` (voir l'en-tête du script) puis **vérifier les images à l'œil** : l'OCR peut en rater.
+
+> **Plateformes en attente.** Les write-ups pwn.college et Cyberini restent en brouillon tant que leurs règles de publication n'ont pas été vérifiées (`DRAFT_RULES`).
+
+> **Sélection.** Le site ne publie pas tout le coffre : un write-up n'est publié que s'il vient d'une compétition, s'il est de difficulté Medium ou plus, ou s'il fait au moins 600 mots (`is_showcase` dans le script). Les autres restent en brouillon. Pour en forcer un, ajouter `{"draft": ""}` à son entrée dans `OVERRIDES`.
 
 Les write-ups viennent du vault Obsidian et sont convertis par `scripts/import-obsidian.py` :
 

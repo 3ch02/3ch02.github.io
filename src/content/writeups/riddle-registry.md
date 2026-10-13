@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup Riddle Registry.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Riddle Registry
 category: Forensics
 ctf: picoCTF
@@ -13,6 +14,7 @@ tags:
 - pdf-analysis
 - picoctf
 lang: fr
+draft: true
 imported: true
 ---
 

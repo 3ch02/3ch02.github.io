@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: Cyberini/🚩 Writeup -- Vibe Codé.md
+# Draft: platform rules on publishing solutions to be checked
 title: Vibe Codé
 category: Web
 ctf: Cyberini
@@ -9,6 +10,7 @@ tags:
 - cyberini
 - web
 lang: fr
+draft: true
 imported: true
 ---
 

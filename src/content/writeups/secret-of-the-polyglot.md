@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup - Secret of the Polyglot.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Secret of the Polyglot
 category: Forensics
 ctf: picoCTF
@@ -14,6 +15,7 @@ tags:
 - picoctf
 - polyglot
 lang: fr
+draft: true
 imported: true
 ---
 

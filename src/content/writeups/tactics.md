@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: HTB/Tactics.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Tactics
 category: Boot2Root
 difficulty: Easy
@@ -12,6 +13,7 @@ tags:
 - starting-point
 - tier-1
 lang: fr
+draft: true
 imported: true
 ---
 
@@ -23,7 +25,7 @@ imported: true
 - **Difficulté :** Very Easy
 - **Auteur du write-up :** 3ch0
 - **Services :** `135/tcp` (MSRPC), `139/tcp` (NetBIOS-SSN), `445/tcp` (SMB)
-- **Flag :** `f751c19eda8f61ce81827e6930a1f40c`
+- **Flag :** `f751…[masqué]`
 
 ---
 
@@ -100,10 +102,10 @@ C:\Users\Administrator\Desktop> type flag.txt
 ```
 
 ```text
-f751c19eda8f61ce81827e6930a1f40c
+f751…[masqué]
 ```
 
-**Flag :** `f751c19eda8f61ce81827e6930a1f40c`
+**Flag :** `f751…[masqué]`
 
 ![Screenshot](./images/obsidian/tactics/pasted-image-20261007232438.png)
 

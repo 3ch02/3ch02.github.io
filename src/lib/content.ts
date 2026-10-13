@@ -1,6 +1,44 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { slugify } from './utils';
 
+type Lang = 'en' | 'fr';
+type Translatable = 'projects' | 'ctf' | 'achievements';
+
+// ---------------------------------------------------------------------------
+// Translations (see the `translations` collection in src/content.config.ts)
+// ---------------------------------------------------------------------------
+
+let translationIndex: Promise<Map<string, CollectionEntry<'translations'>>> | undefined;
+const translations = () =>
+  (translationIndex ??= getCollection('translations').then((all) => new Map(all.map((t) => [t.id, t]))));
+
+const translationOf = async (entry: { collection: string; id: string }, lang: Lang) =>
+  lang === 'en' ? undefined : (await translations()).get(`${lang}/${entry.collection}/${entry.id}`);
+
+type Entry = { collection: string; id: string; data: Record<string, unknown> };
+
+/** Entry with its text fields in the requested language; facts stay those of the original. */
+async function localize<E extends Entry>(entry: E, lang: Lang): Promise<E> {
+  const tr = await translationOf(entry, lang);
+  if (!tr) return entry;
+  const { stages, ...text } = tr.data;
+  const data: Record<string, unknown> = { ...entry.data };
+  for (const [k, v] of Object.entries(text)) if (v !== undefined && k in data) data[k] = v;
+  if (stages && Array.isArray(data.stages)) {
+    data.stages = data.stages.map((s: object, i: number) => ({
+      ...s,
+      ...Object.fromEntries(Object.entries(stages[i] ?? {}).filter(([, v]) => v)),
+    }));
+  }
+  return { ...entry, data };
+}
+
+/** What to pass to `render()`: the translated body when there is one, the original otherwise. */
+export const bodyOf = async (entry: CollectionEntry<Translatable>, lang: Lang) =>
+  (await translationOf(entry, lang)) ?? entry;
+
+const localizeAll = <E extends Entry>(entries: E[], lang: Lang) => Promise.all(entries.map((e) => localize(e, lang)));
+
 /** Drafts are shown in `astro dev` only. */
 const published = ({ data }: { data: { draft: boolean } }) => import.meta.env.DEV || !data.draft;
 
@@ -11,22 +49,21 @@ export async function getWriteups() {
   return (await getCollection('writeups', published)).sort(byDateDesc);
 }
 
-export async function getProjects() {
-  return (await getCollection('projects', published)).sort(
-    (a, b) => a.data.order - b.data.order || byDateDesc(a, b),
-  );
+export async function getProjects(lang: Lang = 'en') {
+  const all = (await getCollection('projects', published)).sort((a, b) => a.data.order - b.data.order || byDateDesc(a, b));
+  return localizeAll(all, lang);
 }
 
 /** Sort key for entries that may only have a year. */
 const when = (d: { year: number; date?: Date }) => d.date?.valueOf() ?? Date.UTC(d.year, 0, 1);
 const byYearDesc = <T extends { data: { year: number; date?: Date } }>(a: T, b: T) => when(b.data) - when(a.data);
 
-export async function getCompetitions() {
-  return (await getCollection('ctf', published)).sort(byYearDesc);
+export async function getCompetitions(lang: Lang = 'en') {
+  return localizeAll((await getCollection('ctf', published)).sort(byYearDesc), lang);
 }
 
-export async function getAchievements() {
-  return (await getCollection('achievements', published)).sort(byYearDesc);
+export async function getAchievements(lang: Lang = 'en') {
+  return localizeAll((await getCollection('achievements', published)).sort(byYearDesc), lang);
 }
 
 export async function getCertifications() {
@@ -81,7 +118,7 @@ export type { Stage };
 // ---------------------------------------------------------------------------
 
 /** Events that are competitions even without a page in src/content/ctf/ */
-const COMPETITION_EVENTS = new Set(['EcowsCTF']);
+const COMPETITION_EVENTS = new Set(['EcowsCTF', 'boroCTF']);
 
 /** "picoCTF 2026" → "picoCTF", "Hackropole (FCSC)" → "Hackropole", "Kali Team CTF 26" → "Kali Team CTF" */
 export const sourceFamily = (ctf: string) =>

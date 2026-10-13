@@ -1,5 +1,6 @@
 ---
 # Imported from Obsidian: CTF/picoCTF/Writeup -  Information.md
+# Draft: curation: not a competition write-up, below Medium, and under 600 words
 title: Information
 category: Forensics
 ctf: picoCTF
@@ -14,6 +15,7 @@ tags:
 - picoctf
 - strings
 lang: fr
+draft: true
 imported: true
 ---
 
