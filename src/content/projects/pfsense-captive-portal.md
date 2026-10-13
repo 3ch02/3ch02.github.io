@@ -3,7 +3,7 @@ title: "Captive portal with pfSense"
 summary: "First-year school project: a pfSense firewall that forces users on a network to authenticate on a custom web page before they get Internet access, with a step-by-step deployment manual."
 status: completed
 date: 2025-06-20   # date of the deployment manual — used for sorting only, not displayed
-order: 4
+order: 5
 tags:
   - network
   - lab

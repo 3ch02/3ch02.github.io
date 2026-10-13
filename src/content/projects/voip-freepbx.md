@@ -3,7 +3,7 @@ title: "VoIP network with FreePBX / Asterisk"
 summary: "A company telephony lab: FreePBX and Asterisk behind a pfSense firewall, softphone clients, voicemail and French prompts, plus a deployment manual that also covers encrypting calls with TLS and SRTP."
 status: completed
 date: 2025-08-12   # date of the deployment manual — used for sorting only, not displayed
-order: 3
+order: 4
 tags:
   - network
   - lab

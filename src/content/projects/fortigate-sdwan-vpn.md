@@ -3,7 +3,7 @@ title: "Secure, highly available network with FortiGate (SD-WAN & VPN)"
 summary: "A two-site lab on FortiGate VMs: dual-ISP SD-WAN with failover and load balancing, a redundant IPsec site-to-site VPN running over SD-WAN, and remote access for roaming users with FortiClient."
 status: completed
 date: 2026-04-18   # last lab session — used for sorting only, not displayed
-order: 2
+order: 3
 tags:
   - network
   - lab
